@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://nlo7vy0klof1"]
 
-[ext_resource type="Script" path="res://player.gd" id="1_befo3"]
+[ext_resource type="Script" path="res://scenes/player.gd" id="1_befo3"]
 [ext_resource type="Texture2D" uid="uid://c3glewuvwbqaj" path="res://art/snakehead.png" id="2_6dydp"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kk8t6"]

@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://csvulnolc44j4"]
+
+[ext_resource type="Texture2D" uid="uid://5oqwjm3vjeiv" path="res://art/snakeGrid.png" id="1_p2gir"]
+[ext_resource type="PackedScene" uid="uid://nlo7vy0klof1" path="res://scenes/player.tscn" id="2_2xmon"]
+
+[node name="Main" type="Node"]
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(322, 322)
+texture = ExtResource("1_p2gir")
+
+[node name="Player" parent="." instance=ExtResource("2_2xmon")]
