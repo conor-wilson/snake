@@ -5,7 +5,7 @@ extends Area2D
 
 # TODO: Maybe these belong in the Main scene?
 var tile_size   = 64
-var margin_size = 2
+var margin_size = 64
 
 # The cardinal direction of the snake's head: 
 # 0 == up
