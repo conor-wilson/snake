@@ -4,7 +4,7 @@ extends Area2D
 @export var snakeRadius = 32 # Diameter of snake's tube
 
 # TODO: Maybe these belong in the Main scene?
-var tile_size   = 64
+var tile_size   = 32
 var margin_size = 64
 
 # The cardinal direction of the snake's head: 
