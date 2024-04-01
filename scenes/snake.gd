@@ -5,8 +5,8 @@ extends TileMap
 func _ready():
 	set_head_cell(Vector2(11, 10), Vector2.RIGHT)
 	set_straight_cell(Vector2(10, 10), Vector2.RIGHT)
-	set_corner_cell(Vector2(10, 14), Vector2.UP, Vector2.LEFT)
 	set_tail_cell(Vector2(9, 10), Vector2.RIGHT)
+	set_apple_cell()
 
 
 # TODO: Descriptor
@@ -32,6 +32,12 @@ func set_tail_cell(coords: Vector2i, direction: Vector2):
 	var altID = cardinal_to_alt_id(direction)
 	set_cell(1, coords, 0, Vector2(5,1), altID)
 
+
+# TODO: Descriptor
+func set_apple_cell(): 
+	# TODO: make sure apple doesn't spawn on snake tile
+	var coords = Vector2i(randi_range(2,18), randi_range(2,18))
+	set_cell(1, coords, 0, Vector2(2,1))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
