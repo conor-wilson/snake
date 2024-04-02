@@ -1,5 +1,31 @@
 extends TileMap
 
+## ----- ADAPTED FROM OLD Player NODE SCRIPT ----- ##
+## TODO: Review these features as they likely need to be renamed or adjusted
+
+# The cardinal direction of the snake's head
+var direction : Vector2 = Vector2.RIGHT
+
+# update_direction_from_input (TODO)
+func update_direction_from_input():
+	# TODO: Fix bug where the player can go 180 degrees by quickly pressing 2 buttons.
+	if Input.is_action_pressed("move_up") && direction != Vector2.DOWN:
+		direction = Vector2.UP
+	if Input.is_action_pressed("move_right") && direction != Vector2.LEFT:
+		direction = Vector2.RIGHT
+	if Input.is_action_pressed("move_down") && direction != Vector2.UP:
+		direction = Vector2.DOWN
+	if Input.is_action_pressed("move_left") && direction != Vector2.RIGHT:
+		direction = Vector2.LEFT
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	update_direction_from_input()
+
+## ----------------------------------------------- ##
+
+
 var snakeTiles : Array
 
 # Called when the node enters the scene tree for the first time.
@@ -14,26 +40,28 @@ func _ready():
 # TODO: Descriptor
 func renderNewSnake():
 	
+	# Render head
 	set_head_cell(snakeTiles[0], Vector2.RIGHT)
 	
+	# Render body
 	var len = snakeTiles.size()
 	for i in range(len-2):
 		set_body_cell(snakeTiles[i+1], Vector2.LEFT, Vector2.RIGHT)
 	
+	# Render tail
 	set_tail_cell(snakeTiles[len-1], Vector2.RIGHT)
 
 
+# TODO: Descriptor
 func renderSnakeUpdate(oldTailCoords: Vector2i = Vector2i(-1,-1)):
-	
 	set_head_cell(snakeTiles[0], Vector2.RIGHT)
 	set_body_cell(snakeTiles[1], Vector2.LEFT, Vector2.RIGHT)
 	erase_cell(1, oldTailCoords)
 	set_tail_cell(snakeTiles[snakeTiles.size()-1], Vector2.RIGHT)
-	
-	pass
+
 
 # TODO: Descriptor
-func moveSnake(direction: Vector2): 
+func moveSnake(): 
 	
 	# Update the snakeTiles array
 	var newHeadCoords = snakeTiles[0] + Vector2i(direction)
@@ -73,12 +101,8 @@ func set_tail_cell(coords: Vector2i, direction: Vector2):
 # TODO: Descriptor
 func set_apple_cell(): 
 	# TODO: make sure apple doesn't spawn on snake tile
-	var coords = Vector2i(randi_range(2,18), randi_range(2,18))
+	var coords = Vector2i(randi_range(2,17), randi_range(2,17))
 	set_cell(1, coords, 0, Vector2(2,1))
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
 
 # TODO: Descriptor
@@ -118,4 +142,4 @@ func cardinal_to_corner_alt_id(direction: Vector2) -> int:
 
 # TODO: Descriptor
 func _on_ticker_timeout():
-	moveSnake(Vector2.RIGHT)
+	moveSnake()
