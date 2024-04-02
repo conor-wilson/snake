@@ -1,19 +1,17 @@
 extends TileMap
 
-# TODO:
-#var snakeTiles : Array
-
+var snakeTiles : Array
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
-	var snakeTiles : Array = [Vector2i(11, 10), Vector2i(10, 10), Vector2(9, 10)]
-	renderNewSnake(snakeTiles)
+	snakeTiles = [Vector2i(11, 10), Vector2i(10, 10), Vector2(9, 10)]
+	renderNewSnake()
 	
 	set_apple_cell()
 
 
-func renderNewSnake(snakeTiles: Array):
+func renderNewSnake():
 	
 	set_head_cell(snakeTiles[0], Vector2.RIGHT)
 	
