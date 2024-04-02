@@ -5,12 +5,13 @@ var snakeTiles : Array
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
+	# Set the snake and apple to their starting positions
 	snakeTiles = [Vector2i(11, 10), Vector2i(10, 10), Vector2(9, 10)]
 	renderNewSnake()
-	
 	set_apple_cell()
 
 
+# TODO: Descriptor
 func renderNewSnake():
 	
 	set_head_cell(snakeTiles[0], Vector2.RIGHT)
@@ -20,6 +21,14 @@ func renderNewSnake():
 		set_body_cell(snakeTiles[i+1], Vector2.LEFT, Vector2.RIGHT)
 	
 	set_tail_cell(snakeTiles[len-1], Vector2.RIGHT)
+
+func moveSnake(direction: Vector2): 
+	
+	var newHeadCoords = snakeTiles[0] + Vector2i(direction)
+	snakeTiles.push_front(newHeadCoords)
+	
+	set_head_cell(newHeadCoords, direction)
+
 
 # TODO: Descriptor
 func set_head_cell(coords: Vector2i, direction: Vector2):
@@ -91,4 +100,8 @@ func cardinal_to_corner_alt_id(direction: Vector2) -> int:
 		print_debug("invalid direction input to cardinal_to_corner_alt_id():", direction)
 	
 	return altID
-	
+
+
+# TODO: Descriptor
+func _on_ticker_timeout():
+	moveSnake(Vector2.RIGHT)
