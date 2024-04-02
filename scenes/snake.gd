@@ -23,6 +23,15 @@ func renderNewSnake():
 	set_tail_cell(snakeTiles[len-1], Vector2.RIGHT)
 
 
+func renderSnakeUpdate(oldTailCoords: Vector2i = Vector2i(-1,-1)):
+	
+	set_head_cell(snakeTiles[0], Vector2.RIGHT)
+	set_body_cell(snakeTiles[1], Vector2.LEFT, Vector2.RIGHT)
+	erase_cell(1, oldTailCoords)
+	set_tail_cell(snakeTiles[snakeTiles.size()-1], Vector2.RIGHT)
+	
+	pass
+
 # TODO: Descriptor
 func moveSnake(direction: Vector2): 
 	
@@ -32,8 +41,7 @@ func moveSnake(direction: Vector2):
 	var oldTailCoords = snakeTiles.pop_back()
 	
 	# Re-render the snake
-	erase_cell(1, oldTailCoords)
-	renderNewSnake()
+	renderSnakeUpdate(oldTailCoords)
 
 
 # TODO: Descriptor
