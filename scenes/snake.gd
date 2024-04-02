@@ -19,7 +19,7 @@ func renderNewSnake(snakeTiles: Array):
 	
 	var len = snakeTiles.size()
 	for i in range(len-2):
-		set_body_cell(snakeTiles[i+1], Vector2.LEFT, Vector2.RIGHT)
+		set_body_cell(snakeTiles[i+1], Vector2.RIGHT, Vector2.UP)
 	
 	set_tail_cell(snakeTiles[len-1], Vector2.RIGHT)
 
@@ -33,22 +33,26 @@ func set_head_cell(coords: Vector2i, direction: Vector2):
 func set_body_cell(coords: Vector2i, dir1: Vector2, dir2: Vector2): 
 	var vSum = dir1+dir2
 	
-	if vSum.length() != 0:
-		set_corner_cell(coords, dir1, dir2)
+	if vSum.length() == 0:
+		# The direction vectors are exactly opposite. This must be a straight body tile. 
+		var altID = cardinal_to_alt_id(dir1)
+		set_cell(1, coords, 0, Vector2(4,0), (altID-1)%2+1)
 	else:
-		set_straight_cell(coords, dir1)
+		# The direction vectors are not opposite. This must be a corner body tile.
+		var altID = cardinal_to_corner_alt_id(vSum)
+		set_cell(1, coords, 0, Vector2(5,0), altID)
 	 
-
-# TODO: Descriptor
-func set_straight_cell(coords: Vector2i, direction: Vector2):
-	var altID = cardinal_to_alt_id(direction)
-	set_cell(1, coords, 0, Vector2(4,0), (altID-1)%2+1)
-
-
-# TODO: Descriptor
-func set_corner_cell(coords: Vector2i, dir1: Vector2, dir2: Vector2):
-	var altID = cardinal_to_corner_alt_id(dir1+dir2)
-	set_cell(1, coords, 0, Vector2(5,0), altID)
+#
+## TODO: Descriptor
+#func set_straight_cell(coords: Vector2i, direction: Vector2):
+	#var altID = cardinal_to_alt_id(direction)
+	#set_cell(1, coords, 0, Vector2(4,0), (altID-1)%2+1)
+#
+#
+## TODO: Descriptor
+#func set_corner_cell(coords: Vector2i, dir1: Vector2, dir2: Vector2):
+	#var altID = cardinal_to_corner_alt_id(dir1+dir2)
+	#set_cell(1, coords, 0, Vector2(5,0), altID)
 
 
 # TODO: Descriptor
