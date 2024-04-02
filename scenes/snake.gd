@@ -1,5 +1,6 @@
 extends TileMap
 
+
 ## ----- ADAPTED FROM OLD Player NODE SCRIPT ----- ##
 ## TODO: Review these features as they likely need to be renamed or adjusted
 
@@ -18,7 +19,6 @@ func update_direction_from_input():
 	if Input.is_action_pressed("move_left") && direction != Vector2.RIGHT:
 		direction = Vector2.LEFT
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	update_direction_from_input()
@@ -32,12 +32,13 @@ var snakeTiles : Array
 func _ready():
 	
 	# Set the snake and apple to their starting positions
-	snakeTiles = [Vector2i(11, 10), Vector2i(10, 10), Vector2(9, 10)]
+	snakeTiles = [Vector2i(11, 10), Vector2i(10, 10), Vector2i(9, 10)]
 	renderNewSnake()
 	set_apple_cell()
 
 
 # TODO: Descriptor
+# TODO: Change the direction vectors to not always be Vector2.RIGHT
 func renderNewSnake():
 	
 	# Render head
@@ -53,6 +54,7 @@ func renderNewSnake():
 
 
 # TODO: Descriptor
+# TODO: Change the direction vectors to not always be Vector2.RIGHT
 func renderSnakeUpdate(oldTailCoords: Vector2i = Vector2i(-1,-1)):
 	set_head_cell(snakeTiles[0], Vector2.RIGHT)
 	set_body_cell(snakeTiles[1], Vector2.LEFT, Vector2.RIGHT)
@@ -63,8 +65,15 @@ func renderSnakeUpdate(oldTailCoords: Vector2i = Vector2i(-1,-1)):
 # TODO: Descriptor
 func moveSnake(): 
 	
-	# Update the snakeTiles array
+	# Confirm the next location for the snake is not a wall (for now, the snake just stops)
+	# TODO: Make the snake die here.
 	var newHeadCoords = snakeTiles[0] + Vector2i(direction)
+	if get_cell_tile_data(1, newHeadCoords) != null:
+		# TODO: This is a very silly way of doing this, and also it means that the snake can't eat 
+		# the apple and gets stopped by it. Come up with a better way for this.
+		return
+	
+	# Update the snakeTiles array
 	snakeTiles.push_front(newHeadCoords)
 	var oldTailCoords = snakeTiles.pop_back()
 	
