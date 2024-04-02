@@ -22,12 +22,18 @@ func renderNewSnake():
 	
 	set_tail_cell(snakeTiles[len-1], Vector2.RIGHT)
 
+
+# TODO: Descriptor
 func moveSnake(direction: Vector2): 
 	
+	# Update the snakeTiles array
 	var newHeadCoords = snakeTiles[0] + Vector2i(direction)
 	snakeTiles.push_front(newHeadCoords)
+	var oldTailCoords = snakeTiles.pop_back()
 	
-	set_head_cell(newHeadCoords, direction)
+	# Re-render the snake
+	erase_cell(1, oldTailCoords)
+	renderNewSnake()
 
 
 # TODO: Descriptor
