@@ -65,23 +65,27 @@ func _on_ticker_timeout():
 # TODO: Descriptor
 func moveSnake(): 
 	
-	# Confirm the next location for the snake is not a wall (for now, the snake just stops)
-	# TODO: Make the snake die here.
+	# Obtain the next location for the snake's head
 	var newHeadCoords = snakeTiles[0] + Vector2i(direction)
-	if get_cell_atlas_coords(1, newHeadCoords) == Vector2i(2,1):
-		set_apple_cell()
-	elif get_cell_tile_data(1, newHeadCoords) != null:
-		# TODO: This is a very silly way of doing this, and also it means that the snake can't eat 
-		# the apple and gets stopped by it. Come up with a better way for this.
-		return
 	
+	# Execute any special behavior
+	var appleEaten = false
+	if get_cell_atlas_coords(1, newHeadCoords) == Vector2i(2,1):
+		# The snake is about to eat the apple!
+		appleEaten = true
+	elif get_cell_tile_data(1, newHeadCoords) != null:
+		# The snake is about to hit a wall or its own tail!
+		# TODO: Make the snake die here.
+		return
 	
 	# Update the snakeTiles array
 	snakeTiles.push_front(newHeadCoords)
-	var oldTailCoords = snakeTiles.pop_back()
+	var oldTailCoords :Vector2i
+	if !appleEaten: oldTailCoords = snakeTiles.pop_back()
 	
-	# Re-render the snake
+	# Re-render the snake (and the apple if it got eaten)
 	renderSnakeUpdate(oldTailCoords)
+	if appleEaten: set_apple_cell()
 
 
 ## --------------- Cell Setter Functions --------------- ##
