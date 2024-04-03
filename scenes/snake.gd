@@ -1,5 +1,6 @@
 extends TileMap
 
+
 var snakeTiles : Array   # The array of coordinates that the snake occupies
 var direction  : Vector2 # The cardinal direction of the snake's head
 
@@ -67,10 +68,13 @@ func moveSnake():
 	# Confirm the next location for the snake is not a wall (for now, the snake just stops)
 	# TODO: Make the snake die here.
 	var newHeadCoords = snakeTiles[0] + Vector2i(direction)
-	if get_cell_tile_data(1, newHeadCoords) != null:
+	if get_cell_atlas_coords(1, newHeadCoords) == Vector2i(2,1):
+		set_apple_cell()
+	elif get_cell_tile_data(1, newHeadCoords) != null:
 		# TODO: This is a very silly way of doing this, and also it means that the snake can't eat 
 		# the apple and gets stopped by it. Come up with a better way for this.
 		return
+	
 	
 	# Update the snakeTiles array
 	snakeTiles.push_front(newHeadCoords)
