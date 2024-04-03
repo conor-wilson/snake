@@ -34,9 +34,9 @@ func renderNewSnake():
 # TODO: Descriptor
 # TODO: Change the direction vectors to not always be Vector2.RIGHT
 func renderSnakeUpdate(oldTailCoords: Vector2i = Vector2i(-1,-1)):
+	erase_cell(1, oldTailCoords)
 	set_head_cell(snakeTiles[0], Vector2.RIGHT)
 	set_body_cell(snakeTiles[1], Vector2.LEFT, Vector2.RIGHT)
-	erase_cell(1, oldTailCoords)
 	set_tail_cell(snakeTiles[snakeTiles.size()-1], Vector2.RIGHT)
 
 
@@ -68,24 +68,23 @@ func moveSnake():
 	# Obtain the next location for the snake's head
 	var newHeadCoords = snakeTiles[0] + Vector2i(direction)
 	
-	# Execute any special behavior
-	var appleEaten = false
+	# Move the snake according to what sort of tile it's about to run into:
+	
+	# Case where the snake eats the apple
 	if get_cell_atlas_coords(1, newHeadCoords) == Vector2i(2,1):
-		# The snake is about to eat the apple!
-		appleEaten = true
+		snakeTiles.push_front(newHeadCoords)
+		renderSnakeUpdate()
+		set_apple_cell()
+
+	# Case where the snake hits a wall or its own body
 	elif get_cell_tile_data(1, newHeadCoords) != null:
-		# The snake is about to hit a wall or its own tail!
 		# TODO: Make the snake die here.
 		return
-	
-	# Update the snakeTiles array
-	snakeTiles.push_front(newHeadCoords)
-	var oldTailCoords :Vector2i
-	if !appleEaten: oldTailCoords = snakeTiles.pop_back()
-	
-	# Re-render the snake (and the apple if it got eaten)
-	renderSnakeUpdate(oldTailCoords)
-	if appleEaten: set_apple_cell()
+
+	# Case where the snake hits nothing
+	else:
+		snakeTiles.push_front(newHeadCoords)
+		renderSnakeUpdate(snakeTiles.pop_back())
 
 
 ## --------------- Cell Setter Functions --------------- ##
