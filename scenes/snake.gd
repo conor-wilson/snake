@@ -2,6 +2,7 @@ extends TileMap
 
 
 var snakeTiles : Array   # The array of coordinates that the snake occupies
+var snakeTileDirections : Array
 var direction  : Vector2 # The cardinal direction of the snake's head
 
 # Called when the node enters the scene tree for the first time.
@@ -10,6 +11,7 @@ func _ready():
 	# Set the snake and apple to their starting positions
 	direction = Vector2.RIGHT
 	snakeTiles = [Vector2i(11, 10), Vector2i(10, 10), Vector2i(9, 10)]
+	snakeTileDirections = [Vector2.RIGHT, Vector2.RIGHT, Vector2.RIGHT]
 	renderNewSnake()
 	set_apple_cell()
 
@@ -21,23 +23,23 @@ func _ready():
 func renderNewSnake():
 	
 	# Render head
-	set_head_cell(snakeTiles[0], Vector2.RIGHT)
+	set_head_cell(snakeTiles[0], snakeTileDirections[0])
 	
 	# Render body
 	var len = snakeTiles.size()
 	for i in range(len-2):
-		set_body_cell(snakeTiles[i+1], Vector2.LEFT, Vector2.RIGHT)
+		set_body_cell(snakeTiles[i+1], snakeTileDirections[i], snakeTileDirections[i+1])
 	
 	# Render tail
-	set_tail_cell(snakeTiles[len-1], Vector2.RIGHT)
+	set_tail_cell(snakeTiles[len-1], snakeTileDirections[len-1])
 
 # TODO: Descriptor
 # TODO: Change the direction vectors to not always be Vector2.RIGHT
 func renderSnakeUpdate(oldTailCoords: Vector2i = Vector2i(-1,-1)):
 	erase_cell(1, oldTailCoords)
-	set_head_cell(snakeTiles[0], direction)
-	set_body_cell(snakeTiles[1], Vector2.LEFT, Vector2.RIGHT)
-	set_tail_cell(snakeTiles[snakeTiles.size()-1], Vector2.RIGHT)
+	set_head_cell(snakeTiles[0], snakeTileDirections[0])
+	set_body_cell(snakeTiles[1], snakeTileDirections[0], snakeTileDirections[1])
+	set_tail_cell(snakeTiles[snakeTiles.size()-1], snakeTileDirections[snakeTileDirections.size()-1])
 
 
 ## ------------- Snake Movement Functions -------------- ##
@@ -73,6 +75,7 @@ func moveSnake():
 	# Case where the snake eats the apple
 	if get_cell_atlas_coords(1, newHeadCoords) == Vector2i(2,1):
 		snakeTiles.push_front(newHeadCoords)
+		snakeTileDirections.push_front(direction)
 		renderSnakeUpdate()
 		set_apple_cell()
 
@@ -84,6 +87,8 @@ func moveSnake():
 	# Case where the snake hits nothing
 	else:
 		snakeTiles.push_front(newHeadCoords) # TODO: Is this repeated code okay?
+		snakeTileDirections.push_front(direction)
+		snakeTileDirections.pop_back()
 		renderSnakeUpdate(snakeTiles.pop_back())
 
 
@@ -98,8 +103,8 @@ func set_head_cell(coords: Vector2i, direction: Vector2):
 func set_body_cell(coords: Vector2i, dir1: Vector2, dir2: Vector2): 
 	var vSum = dir1+dir2
 	
-	if vSum.length() == 0:
-		# The direction vectors are exactly opposite. This must be a straight body tile. 
+	if vSum.length() == 0 || vSum.length() == 2:
+		# The direction vectors are the same or exactly opposite. This must be a straight body tile. 
 		var altID = cardinal_to_alt_id(dir1)
 		set_cell(1, coords, 0, Vector2(4,0), (altID-1)%2+1)
 	else:
@@ -139,13 +144,13 @@ func cardinal_to_alt_id(direction: Vector2) -> int:
 func cardinal_to_corner_alt_id(direction: Vector2) -> int:
 
 	var altID = 0
-	if direction == Vector2.UP + Vector2.RIGHT: 
+	if direction.angle() == (Vector2.UP + Vector2.RIGHT).angle(): 
 		altID = 1
-	elif direction == Vector2.RIGHT + Vector2.DOWN:
+	elif direction.angle() == (Vector2.RIGHT + Vector2.DOWN).angle():
 		altID = 2
-	elif direction == Vector2.DOWN + Vector2.LEFT:
+	elif direction.angle() == (Vector2.DOWN + Vector2.LEFT).angle():
 		altID = 3
-	elif direction == Vector2.LEFT + Vector2.UP:
+	elif direction.angle() == (Vector2.LEFT + Vector2.UP).angle():
 		altID = 4
 	else:
 		print_debug("invalid direction input to cardinal_to_corner_alt_id():", direction)

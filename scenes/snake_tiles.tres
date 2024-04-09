@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=4 format=3 uid="uid://kmmw4pd0nka5"]
+[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://kmmw4pd0nka5"]
 
 [ext_resource type="Texture2D" uid="uid://di3c1jwyafo16" path="res://art/snakeTiles32.png" id="1_u365x"]
 
@@ -63,6 +63,8 @@ use_texture_padding = false
 4:3/0 = 0
 5:3/0 = 0
 
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_bwono"]
+
 [resource]
 tile_size = Vector2i(32, 32)
 custom_data_layer_0/name = "front"
@@ -70,4 +72,5 @@ custom_data_layer_0/type = 5
 custom_data_layer_1/name = "back"
 custom_data_layer_1/type = 5
 sources/0 = SubResource("TileSetAtlasSource_16y6t")
+sources/1 = SubResource("TileSetScenesCollectionSource_bwono")
 pattern_0 = SubResource("TileMapPattern_u6t0o")
