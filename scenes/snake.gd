@@ -35,7 +35,7 @@ func renderNewSnake():
 # TODO: Change the direction vectors to not always be Vector2.RIGHT
 func renderSnakeUpdate(oldTailCoords: Vector2i = Vector2i(-1,-1)):
 	erase_cell(1, oldTailCoords)
-	set_head_cell(snakeTiles[0], Vector2.RIGHT)
+	set_head_cell(snakeTiles[0], direction)
 	set_body_cell(snakeTiles[1], Vector2.LEFT, Vector2.RIGHT)
 	set_tail_cell(snakeTiles[snakeTiles.size()-1], Vector2.RIGHT)
 
@@ -76,14 +76,14 @@ func moveSnake():
 		renderSnakeUpdate()
 		set_apple_cell()
 
-	# Case where the snake hits a wall or its own body
+	# Case where the snake something other than the apple
 	elif get_cell_tile_data(1, newHeadCoords) != null:
 		# TODO: Make the snake die here.
 		return
 
 	# Case where the snake hits nothing
 	else:
-		snakeTiles.push_front(newHeadCoords)
+		snakeTiles.push_front(newHeadCoords) # TODO: Is this repeated code okay?
 		renderSnakeUpdate(snakeTiles.pop_back())
 
 
@@ -122,13 +122,13 @@ func set_apple_cell():
 func cardinal_to_alt_id(direction: Vector2) -> int:
 
 	var altID = 0
-	if direction == Vector2.UP:
+	if direction.angle() == Vector2.UP.angle():
 		altID = 1
-	elif direction == Vector2.RIGHT:
+	elif direction.angle() == Vector2.RIGHT.angle():
 		altID = 2
-	elif direction == Vector2.DOWN:
+	elif direction.angle() == Vector2.DOWN.angle():
 		altID = 3
-	elif direction == Vector2.LEFT:
+	elif direction.angle() == Vector2.LEFT.angle():
 		altID = 4
 	else: 
 		print_debug("invalid direction input to cardinal_to_alt_id():", direction)
