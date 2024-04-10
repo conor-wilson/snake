@@ -13,8 +13,6 @@ func _ready():
 		SnakeTile.new("body", Vector2i(10,10), Vector2.RIGHT, Vector2.LEFT),
 		SnakeTile.new("tail", Vector2i(9,10),  Vector2.RIGHT, Vector2.LEFT),
 	]
-	for s in snakeTiles:
-		print(s.get_type(), s.get_coords())
 	renderNewSnake()
 	set_apple_cell()
 
@@ -39,6 +37,10 @@ func renderNewSnake():
 # TODO: Descriptor
 # TODO: Change the direction vectors to not always be Vector2.RIGHT
 func renderSnakeUpdate(oldTailCoords: Vector2i = Vector2i(-1,-1)):
+	
+	snakeTiles[1].set_atlas_coords("body")
+	snakeTiles[snakeTiles.size()-1].set_atlas_coords("tail")
+	
 	erase_cell(1, oldTailCoords)
 	set_head_cell(snakeTiles[0])
 	set_body_cell(snakeTiles[1])
@@ -102,29 +104,27 @@ func moveSnake():
 
 # TODO: Descriptor
 func set_head_cell(snake_tile : SnakeTile):
-	print(snake_tile.get_type(), snake_tile.get_coords())
 	var altID = cardinal_to_alt_id(snake_tile.get_front_dir())
-	set_cell(1, snake_tile.get_coords(), 0, Vector2(3,0), altID)
+	set_cell(1, snake_tile.get_coords(), 0, snake_tile.get_atlas_coords(), altID)
 
 # TODO: Descriptor
 func set_body_cell(snake_tile : SnakeTile): 
-	print(snake_tile.get_type(), snake_tile.get_coords())
+
 	var vSum = snake_tile.get_front_dir()+snake_tile.get_back_dir()
 	
 	if vSum.length() == 0 || vSum.length() == 2:
 		# The direction vectors are the same or exactly opposite. This must be a straight body tile. 
 		var altID = cardinal_to_alt_id(snake_tile.get_front_dir())
-		set_cell(1, snake_tile.get_coords(), 0, Vector2(4,0), (altID-1)%2+1)
+		set_cell(1, snake_tile.get_coords(), 0, snake_tile.get_atlas_coords(), (altID-1)%2+1)
 	else:
 		# The direction vectors are not opposite. This must be a corner body tile.
 		var altID = cardinal_to_corner_alt_id(vSum)
-		set_cell(1, snake_tile.get_coords(), 0, Vector2(5,0), altID)
+		set_cell(1, snake_tile.get_coords(), 0, snake_tile.get_atlas_coords(), altID)
 
 # TODO: Descriptor
 func set_tail_cell(snake_tile : SnakeTile):
-	print(snake_tile.get_type(), snake_tile.get_coords())
 	var altID = cardinal_to_alt_id(snake_tile.get_front_dir())
-	set_cell(1, snake_tile.get_coords(), 0, Vector2(5,1), altID)
+	set_cell(1, snake_tile.get_coords(), 0, snake_tile.get_atlas_coords(), altID)
 
 # TODO: Descriptor
 func set_apple_cell(): 
