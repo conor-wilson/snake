@@ -1,6 +1,5 @@
 extends TileMap
 
-
 var snakeTiles : Array   # The array of coordinates that the snake occupies
 var snakeTileDirections : Array
 var direction  : Vector2 # The cardinal direction of the snake's head
