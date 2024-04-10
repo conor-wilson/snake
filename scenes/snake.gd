@@ -24,15 +24,15 @@ func _ready():
 func renderNewSnake():
 	
 	# Render head
-	set_head_cell(snakeTiles[0])
+	set_snake_cell(snakeTiles[0])
 	
 	# Render body
 	var len = snakeTiles.size()
 	for i in range(len-2):
-		set_body_cell(snakeTiles[i+1])
+		set_snake_cell(snakeTiles[i+1])
 	
 	# Render tail
-	set_tail_cell(snakeTiles[len-1])
+	set_snake_cell(snakeTiles[len-1])
 
 # TODO: Descriptor
 # TODO: Change the direction vectors to not always be Vector2.RIGHT
@@ -43,9 +43,9 @@ func renderSnakeUpdate(oldTailCoords: Vector2i = Vector2i(-1,-1)):
 	snakeTiles[snakeTiles.size()-1].set_atlas_coords("tail")
 	
 	erase_cell(1, oldTailCoords)
-	set_head_cell(snakeTiles[0])
-	set_body_cell(snakeTiles[1])
-	set_tail_cell(snakeTiles[snakeTiles.size()-1])
+	set_snake_cell(snakeTiles[0])
+	set_snake_cell(snakeTiles[1])
+	set_snake_cell(snakeTiles[snakeTiles.size()-1])
 
 
 ## ------------- Snake Movement Functions -------------- ##
@@ -104,20 +104,18 @@ func moveSnake():
 ## --------------- Cell Setter Functions --------------- ##
 
 # TODO: Descriptor
+func set_snake_cell(snake_tile : SnakeTile):
+	set_cell(1, snake_tile.get_coords(), 0, snake_tile.get_atlas_coords(), snake_tile.get_alt_id())
+
+
+
+# TODO: Descriptor
 func set_head_cell(snake_tile : SnakeTile):
 	set_cell(1, snake_tile.get_coords(), 0, snake_tile.get_atlas_coords(), snake_tile.get_alt_id())
 
 # TODO: Descriptor
 func set_body_cell(snake_tile : SnakeTile): 
-#
-	#var vSum = snake_tile.get_front_dir()+snake_tile.get_back_dir()
-	#
-	#if vSum.length() == 0 || vSum.length() == 2:
-		## The direction vectors are the same or exactly opposite. This must be a straight body tile. 
-		#set_cell(1, snake_tile.get_coords(), 0, snake_tile.get_atlas_coords(), (snake_tile.get_alt_id()-1)%2+1)
-	#else:
-		## The direction vectors are not opposite. This must be a corner body tile.
-		set_cell(1, snake_tile.get_coords(), 0, snake_tile.get_atlas_coords(), snake_tile.get_alt_id())
+	set_cell(1, snake_tile.get_coords(), 0, snake_tile.get_atlas_coords(), snake_tile.get_alt_id())
 
 # TODO: Descriptor
 func set_tail_cell(snake_tile : SnakeTile):
