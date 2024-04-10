@@ -20,28 +20,19 @@ func _ready():
 ## ------------- Snake Rendering Functions ------------- ##
 
 # TODO: Descriptor
-# TODO: Change the direction vectors to not always be Vector2.RIGHT
 func renderNewSnake():
-	
-	# Render head
-	set_snake_cell(snakeTiles[0])
-	
-	# Render body
-	var len = snakeTiles.size()
-	for i in range(len-2):
-		set_snake_cell(snakeTiles[i+1])
-	
-	# Render tail
-	set_snake_cell(snakeTiles[len-1])
+	for s in snakeTiles:
+		set_snake_cell(s)
 
 # TODO: Descriptor
-# TODO: Change the direction vectors to not always be Vector2.RIGHT
 func renderSnakeUpdate(oldTailCoords: Vector2i = Vector2i(-1,-1)):
 	
+	# Set new TileSet source settings for tiles to be updated
 	snakeTiles[1].set_atlas_coords("body")
-	snakeTiles[1].set_alt_id("body", direction, direction)
+	snakeTiles[1].set_alt_id("body", direction, direction) # TODO: directions
 	snakeTiles[snakeTiles.size()-1].set_atlas_coords("tail")
 	
+	# Update the tiles
 	erase_cell(1, oldTailCoords)
 	set_snake_cell(snakeTiles[0])
 	set_snake_cell(snakeTiles[1])
@@ -73,7 +64,7 @@ func _on_ticker_timeout():
 # TODO: Descriptor
 func moveSnake(): 
 	
-	# Obtain the next location for the snake's head
+	# Build the new head SnakeTile 
 	var newHeadTile = SnakeTile.new(
 		"head", 
 		snakeTiles[0].get_coords() + Vector2i(direction), 
@@ -84,41 +75,26 @@ func moveSnake():
 	# Move the snake according to what sort of tile it's about to run into:
 	
 	# Case where the snake eats the apple
-	var next_tile_atlas_coords = get_cell_atlas_coords(1, newHeadTile.get_coords())
 	if get_cell_atlas_coords(1, newHeadTile.get_coords()) == Vector2i(2,1):
 		snakeTiles.push_front(newHeadTile)
 		renderSnakeUpdate()
 		set_apple_cell()
 
-	# Case where the snake something other than the apple TODO: Swap these around so this is at the bottom
-	elif get_cell_tile_data(1, newHeadTile.get_coords()) != null:
-		# TODO: Make the snake die here.
-		return
-
 	# Case where the snake hits nothing
-	else:
+	elif get_cell_tile_data(1, newHeadTile.get_coords()) == null:
 		snakeTiles.push_front(newHeadTile) # TODO: Is this repeated code okay?
 		renderSnakeUpdate(snakeTiles.pop_back().get_coords())
+
+	# Case where the snake something that is not an apple
+	else:
+		# TODO: Make the snake die here.
+		return
 
 
 ## --------------- Cell Setter Functions --------------- ##
 
 # TODO: Descriptor
 func set_snake_cell(snake_tile : SnakeTile):
-	set_cell(1, snake_tile.get_coords(), 0, snake_tile.get_atlas_coords(), snake_tile.get_alt_id())
-
-
-
-# TODO: Descriptor
-func set_head_cell(snake_tile : SnakeTile):
-	set_cell(1, snake_tile.get_coords(), 0, snake_tile.get_atlas_coords(), snake_tile.get_alt_id())
-
-# TODO: Descriptor
-func set_body_cell(snake_tile : SnakeTile): 
-	set_cell(1, snake_tile.get_coords(), 0, snake_tile.get_atlas_coords(), snake_tile.get_alt_id())
-
-# TODO: Descriptor
-func set_tail_cell(snake_tile : SnakeTile):
 	set_cell(1, snake_tile.get_coords(), 0, snake_tile.get_atlas_coords(), snake_tile.get_alt_id())
 
 # TODO: Descriptor

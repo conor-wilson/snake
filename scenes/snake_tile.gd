@@ -33,7 +33,6 @@ func set_atlas_coords(type:String):
 # TODO: Descriptor
 func set_alt_id(type:String, front_dir:Vector2, back_dir:Vector2):
 	self.alt_id = cardinal_to_alt_id(front_dir)
-	
 	if type == "body":
 		self.alt_id = (alt_id-1)%2+1
 
