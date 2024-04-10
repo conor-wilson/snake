@@ -39,6 +39,7 @@ func renderNewSnake():
 func renderSnakeUpdate(oldTailCoords: Vector2i = Vector2i(-1,-1)):
 	
 	snakeTiles[1].set_atlas_coords("body")
+	snakeTiles[1].set_alt_id("body", direction, direction)
 	snakeTiles[snakeTiles.size()-1].set_atlas_coords("tail")
 	
 	erase_cell(1, oldTailCoords)
@@ -104,64 +105,26 @@ func moveSnake():
 
 # TODO: Descriptor
 func set_head_cell(snake_tile : SnakeTile):
-	var altID = cardinal_to_alt_id(snake_tile.get_front_dir())
-	set_cell(1, snake_tile.get_coords(), 0, snake_tile.get_atlas_coords(), altID)
+	set_cell(1, snake_tile.get_coords(), 0, snake_tile.get_atlas_coords(), snake_tile.get_alt_id())
 
 # TODO: Descriptor
 func set_body_cell(snake_tile : SnakeTile): 
-
-	var vSum = snake_tile.get_front_dir()+snake_tile.get_back_dir()
-	
-	if vSum.length() == 0 || vSum.length() == 2:
-		# The direction vectors are the same or exactly opposite. This must be a straight body tile. 
-		var altID = cardinal_to_alt_id(snake_tile.get_front_dir())
-		set_cell(1, snake_tile.get_coords(), 0, snake_tile.get_atlas_coords(), (altID-1)%2+1)
-	else:
-		# The direction vectors are not opposite. This must be a corner body tile.
-		var altID = cardinal_to_corner_alt_id(vSum)
-		set_cell(1, snake_tile.get_coords(), 0, snake_tile.get_atlas_coords(), altID)
+#
+	#var vSum = snake_tile.get_front_dir()+snake_tile.get_back_dir()
+	#
+	#if vSum.length() == 0 || vSum.length() == 2:
+		## The direction vectors are the same or exactly opposite. This must be a straight body tile. 
+		#set_cell(1, snake_tile.get_coords(), 0, snake_tile.get_atlas_coords(), (snake_tile.get_alt_id()-1)%2+1)
+	#else:
+		## The direction vectors are not opposite. This must be a corner body tile.
+		set_cell(1, snake_tile.get_coords(), 0, snake_tile.get_atlas_coords(), snake_tile.get_alt_id())
 
 # TODO: Descriptor
 func set_tail_cell(snake_tile : SnakeTile):
-	var altID = cardinal_to_alt_id(snake_tile.get_front_dir())
-	set_cell(1, snake_tile.get_coords(), 0, snake_tile.get_atlas_coords(), altID)
+	set_cell(1, snake_tile.get_coords(), 0, snake_tile.get_atlas_coords(), snake_tile.get_alt_id())
 
 # TODO: Descriptor
 func set_apple_cell(): 
 	# TODO: make sure apple doesn't spawn on snake tile
 	var coords = Vector2i(randi_range(2,17), randi_range(2,17))
 	set_cell(1, coords, 0, Vector2(2,1))
-
-# TODO: Descriptor
-func cardinal_to_alt_id(direction: Vector2) -> int:
-
-	var altID = 0
-	if direction.angle() == Vector2.UP.angle():
-		altID = 1
-	elif direction.angle() == Vector2.RIGHT.angle():
-		altID = 2
-	elif direction.angle() == Vector2.DOWN.angle():
-		altID = 3
-	elif direction.angle() == Vector2.LEFT.angle():
-		altID = 4
-	else: 
-		print_debug("invalid direction input to cardinal_to_alt_id():", direction)
-
-	return altID
-
-# TODO: Descriptor
-func cardinal_to_corner_alt_id(direction: Vector2) -> int:
-
-	var altID = 0
-	if direction.angle() == (Vector2.UP + Vector2.RIGHT).angle(): 
-		altID = 1
-	elif direction.angle() == (Vector2.RIGHT + Vector2.DOWN).angle():
-		altID = 2
-	elif direction.angle() == (Vector2.DOWN + Vector2.LEFT).angle():
-		altID = 3
-	elif direction.angle() == (Vector2.LEFT + Vector2.UP).angle():
-		altID = 4
-	else:
-		print_debug("invalid direction input to cardinal_to_corner_alt_id():", direction)
-	
-	return altID
