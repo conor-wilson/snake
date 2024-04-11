@@ -75,7 +75,7 @@ func move_head(newHeadCoord : Vector2i):
 	
 	# Change the old head tile to be a body tile facing the new direction
 	snakeTiles[0].set_atlas_coords("body")
-	snakeTiles[0].set_direction(direction, snakeTiles[1].get_back_dir())
+	snakeTiles[0].set_direction(direction, snakeTiles[0].get_back_dir())
 	
 	# Add the new head tile
 	var newHeadTile = SnakeTile.new("head", newHeadCoord, direction, direction.rotated(PI))
