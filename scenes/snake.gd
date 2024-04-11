@@ -29,7 +29,7 @@ func renderSnakeUpdate(oldTailCoords: Vector2i = Vector2i(-1,-1)):
 	
 	# Set new TileSet source settings for tiles to be updated
 	snakeTiles[1].set_atlas_coords("body")
-	snakeTiles[1].set_alt_id("body", direction, direction) # TODO: directions
+	snakeTiles[1].set_direction(direction, direction) # TODO: directions
 	snakeTiles[snakeTiles.size()-1].set_atlas_coords("tail")
 	
 	# Update the tiles

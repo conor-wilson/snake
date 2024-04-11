@@ -3,8 +3,11 @@ extends Node
 class_name SnakeTile
 
 var coords       : Vector2i
+var front_dir    : Vector2
+var back_dir     : Vector2
 var atlas_coords : Vector2i
 var alt_id       : int
+
 
 # The atlas coordinates of each snake tile type
 const HEAD_ATLAS     = Vector2i(3,0)
@@ -14,9 +17,12 @@ const TAIL_ATLAS     = Vector2i(5,1)
 
 # Called when the node enters the scene tree for the first time.
 func _init(type:String, coords:Vector2i, front_dir:Vector2, back_dir:Vector2):
-	set_atlas_coords(type)
+	
+	var dir_sum = front_dir + back_dir
+	
 	self.coords = coords
-	set_alt_id(type, front_dir, back_dir)
+	set_atlas_coords(type)
+	set_direction(front_dir, back_dir)
 
 # TODO: Discriptor
 func set_atlas_coords(type:String):
@@ -31,10 +37,8 @@ func set_atlas_coords(type:String):
 			print_debug("unknown snake tile type string", type)
 
 # TODO: Descriptor
-func set_alt_id(type:String, front_dir:Vector2, back_dir:Vector2):
+func set_direction(front_dir:Vector2, back_dir:Vector2):
 	self.alt_id = cardinal_to_alt_id(front_dir)
-	if type == "body":
-		self.alt_id = (alt_id-1)%2+1
 
 # TODO: Descriptor
 func cardinal_to_alt_id(direction: Vector2) -> int:
