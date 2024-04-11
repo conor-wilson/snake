@@ -24,20 +24,6 @@ func renderNewSnake():
 	for s in snakeTiles:
 		set_snake_cell(s)
 
-# TODO: Descriptor
-func renderSnakeUpdate(oldTailCoords: Vector2i = Vector2i(-1,-1)):
-	
-	# Set new TileSet source settings for tiles to be updated
-	snakeTiles[1].set_atlas_coords("body")
-	snakeTiles[1].set_direction(direction, direction) # TODO: directions
-	snakeTiles[snakeTiles.size()-1].set_atlas_coords("tail")
-	
-	# Update the tiles
-	erase_cell(1, oldTailCoords)
-	set_snake_cell(snakeTiles[0])
-	set_snake_cell(snakeTiles[1])
-	set_snake_cell(snakeTiles[snakeTiles.size()-1])
-
 
 ## ------------- Snake Movement Functions -------------- ##
 
@@ -64,31 +50,54 @@ func _on_ticker_timeout():
 # TODO: Descriptor
 func moveSnake(): 
 	
-	# Build the new head SnakeTile 
-	var newHeadTile = SnakeTile.new(
-		"head", 
-		snakeTiles[0].get_coords() + Vector2i(direction), 
-		direction, 
-		direction, # TODO: back_dir
-	)
+	# Build the new coordinates for the head tile
+	var newHeadCoord = snakeTiles[0].get_coords() + Vector2i(direction)
 	
 	# Move the snake according to what sort of tile it's about to run into:
 	
 	# Case where the snake eats the apple
-	if get_cell_atlas_coords(1, newHeadTile.get_coords()) == Vector2i(2,1):
-		snakeTiles.push_front(newHeadTile)
-		renderSnakeUpdate()
+	if get_cell_atlas_coords(1, newHeadCoord) == Vector2i(2,1):
+		move_head(newHeadCoord)
 		set_apple_cell()
 
 	# Case where the snake hits nothing
-	elif get_cell_tile_data(1, newHeadTile.get_coords()) == null:
-		snakeTiles.push_front(newHeadTile) # TODO: Is this repeated code okay?
-		renderSnakeUpdate(snakeTiles.pop_back().get_coords())
+	elif get_cell_tile_data(1, newHeadCoord) == null:
+		move_head(newHeadCoord)
+		move_tail()
 
 	# Case where the snake something that is not an apple
 	else:
 		# TODO: Make the snake die here.
 		return
+
+# TODO: descriptor
+func move_head(newHeadCoord : Vector2i):
+	
+	# Change the old head tile to be a body tile facing the new direction
+	snakeTiles[0].set_atlas_coords("body")
+	snakeTiles[0].set_direction(direction, snakeTiles[1].get_back_dir())
+	
+	# Add the new head tile
+	var newHeadTile = SnakeTile.new("head", newHeadCoord, direction, direction.rotated(PI))
+	snakeTiles.push_front(newHeadTile)
+	
+	# Render the updated cells
+	set_snake_cell(snakeTiles[0])
+	set_snake_cell(snakeTiles[1])
+
+# TODO: descriptor
+func move_tail():
+	
+	# Change the new tail tile to be a tail tile facing the same direction
+	snakeTiles[-2].set_atlas_coords("tail")
+	snakeTiles[-2].set_direction(snakeTiles[-2].get_front_dir(), snakeTiles[-2].get_front_dir().rotated(PI))
+	
+	# Remove the old tail tile
+	var oldTailCoords = snakeTiles.pop_back().get_coords()
+	
+	# Render the updated cells
+	set_snake_cell(snakeTiles[-1])
+	erase_cell(1, oldTailCoords)
 
 
 ## --------------- Cell Setter Functions --------------- ##

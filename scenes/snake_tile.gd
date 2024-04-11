@@ -38,41 +38,49 @@ func set_atlas_coords(type:String):
 
 # TODO: Descriptor
 func set_direction(front_dir:Vector2, back_dir:Vector2):
-	self.alt_id = cardinal_to_alt_id(front_dir)
+	self.front_dir = front_dir
+	self.back_dir  = back_dir
+	
+	var sum_dir = front_dir+back_dir
+	self.alt_id = direction_to_alt_id(front_dir, back_dir)
 
 # TODO: Descriptor
-func cardinal_to_alt_id(direction: Vector2) -> int:
+func direction_to_alt_id(front_dir: Vector2, back_dir : Vector2) -> int:
+	
+	if (front_dir+back_dir).length() > 1: 
+		print("OH LORD IT'S A CORNER:", (front_dir+back_dir).length())
 
 	var altID = 0
-	if direction.angle() == Vector2.UP.angle():
+	var angle = front_dir.angle()
+	if angle == Vector2.UP.angle():
 		altID = 1
-	elif direction.angle() == Vector2.RIGHT.angle():
+	elif angle == Vector2.RIGHT.angle():
 		altID = 2
-	elif direction.angle() == Vector2.DOWN.angle():
+	elif angle == Vector2.DOWN.angle():
 		altID = 3
-	elif direction.angle() == Vector2.LEFT.angle():
+	elif angle == Vector2.LEFT.angle():
 		altID = 4
 	else: 
-		print_debug("invalid direction input to cardinal_to_alt_id():", direction)
+		print_debug("invalid direction input to direction_to_alt_id():", front_dir)
 
 	return altID
 
-# TODO: Descriptor
-func cardinal_to_corner_alt_id(direction: Vector2) -> int:
-
-	var altID = 0
-	if direction.angle() == (Vector2.UP + Vector2.RIGHT).angle(): 
-		altID = 1
-	elif direction.angle() == (Vector2.RIGHT + Vector2.DOWN).angle():
-		altID = 2
-	elif direction.angle() == (Vector2.DOWN + Vector2.LEFT).angle():
-		altID = 3
-	elif direction.angle() == (Vector2.LEFT + Vector2.UP).angle():
-		altID = 4
-	else:
-		print_debug("invalid direction input to cardinal_to_corner_alt_id():", direction)
-	
-	return altID
+## TODO: Descriptor
+#func cardinal_to_corner_alt_id(direction: Vector2) -> int:
+#
+	#var altID = 0
+	#if direction.angle() == (Vector2.UP + Vector2.RIGHT).angle(): 
+		#altID = 1
+	#elif direction.angle() == (Vector2.RIGHT + Vector2.DOWN).angle():
+		#altID = 2
+	#elif direction.angle() == (Vector2.DOWN + Vector2.LEFT).angle():
+		#altID = 3
+	#elif direction.angle() == (Vector2.LEFT + Vector2.UP).angle():
+		#altID = 4
+	#else:
+		#print_debug("invalid direction input to cardinal_to_corner_alt_id():", direction)
+	#
+	#return altID
 
 func get_atlas_coords() -> Vector2i:
 	return atlas_coords
@@ -82,3 +90,9 @@ func get_coords() -> Vector2i:
 
 func get_alt_id() -> int:
 	return alt_id
+
+func get_front_dir() -> Vector2:
+	return front_dir
+
+func get_back_dir() -> Vector2:
+	return back_dir
