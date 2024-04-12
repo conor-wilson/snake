@@ -108,6 +108,11 @@ func set_snake_cell(snake_tile : SnakeTile):
 
 # TODO: Descriptor
 func set_apple_cell(): 
-	# TODO: make sure apple doesn't spawn on snake tile
-	var coords = Vector2i(randi_range(2,17), randi_range(2,17))
+	
+	var coords : Vector2i
+	while true:
+		coords = Vector2i(randi_range(2,17), randi_range(2,17))
+		if get_cell_tile_data(1, coords) == null:
+			break
+	
 	set_cell(1, coords, 0, Vector2(2,1))
