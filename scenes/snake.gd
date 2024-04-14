@@ -1,11 +1,19 @@
 extends TileMap
 
 signal hit
+var    alive : bool
+
 var snakeTiles : Array[SnakeTile] # The array of coordinates that the snake occupies
 var direction  : Vector2          # The cardinal direction of the snake's head
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	spawn_new_snake()
+
+# TODO: descriptor
+func spawn_new_snake():
+
+	alive = true
 	
 	# Set the snake and apple to their starting positions
 	direction = Vector2.RIGHT
@@ -16,6 +24,10 @@ func _ready():
 	]
 	renderNewSnake()
 	set_apple_cell()
+
+# TODO: descriptor
+func kill_snake(): 
+	alive = false
 
 
 ## ------------- Snake Rendering Functions ------------- ##
@@ -46,7 +58,8 @@ func update_direction_from_input():
 
 # TODO: Descriptor
 func _on_ticker_timeout():
-	moveSnake()
+	if alive:
+		moveSnake()
 
 # TODO: Descriptor
 func moveSnake(): 

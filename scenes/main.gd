@@ -13,3 +13,4 @@ func _process(delta):
 
 func _on_snake_hit():
 	$DeathMessage.show()
+	$Snake.kill_snake()
