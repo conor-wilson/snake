@@ -5,6 +5,7 @@ var    alive : bool
 
 var snakeTiles : Array[SnakeTile] # The array of coordinates that the snake occupies
 var direction  : Vector2          # The cardinal direction of the snake's head
+var new_direction : Vector2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -16,7 +17,8 @@ func spawn_new_snake():
 	alive = true
 	
 	# Set the snake and apple to their starting positions
-	direction = Vector2.RIGHT
+	direction     = Vector2.RIGHT
+	new_direction = Vector2.RIGHT
 	snakeTiles = [
 		SnakeTile.new("head", Vector2i(11,10), Vector2.RIGHT, Vector2.LEFT),
 		SnakeTile.new("body", Vector2i(10,10), Vector2.RIGHT, Vector2.LEFT),
@@ -48,17 +50,18 @@ func _process(delta):
 func update_direction_from_input():
 	# TODO: Fix bug where the player can go 180 degrees by quickly pressing 2 buttons.
 	if Input.is_action_pressed("move_up") && direction != Vector2.DOWN:
-		direction = Vector2.UP
+		new_direction = Vector2.UP
 	if Input.is_action_pressed("move_right") && direction != Vector2.LEFT:
-		direction = Vector2.RIGHT
+		new_direction = Vector2.RIGHT
 	if Input.is_action_pressed("move_down") && direction != Vector2.UP:
-		direction = Vector2.DOWN
+		new_direction = Vector2.DOWN
 	if Input.is_action_pressed("move_left") && direction != Vector2.RIGHT:
-		direction = Vector2.LEFT
+		new_direction = Vector2.LEFT
 
 # TODO: Descriptor
 func _on_ticker_timeout():
 	if alive:
+		direction = new_direction
 		moveSnake()
 
 # TODO: Descriptor

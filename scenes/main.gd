@@ -11,6 +11,7 @@ func _process(delta):
 	pass
 
 
+# TODO: descriptor
 func _on_snake_hit():
 	$DeathMessage.show()
 	$Snake.kill_snake()
