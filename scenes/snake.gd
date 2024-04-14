@@ -1,5 +1,6 @@
 extends TileMap
 
+signal hit
 var snakeTiles : Array[SnakeTile] # The array of coordinates that the snake occupies
 var direction  : Vector2          # The cardinal direction of the snake's head
 
@@ -67,7 +68,7 @@ func moveSnake():
 
 	# Case where the snake something that is not an apple
 	else:
-		# TODO: Make the snake die here.
+		hit.emit()
 		return
 
 # TODO: descriptor
