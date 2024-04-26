@@ -3,19 +3,21 @@ extends TileMap
 signal hit
 var    alive : bool
 
-var snakeTiles : Array[SnakeTile] # The array of coordinates that the snake occupies
-var direction  : Vector2          # The cardinal direction of the snake's head
-var new_direction : Vector2
+var snakeTiles    : Array[SnakeTile] # The array of the snake's tiles
+var appleCoords   : Vector2i         # The coordinate of the apple tile
+var direction     : Vector2          # The direction of the snake's head
+var new_direction : Vector2          # The new direction for the snake's head
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	snakeTiles  = []
+	appleCoords = Vector2i(-1, -1)
 
 # TODO: descriptor
 func spawn_new_snake():
 
 	# Remove the old snake if it exists
-	clear_snake()
+	clear_snake_and_apple()
 	alive = true
 	
 	# Set the snake and apple to their starting positions
@@ -119,10 +121,17 @@ func move_tail():
 	erase_cell(1, oldTailCoords)
 
 # TODO: Descriptor
-func clear_snake():
+# TODO: Think about using pop() funcs here. Might be more efficient?
+func clear_snake_and_apple():
+	
+	# Clear the snake tiles
 	for s in snakeTiles:
 		erase_cell(1, s.coords)
 	snakeTiles = []
+	
+	# Clear the apple tile
+	erase_cell(1, appleCoords)
+	appleCoords = Vector2i(-1,-1)
 
 ## --------------- Cell Setter Functions --------------- ##
 
@@ -133,11 +142,12 @@ func set_snake_cell(snake_tile : SnakeTile):
 # TODO: Descriptor
 func set_apple_cell(): 
 	
-	var coords : Vector2i
+	# TODO: This will potentially slow the game down in later stages of the game. Maybe think
+	# of a more CPU-friendly implementation? 
 	while true:
-		coords = Vector2i(randi_range(2,17), randi_range(2,17))
-		if get_cell_tile_data(1, coords) == null:
+		appleCoords = Vector2i(randi_range(2,17), randi_range(2,17))
+		if get_cell_tile_data(1, appleCoords) == null:
 			break
 	
-	set_cell(1, coords, 0, Vector2(2,1))
+	set_cell(1, appleCoords, 0, Vector2(2,1))
  
