@@ -16,6 +16,7 @@ func show_start_menu():
 	$Message.text = "Welcome to Snake!"
 	$Message.show()
 	# Button behaviour
+	$StartButton.text = "START GAME"
 	$StartButton.show()
 
 func show_game_over_screen():
@@ -23,7 +24,8 @@ func show_game_over_screen():
 	$Message.text = "Game Over"
 	$Message.show()
 	# Button behaviour
-	$StartButton.hide()
+	$StartButton.text = "TRY AGAIN"
+	$StartButton.show()
 	
 func show_in_game_hud():
 	# Message behaviour
