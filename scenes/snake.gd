@@ -3,7 +3,7 @@ extends TileMap
 signal hit
 signal pause
 
-var alive : bool
+var play : bool
 
 var snakeTiles    : Array[SnakeTile] # The array of the snake's tiles
 var appleCoords   : Vector2i         # The coordinate of the apple tile
@@ -12,6 +12,7 @@ var new_direction : Vector2          # The new direction for the snake's head
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	play        = false
 	snakeTiles  = []
 	appleCoords = Vector2i(-1, -1)
 
@@ -20,7 +21,7 @@ func spawn_new_snake():
 
 	# Remove the old snake if it exists
 	clear_snake_and_apple()
-	alive = true
+	play = true
 	
 	# Set the snake and apple to their starting positions
 	direction     = Vector2.RIGHT
@@ -35,7 +36,7 @@ func spawn_new_snake():
 
 # TODO: descriptor
 func kill_snake(): 
-	alive = false
+	play = false
 
 
 ## ------------- Snake Rendering Functions ------------- ##
@@ -54,20 +55,24 @@ func _process(delta):
 
 # TODO: Descriptor
 func process_player_input():
-	if Input.is_action_just_pressed("pause"): 
-		pause.emit()
-	if Input.is_action_pressed("move_up") && direction != Vector2.DOWN:
-		new_direction = Vector2.UP
-	if Input.is_action_pressed("move_right") && direction != Vector2.LEFT:
-		new_direction = Vector2.RIGHT
-	if Input.is_action_pressed("move_down") && direction != Vector2.UP:
-		new_direction = Vector2.DOWN
-	if Input.is_action_pressed("move_left") && direction != Vector2.RIGHT:
-		new_direction = Vector2.LEFT
+	
+	# Player inputs during gameplay
+	if play: 
+		if Input.is_action_just_pressed("pause"): 
+			play = false
+			pause.emit()
+		if Input.is_action_pressed("move_up") && direction != Vector2.DOWN:
+			new_direction = Vector2.UP
+		if Input.is_action_pressed("move_right") && direction != Vector2.LEFT:
+			new_direction = Vector2.RIGHT
+		if Input.is_action_pressed("move_down") && direction != Vector2.UP:
+			new_direction = Vector2.DOWN
+		if Input.is_action_pressed("move_left") && direction != Vector2.RIGHT:
+			new_direction = Vector2.LEFT
 
 # TODO: Descriptor
 func _on_ticker_timeout():
-	if alive:
+	if play:
 		direction = new_direction
 		moveSnake()
 
