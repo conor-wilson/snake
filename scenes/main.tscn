@@ -12,3 +12,4 @@ script = ExtResource("1_wj633")
 [node name="HUD" parent="." instance=ExtResource("3_kk0nh")]
 
 [connection signal="hit" from="Snake" to="." method="_on_snake_hit"]
+[connection signal="start_game" from="HUD" to="." method="_on_hud_start_game"]

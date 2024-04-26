@@ -15,3 +15,7 @@ func _process(delta):
 func _on_snake_hit():
 	$HUD.show_game_over_screen()
 	$Snake.kill_snake()
+
+
+func _on_hud_start_game():
+	print("STARTING GAME!")

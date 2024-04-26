@@ -18,8 +18,10 @@ text = "DEAD"
 label_settings = SubResource("LabelSettings_ylqtf")
 
 [node name="StartButton" type="Button" parent="."]
-offset_left = 301.0
-offset_top = 192.0
-offset_right = 426.0
-offset_bottom = 276.0
+offset_left = 266.0
+offset_top = 272.0
+offset_right = 391.0
+offset_bottom = 356.0
 text = "START"
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]

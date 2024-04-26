@@ -1,5 +1,6 @@
 extends CanvasLayer
 
+signal start_game
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -15,3 +16,6 @@ func show_start_menu():
 
 func show_game_over_screen():
 	$DeathMessage.show()
+
+func _on_start_button_pressed():
+	start_game.emit()
