@@ -3,7 +3,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$DeathMessage.hide()
+	$HUD.show_start_menu()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -13,5 +13,5 @@ func _process(delta):
 
 # TODO: descriptor
 func _on_snake_hit():
-	$DeathMessage.show()
+	$HUD.show_game_over_screen()
 	$Snake.kill_snake()
