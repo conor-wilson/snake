@@ -13,9 +13,15 @@ func _process(delta):
 
 func show_start_menu():
 	$StartButton.show()
+	$DeathMessage.hide()
 
 func show_game_over_screen():
+	$StartButton.hide()
 	$DeathMessage.show()
+	
+func show_in_game_hud():
+	$StartButton.hide()
+	$DeathMessage.hide()
 
 func _on_start_button_pressed():
 	start_game.emit()

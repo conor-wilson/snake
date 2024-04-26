@@ -20,3 +20,4 @@ func _on_snake_hit():
 func _on_hud_start_game():
 	print("STARTING GAME!")
 	$Snake.spawn_new_snake()
+	$HUD.show_in_game_hud()
