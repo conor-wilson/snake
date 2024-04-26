@@ -1,7 +1,9 @@
 extends TileMap
 
 signal hit
-var    alive : bool
+signal pause
+
+var alive : bool
 
 var snakeTiles    : Array[SnakeTile] # The array of the snake's tiles
 var appleCoords   : Vector2i         # The coordinate of the apple tile
@@ -48,11 +50,12 @@ func renderNewSnake():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	update_direction_from_input()
+	process_player_input()
 
 # TODO: Descriptor
-func update_direction_from_input():
-	# TODO: Fix bug where the player can go 180 degrees by quickly pressing 2 buttons.
+func process_player_input():
+	if Input.is_action_just_pressed("pause"): 
+		pause.emit()
 	if Input.is_action_pressed("move_up") && direction != Vector2.DOWN:
 		new_direction = Vector2.UP
 	if Input.is_action_pressed("move_right") && direction != Vector2.LEFT:
