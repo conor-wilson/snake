@@ -14,6 +14,8 @@ func _ready():
 # TODO: descriptor
 func spawn_new_snake():
 
+	# Remove the old snake if it exists
+	clear_snake()
 	alive = true
 	
 	# Set the snake and apple to their starting positions
@@ -116,6 +118,11 @@ func move_tail():
 	set_snake_cell(snakeTiles[-1])
 	erase_cell(1, oldTailCoords)
 
+# TODO: Descriptor
+func clear_snake():
+	for s in snakeTiles:
+		erase_cell(1, s.coords)
+	snakeTiles = []
 
 ## --------------- Cell Setter Functions --------------- ##
 
@@ -133,3 +140,4 @@ func set_apple_cell():
 			break
 	
 	set_cell(1, coords, 0, Vector2(2,1))
+ 
