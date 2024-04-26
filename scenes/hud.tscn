@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgqiilqhmsujn"]
+
+[ext_resource type="Script" path="res://scenes/HUD.gd" id="1_qdk3y"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ylqtf"]
+font_size = 41
+font_color = Color(1, 0, 0, 1)
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_qdk3y")
+
+[node name="DeathMessage" type="Label" parent="."]
+offset_left = 274.0
+offset_top = 284.0
+offset_right = 384.0
+offset_bottom = 341.0
+text = "DEAD"
+label_settings = SubResource("LabelSettings_ylqtf")
+
+[node name="StartButton" type="Button" parent="."]
+offset_left = 301.0
+offset_top = 192.0
+offset_right = 426.0
+offset_bottom = 276.0
+text = "START"
