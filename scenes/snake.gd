@@ -9,7 +9,7 @@ var new_direction : Vector2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	spawn_new_snake()
+	pass
 
 # TODO: descriptor
 func spawn_new_snake():
