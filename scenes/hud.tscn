@@ -1,9 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://bgqiilqhmsujn"]
+[gd_scene load_steps=5 format=3 uid="uid://bgqiilqhmsujn"]
 
 [ext_resource type="Script" path="res://scenes/HUD.gd" id="1_qdk3y"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ylqtf"]
 font_size = 41
+
+[sub_resource type="InputEventAction" id="InputEventAction_khdbe"]
+action = &"start_game"
+
+[sub_resource type="Shortcut" id="Shortcut_lfh5n"]
+events = [SubResource("InputEventAction_khdbe")]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_qdk3y")
@@ -25,6 +31,7 @@ offset_top = 312.0
 offset_right = 384.0
 offset_bottom = 392.0
 size_flags_horizontal = 4
+shortcut = SubResource("Shortcut_lfh5n")
 text = "START GAME"
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
