@@ -54,6 +54,8 @@ func _process(delta):
 	process_player_input()
 
 # TODO: Descriptor
+# TODO: This actually feels a little bit weird here. Might need to move this to a
+# different node exclusively for handling player inputs
 func process_player_input():
 	
 	# Player inputs during gameplay
