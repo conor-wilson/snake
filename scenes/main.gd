@@ -23,25 +23,17 @@ func _on_hud_start_game():
 	$HUD.show_in_game_hud()
 
 
-func _on_snake_pause():
-	print("PAUSING")
-
-
 func _on_player_input_esc():
 	$Snake.pause()
 
-
 func _on_player_input_up():
-	pass # Replace with function body.
-
+	$Snake.move_up()
 
 func _on_player_input_right():
-	pass # Replace with function body.
-
+	$Snake.move_right()
 
 func _on_player_input_down():
-	pass # Replace with function body.
-
+	$Snake.move_down()
 
 func _on_player_input_left():
-	pass # Replace with function body.
+	$Snake.move_left()

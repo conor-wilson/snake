@@ -2,7 +2,8 @@ extends TileMap
 
 signal hit
 
-var play : bool
+enum GameState {PLAY, PAUSE, DEAD}
+var game_state : GameState
 
 var snakeTiles    : Array[SnakeTile] # The array of the snake's tiles
 var appleCoords   : Vector2i         # The coordinate of the apple tile
@@ -14,16 +15,16 @@ var new_direction : Vector2          # The new direction for the snake's head
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	play        = false
+	game_state  = GameState.DEAD
 	snakeTiles  = []
 	appleCoords = Vector2i(-1, -1)
 
 # TODO: descriptor
 func spawn_new_snake():
-
-	# Remove the old snake if it exists
+	
+	# Reset game state
+	game_state = GameState.PLAY
 	clear_snake_and_apple()
-	play = true
 	
 	# Set the snake and apple to their starting positions
 	direction     = Vector2.RIGHT
@@ -37,12 +38,12 @@ func spawn_new_snake():
 	set_apple_cell()
 
 # TODO: descriptor
-func pause(): 
-	play = false
+func pause():
+	game_state = GameState.PAUSE
 
 # TODO: descriptor
 func kill_snake(): 
-	play = false
+	game_state = GameState.DEAD
 
 
 ## ------------- Snake Rendering Functions ------------- ##
@@ -55,30 +56,26 @@ func renderNewSnake():
 
 ## ------------- Snake Movement Functions -------------- ##
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	process_player_input()
+func move_up(): 
+	if game_state == GameState.PLAY && direction != Vector2.DOWN:
+		new_direction = Vector2.UP
 
-# TODO: Descriptor
-# TODO: This actually feels a little bit weird here. Might need to move this to a
-# different node exclusively for handling player inputs
-func process_player_input():
-	
-	# Player inputs during gameplay
-	if play: 
-		if Input.is_action_pressed("move_up") && direction != Vector2.DOWN:
-			new_direction = Vector2.UP
-		if Input.is_action_pressed("move_right") && direction != Vector2.LEFT:
-			new_direction = Vector2.RIGHT
-		if Input.is_action_pressed("move_down") && direction != Vector2.UP:
-			new_direction = Vector2.DOWN
-		if Input.is_action_pressed("move_left") && direction != Vector2.RIGHT:
-			new_direction = Vector2.LEFT
+func move_right():
+	if game_state == GameState.PLAY && direction != Vector2.LEFT:
+		new_direction = Vector2.RIGHT
+
+func move_down():
+	if game_state == GameState.PLAY && direction != Vector2.UP:
+		new_direction = Vector2.DOWN
+
+func move_left():
+	if game_state == GameState.PLAY && direction != Vector2.RIGHT:
+		new_direction = Vector2.LEFT
 
 # TODO: Descriptor
 # TODO: Maybe this should be moved to the main scene...
 func _on_ticker_timeout():
-	if play:
+	if game_state == GameState.PLAY:
 		direction = new_direction
 		moveSnake()
 
@@ -94,12 +91,12 @@ func moveSnake():
 	if get_cell_atlas_coords(1, newHeadCoord) == Vector2i(2,1):
 		move_head(newHeadCoord)
 		set_apple_cell()
-
+	
 	# Case where the snake hits nothing
 	elif get_cell_tile_data(1, newHeadCoord) == null:
 		move_head(newHeadCoord)
 		move_tail()
-
+	
 	# Case where the snake something that is not an apple
 	else:
 		hit.emit()
@@ -146,6 +143,7 @@ func clear_snake_and_apple():
 	# Clear the apple tile
 	erase_cell(1, appleCoords)
 	appleCoords = Vector2i(-1,-1)
+
 
 ## --------------- Cell Setter Functions --------------- ##
 
