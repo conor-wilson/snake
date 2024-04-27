@@ -1,7 +1,6 @@
 extends TileMap
 
 signal hit
-signal pause
 
 var play : bool
 
@@ -9,6 +8,9 @@ var snakeTiles    : Array[SnakeTile] # The array of the snake's tiles
 var appleCoords   : Vector2i         # The coordinate of the apple tile
 var direction     : Vector2          # The direction of the snake's head
 var new_direction : Vector2          # The new direction for the snake's head
+
+
+## ---------- High-Level Behaviour Functions ----------- ##
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -33,6 +35,10 @@ func spawn_new_snake():
 	]
 	renderNewSnake()
 	set_apple_cell()
+
+# TODO: descriptor
+func pause(): 
+	play = false
 
 # TODO: descriptor
 func kill_snake(): 
@@ -60,9 +66,6 @@ func process_player_input():
 	
 	# Player inputs during gameplay
 	if play: 
-		if Input.is_action_just_pressed("pause"): 
-			play = false
-			pause.emit()
 		if Input.is_action_pressed("move_up") && direction != Vector2.DOWN:
 			new_direction = Vector2.UP
 		if Input.is_action_pressed("move_right") && direction != Vector2.LEFT:
@@ -73,6 +76,7 @@ func process_player_input():
 			new_direction = Vector2.LEFT
 
 # TODO: Descriptor
+# TODO: Maybe this should be moved to the main scene...
 func _on_ticker_timeout():
 	if play:
 		direction = new_direction
