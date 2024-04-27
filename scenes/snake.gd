@@ -2,9 +2,6 @@ extends TileMap
 
 signal hit
 
-enum GameState {PLAY, PAUSE, DEAD}
-var game_state : GameState
-
 var snakeTiles    : Array[SnakeTile] # The array of the snake's tiles
 var appleCoords   : Vector2i         # The coordinate of the apple tile
 var direction     : Vector2          # The direction of the snake's head
@@ -15,15 +12,14 @@ var new_direction : Vector2          # The new direction for the snake's head
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	game_state  = GameState.DEAD
+	stop_ticker()
 	snakeTiles  = []
 	appleCoords = Vector2i(-1, -1)
 
 # TODO: descriptor
 func spawn_new_snake():
 	
-	# Reset game state
-	game_state = GameState.PLAY
+	# Reset clear any old snake tiles that exist
 	clear_snake_and_apple()
 	
 	# Set the snake and apple to their starting positions
@@ -38,12 +34,12 @@ func spawn_new_snake():
 	set_apple_cell()
 
 # TODO: descriptor
-func pause():
-	game_state = GameState.PAUSE
+func start_ticker(): 
+	$Ticker.start()
 
 # TODO: descriptor
-func kill_snake(): 
-	game_state = GameState.DEAD
+func stop_ticker():
+	$Ticker.stop()
 
 
 ## ------------- Snake Rendering Functions ------------- ##
@@ -57,27 +53,26 @@ func renderNewSnake():
 ## ------------- Snake Movement Functions -------------- ##
 
 func move_up(): 
-	if game_state == GameState.PLAY && direction != Vector2.DOWN:
+	if direction != Vector2.DOWN:
 		new_direction = Vector2.UP
 
 func move_right():
-	if game_state == GameState.PLAY && direction != Vector2.LEFT:
+	if direction != Vector2.LEFT:
 		new_direction = Vector2.RIGHT
 
 func move_down():
-	if game_state == GameState.PLAY && direction != Vector2.UP:
+	if direction != Vector2.UP:
 		new_direction = Vector2.DOWN
 
 func move_left():
-	if game_state == GameState.PLAY && direction != Vector2.RIGHT:
+	if direction != Vector2.RIGHT:
 		new_direction = Vector2.LEFT
 
 # TODO: Descriptor
 # TODO: Maybe this should be moved to the main scene...
 func _on_ticker_timeout():
-	if game_state == GameState.PLAY:
-		direction = new_direction
-		moveSnake()
+	direction = new_direction
+	moveSnake()
 
 # TODO: Descriptor
 func moveSnake(): 

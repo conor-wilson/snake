@@ -19,6 +19,5 @@ script = ExtResource("2_f2shc")
 
 [node name="Ticker" type="Timer" parent="."]
 wait_time = 0.2
-autostart = true
 
 [connection signal="timeout" from="Ticker" to="." method="_on_ticker_timeout"]
