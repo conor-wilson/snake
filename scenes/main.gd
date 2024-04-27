@@ -52,8 +52,12 @@ func _on_hud_start_game():
 ## ---------- Player-Input-Triggered Functions --------- ##
 
 func _on_player_input_esc():
-	if game_state == GameState.PLAY:
-		pause()
+	match game_state: 
+		GameState.PLAY:
+			pause()
+		# TODO: Review this during tidy-up. It's a little hacky.
+		GameState.PAUSE:
+			resume()
 
 func _on_player_input_up():
 	if game_state == GameState.PLAY:
