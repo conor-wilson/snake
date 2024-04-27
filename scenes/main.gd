@@ -17,13 +17,19 @@ func start_game():
 	$Snake.spawn_new_snake()
 	$Snake.start_ticker()
 
+func pause():
+	game_state = GameState.PAUSE
+	$HUD.show_pause_menu()
+	$Snake.stop_ticker()
+
+func resume():
+	game_state = GameState.PLAY
+	$HUD.show_in_game_hud()
+	$Snake.start_ticker()
+
 func game_over():
 	game_state = GameState.GAME_OVER
 	$HUD.show_game_over_screen()
-	$Snake.stop_ticker()
-
-func pause():
-	game_state = GameState.PAUSE
 	$Snake.stop_ticker()
 
 
@@ -36,7 +42,11 @@ func _on_snake_hit():
 	game_over()
 
 func _on_hud_start_game():
-	start_game()
+	match game_state:
+		GameState.START_MENU, GameState.GAME_OVER:
+			start_game()
+		GameState.PAUSE:
+			resume()
 
 
 ## ---------- Player-Input-Triggered Functions --------- ##

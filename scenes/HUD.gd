@@ -19,6 +19,14 @@ func show_start_menu():
 	$StartButton.text = "START GAME"
 	$StartButton.show()
 
+func show_pause_menu():
+	# Message behaviour
+	$Message.text = "Paused"
+	$Message.show()
+	# Button behaviour
+	$StartButton.text = "RESUME"
+	$StartButton.show()
+
 func show_game_over_screen():
 	# Message behaviour
 	$Message.text = "Game Over"
@@ -26,7 +34,7 @@ func show_game_over_screen():
 	# Button behaviour
 	$StartButton.text = "TRY AGAIN"
 	$StartButton.show()
-	
+
 func show_in_game_hud():
 	# Message behaviour
 	$Message.hide()
