@@ -36,7 +36,7 @@ func resume():
 
 func game_over():
 	game_state = GameState.GAME_OVER
-	$HUD.show_game_over_screen()
+	$HUD.show_game_over_screen(score)
 	$Snake.stop_ticker()
 
 

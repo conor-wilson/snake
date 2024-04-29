@@ -2,9 +2,12 @@ extends CanvasLayer
 
 signal start_game
 
+var default_button_pos = Vector2i(256, 312)
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$StartButton.hide()
+	print($StartButton.get_position())
 	$Message.hide()
 	$Score.hide()
 
@@ -18,6 +21,7 @@ func show_start_menu():
 	$Message.show()
 	# Button behaviour
 	$StartButton.text = "START GAME"
+	$StartButton.set_position(default_button_pos)
 	$StartButton.show()
 	# Score behaviour
 	$Score.hide()
@@ -28,16 +32,18 @@ func show_pause_menu():
 	$Message.show()
 	# Button behaviour
 	$StartButton.text = "RESUME"
+	$StartButton.set_position(default_button_pos)
 	$StartButton.show()
 	# Score behaviour
 	$Score.show()
 
-func show_game_over_screen():
+func show_game_over_screen(score: int):
 	# Message behaviour
-	$Message.text = "Game Over"
+	$Message.text = "Game Over\nScore: " + str(score)
 	$Message.show()
 	# Button behaviour
 	$StartButton.text = "TRY AGAIN"
+	$StartButton.set_position(default_button_pos + Vector2i(0, 32))
 	$StartButton.show()
 	# Score behaviour
 	$Score.show()
