@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 
 enum GameState {START_MENU, PLAY, PAUSE, GAME_OVER}
 var game_state : GameState
