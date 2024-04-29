@@ -22,7 +22,6 @@ func start_game():
 	$HUD.update_score(score)
 	$HUD.show_in_game_hud()
 	$Snake.spawn_new_snake()
-	#$Snake.start_ticker()
 
 func pause():
 	game_state = GameState.PAUSE
