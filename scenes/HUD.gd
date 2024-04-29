@@ -2,12 +2,14 @@ extends CanvasLayer
 
 signal start_game
 
-var default_button_pos = Vector2i(256, 312)
+var default_button_pos : Vector2i
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
+	default_button_pos = $StartButton.get_position()
+	
 	$StartButton.hide()
-	print($StartButton.get_position())
 	$Message.hide()
 	$Score.hide()
 
