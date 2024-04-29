@@ -22,7 +22,7 @@ func start_game():
 	$HUD.update_score(score)
 	$HUD.show_in_game_hud()
 	$Snake.spawn_new_snake()
-	$Snake.start_ticker()
+	#$Snake.start_ticker()
 
 func pause():
 	game_state = GameState.PAUSE
@@ -72,16 +72,20 @@ func _on_player_input_esc():
 
 func _on_player_input_up():
 	if game_state == GameState.PLAY:
+		$Snake.start_ticker()
 		$Snake.move_up()
 
 func _on_player_input_right():
 	if game_state == GameState.PLAY:
+		$Snake.start_ticker()
 		$Snake.move_right()
 
 func _on_player_input_down():
 	if game_state == GameState.PLAY:
+		$Snake.start_ticker()
 		$Snake.move_down()
 
 func _on_player_input_left():
 	if game_state == GameState.PLAY:
+		$Snake.start_ticker()
 		$Snake.move_left()

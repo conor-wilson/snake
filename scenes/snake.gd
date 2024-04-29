@@ -20,7 +20,7 @@ func _ready():
 # TODO: descriptor
 func spawn_new_snake():
 	
-	# Reset clear any old snake tiles that exist
+	# Clear any old snake tiles that exist
 	clear_snake_and_apple()
 	
 	# Set the snake and apple to their starting positions
@@ -35,8 +35,12 @@ func spawn_new_snake():
 	set_apple_cell()
 
 # TODO: descriptor
-func start_ticker(): 
-	$Ticker.start()
+func start_ticker():
+	# TODO: This feels extremely inefficient. Find a way to wait for the first
+	# player input that doesn't involve a conditional checked with every single
+	# player input
+	if $Ticker.is_stopped():
+		$Ticker.start()
 
 # TODO: descriptor
 func stop_ticker():
