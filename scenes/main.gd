@@ -13,8 +13,13 @@ func start_menu():
 	$Snake.stop_ticker()
 
 func start_game():
+	
+	# Reset game state
 	score = 0
 	game_state = GameState.PLAY
+	
+	# Start the game
+	$HUD.update_score(score)
 	$HUD.show_in_game_hud()
 	$Snake.spawn_new_snake()
 	$Snake.start_ticker()
@@ -45,6 +50,7 @@ func _on_snake_hit():
 
 func _on_snake_apple_eaten():
 	score += 1
+	$HUD.update_score(score)
 
 func _on_hud_start_game():
 	match game_state:

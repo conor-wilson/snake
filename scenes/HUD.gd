@@ -40,7 +40,7 @@ func show_game_over_screen():
 	$StartButton.text = "TRY AGAIN"
 	$StartButton.show()
 	# Score behaviour
-	$Score.hide()
+	$Score.show()
 
 func show_in_game_hud():
 	# Message behaviour
@@ -49,6 +49,9 @@ func show_in_game_hud():
 	$StartButton.hide()
 	# Score behaviour
 	$Score.show()
+
+func update_score(score: int):
+	$Score.text = "Score: " + str(score)
 
 func _on_start_button_pressed():
 	start_game.emit()

@@ -87,6 +87,7 @@ func moveSnake():
 	if get_cell_atlas_coords(1, newHeadCoord) == Vector2i(2,1):
 		move_head(newHeadCoord)
 		set_apple_cell()
+		apple_eaten.emit()
 	
 	# Case where the snake hits nothing
 	elif get_cell_tile_data(1, newHeadCoord) == null:
