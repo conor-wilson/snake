@@ -2,6 +2,7 @@ extends Node2D
 
 enum GameState {START_MENU, PLAY, PAUSE, GAME_OVER}
 var game_state : GameState
+var score : int
 
 
 ## ------------- State-Chaging Functions -------------- ##
@@ -12,6 +13,7 @@ func start_menu():
 	$Snake.stop_ticker()
 
 func start_game():
+	score = 0
 	game_state = GameState.PLAY
 	$HUD.show_in_game_hud()
 	$Snake.spawn_new_snake()
@@ -40,6 +42,9 @@ func _ready():
 
 func _on_snake_hit():
 	game_over()
+
+func _on_snake_apple_eaten():
+	score += 1
 
 func _on_hud_start_game():
 	match game_state:

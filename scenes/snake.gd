@@ -1,6 +1,7 @@
 extends TileMap
 
 signal hit
+signal apple_eaten
 
 var snakeTiles    : Array[SnakeTile] # The array of the snake's tiles
 var appleCoords   : Vector2i         # The coordinate of the apple tile
