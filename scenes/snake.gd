@@ -59,21 +59,10 @@ func renderNewSnake():
 
 ## ------------- Snake Movement Functions -------------- ##
 
-func move_up(): 
-	if direction.dot(Vector2.UP) == 0:
-		new_direction = Vector2.UP
-
-func move_right():
-	if direction.dot(Vector2.RIGHT) == 0:
-		new_direction = Vector2.RIGHT
-
-func move_down():
-	if direction.dot(Vector2.DOWN) == 0:
-		new_direction = Vector2.DOWN
-
-func move_left():
-	if direction.dot(Vector2.LEFT) == 0:
-		new_direction = Vector2.LEFT
+# TODO: Descriptor
+func turn_head(input_direction : Vector2): 
+	if direction.dot(input_direction) == 0:
+		new_direction = input_direction
 
 # TODO: Descriptor
 # TODO: Maybe this should be moved to the main scene...

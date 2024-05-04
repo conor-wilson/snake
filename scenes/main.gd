@@ -85,19 +85,19 @@ func _on_player_input_esc():
 func _on_player_input_up():
 	if game_state == GameState.PLAY:
 		$Snake.start_ticker()
-		$Snake.move_up()
+		$Snake.turn_head(Vector2.UP)
 
 func _on_player_input_right():
 	if game_state == GameState.PLAY:
 		$Snake.start_ticker()
-		$Snake.move_right()
+		$Snake.turn_head(Vector2.RIGHT)
 
 func _on_player_input_down():
 	if game_state == GameState.PLAY:
 		$Snake.start_ticker()
-		$Snake.move_down()
+		$Snake.turn_head(Vector2.DOWN)
 
 func _on_player_input_left():
 	if game_state == GameState.PLAY:
 		$Snake.start_ticker()
-		$Snake.move_left()
+		$Snake.turn_head(Vector2.LEFT)
