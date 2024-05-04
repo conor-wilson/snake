@@ -12,6 +12,7 @@ func _ready():
 	$StartButton.hide()
 	$Message.hide()
 	$Score.hide()
+	$HighScore.hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -27,6 +28,7 @@ func show_start_menu():
 	$StartButton.show()
 	# Score behaviour
 	$Score.hide()
+	$HighScore.hide()
 
 func show_pause_menu():
 	# Message behaviour
@@ -38,6 +40,7 @@ func show_pause_menu():
 	$StartButton.show()
 	# Score behaviour
 	$Score.show()
+	$HighScore.show()
 
 func show_game_over_screen(score: int):
 	# Message behaviour
@@ -49,6 +52,7 @@ func show_game_over_screen(score: int):
 	$StartButton.show()
 	# Score behaviour
 	$Score.show()
+	$HighScore.show()
 
 func show_in_game_hud():
 	# Message behaviour
@@ -57,9 +61,13 @@ func show_in_game_hud():
 	$StartButton.hide()
 	# Score behaviour
 	$Score.show()
+	$HighScore.show()
 
 func update_score(score: int):
 	$Score.text = "Score: " + str(score)
+
+func update_high_score(high_score: int):
+	$HighScore.text = "High Score: " + str(high_score)
 
 func _on_start_button_pressed():
 	start_game.emit()
