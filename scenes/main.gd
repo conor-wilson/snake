@@ -3,6 +3,7 @@ extends Node
 enum GameState {START_MENU, PLAY, PAUSE, GAME_OVER}
 var game_state : GameState
 var score : int
+var save_data : SaveData
 
 
 ## ------------- State-Chaging Functions -------------- ##
@@ -42,6 +43,8 @@ func game_over():
 ## ------------- Event-Triggered Functions ------------- ##
 
 func _ready():
+	save_data = SaveData.load_high_score()
+	print(save_data.high_score)
 	start_menu()
 
 func _on_snake_hit():

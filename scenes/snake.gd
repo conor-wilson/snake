@@ -165,4 +165,4 @@ func set_apple_cell():
 			break
 	
 	set_cell(1, appleCoords, 0, Vector2(2,1))
- 
+
