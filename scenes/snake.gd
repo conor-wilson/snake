@@ -125,7 +125,6 @@ func move_tail():
 	erase_cell(1, oldTailCoords)
 
 # TODO: Descriptor
-# TODO: Think about using pop() funcs here. Might be more efficient?
 func clear_snake_and_apple():
 	
 	# Clear the snake tiles
