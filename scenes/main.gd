@@ -21,6 +21,7 @@ func start_game():
 	
 	# Start the game
 	$HUD.update_score(score)
+	$HUD.update_high_score(save_data.high_score)
 	$HUD.show_in_game_hud()
 	$Snake.spawn_new_snake()
 
@@ -36,6 +37,13 @@ func resume():
 
 func game_over():
 	game_state = GameState.GAME_OVER
+	
+	# If there's a new high-score, save it!
+	if score > save_data.high_score: 
+		save_data.high_score = score
+		save_data.save()
+	
+	# Update HUD
 	$HUD.show_game_over_screen(score)
 	$Snake.stop_ticker()
 
@@ -53,6 +61,10 @@ func _on_snake_hit():
 func _on_snake_apple_eaten():
 	score += 1
 	$HUD.update_score(score)
+	
+	# Update high score if it's been beaten
+	if score > save_data.high_score:
+		$HUD.update_high_score(score)
 
 func _on_hud_start_game():
 	match game_state:

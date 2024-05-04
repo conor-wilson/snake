@@ -12,7 +12,7 @@ action = &"start_game"
 events = [SubResource("InputEventAction_khdbe")]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ve6is"]
-font_size = 32
+font_size = 24
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_qdk3y")
@@ -43,5 +43,15 @@ offset_right = 205.0
 offset_bottom = 48.0
 text = "Score: 123"
 label_settings = SubResource("LabelSettings_ve6is")
+vertical_alignment = 1
+
+[node name="HighScore" type="Label" parent="."]
+offset_left = 352.0
+offset_right = 592.0
+offset_bottom = 48.0
+text = "High Score: 123"
+label_settings = SubResource("LabelSettings_ve6is")
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
