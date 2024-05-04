@@ -60,19 +60,19 @@ func renderNewSnake():
 ## ------------- Snake Movement Functions -------------- ##
 
 func move_up(): 
-	if !(direction == Vector2.DOWN || direction == Vector2.UP):
+	if direction.dot(Vector2.UP) == 0:
 		new_direction = Vector2.UP
 
 func move_right():
-	if !(direction == Vector2.LEFT || direction == Vector2.RIGHT):
+	if direction.dot(Vector2.RIGHT) == 0:
 		new_direction = Vector2.RIGHT
 
 func move_down():
-	if !(direction == Vector2.DOWN || direction == Vector2.UP):
+	if direction.dot(Vector2.DOWN) == 0:
 		new_direction = Vector2.DOWN
 
 func move_left():
-	if !(direction == Vector2.LEFT || direction == Vector2.RIGHT):
+	if direction.dot(Vector2.LEFT) == 0:
 		new_direction = Vector2.LEFT
 
 # TODO: Descriptor
