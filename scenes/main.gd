@@ -39,9 +39,8 @@ func game_over():
 	game_state = GameState.GAME_OVER
 	
 	# If there's a new high-score, save it!
-	if score > save_data.high_score: 
-		save_data.high_score = score
-		save_data.save()
+	if score > save_data.high_score:
+		save_data.save_new_high_score(score)
 	
 	# Update HUD
 	$HUD.show_game_over_screen(score)
@@ -51,8 +50,7 @@ func game_over():
 ## ------------- Event-Triggered Functions ------------- ##
 
 func _ready():
-	save_data = SaveData.load_high_score()
-	print(save_data.high_score)
+	save_data = SaveData.load()
 	start_menu()
 
 func _on_snake_hit():

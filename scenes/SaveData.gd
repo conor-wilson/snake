@@ -4,10 +4,11 @@ class_name SaveData extends Resource
 
 const PATH : String = "user://snake_high_score.tres" 
 
-func save():
+func save_new_high_score(score:int):
+	high_score = score
 	ResourceSaver.save(self, PATH)
 
-static func load_high_score() -> SaveData:
+static func load() -> SaveData:
 	
 	if FileAccess.file_exists(PATH):
 		return load(PATH) as SaveData
