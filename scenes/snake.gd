@@ -88,17 +88,18 @@ func moveSnake():
 	var newHeadCoord = snakeTiles[0].get_coords() + Vector2i(direction)
 	
 	# Move the snake according to what sort of tile it's about to run into:
+	var next_cell_atlas_coords =  get_cell_atlas_coords(1, newHeadCoord)
 	
 	# Case where the snake eats the apple
-	if get_cell_atlas_coords(1, newHeadCoord) == Vector2i(2,1):
+	if next_cell_atlas_coords == SnakeTile.APPLE_ATLAS:
 		move_head(newHeadCoord)
 		set_apple_cell()
 		apple_eaten.emit()
 	
 	# Case where the snake hits nothing
-	elif get_cell_tile_data(1, newHeadCoord) == null:
-		move_head(newHeadCoord)
+	elif get_cell_tile_data(1, newHeadCoord) == null || next_cell_atlas_coords == SnakeTile.TAIL_ATLAS:
 		move_tail()
+		move_head(newHeadCoord)
 	
 	# Case where the snake something that is not an apple
 	else:

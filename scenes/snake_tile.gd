@@ -14,6 +14,7 @@ const HEAD_ATLAS     = Vector2i(3,0)
 const STRAIGHT_ATLAS = Vector2i(4,0)
 const CORNER_ATLAS   = Vector2i(5,0)
 const TAIL_ATLAS     = Vector2i(5,1)
+const APPLE_ATLAS    = Vector2i(2,1)
 
 # Called when the node enters the scene tree for the first time.
 func _init(type:String, coords:Vector2i, front_dir:Vector2, back_dir:Vector2):
