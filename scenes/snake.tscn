@@ -18,6 +18,6 @@ layer_2/tile_data = PackedInt32Array()
 script = ExtResource("2_f2shc")
 
 [node name="Ticker" type="Timer" parent="."]
-wait_time = 0.2
+wait_time = 0.15
 
 [connection signal="timeout" from="Ticker" to="." method="_on_ticker_timeout"]
