@@ -30,10 +30,10 @@ func spawn_new_snake():
 	direction     = Vector2.RIGHT
 	new_direction = Vector2.RIGHT
 	snakeTiles = [
-		SnakeTile.new("head", Vector2i(11,10), Vector2.RIGHT, Vector2.LEFT),
-		SnakeTile.new("body", Vector2i(10,10), Vector2.RIGHT, Vector2.LEFT),
-		SnakeTile.new("body", Vector2i(9,10),  Vector2.RIGHT, Vector2.LEFT),
-		SnakeTile.new("tail", Vector2i(8,10),  Vector2.RIGHT, Vector2.LEFT),
+		SnakeTile.new("head", Vector2i(10,10), Vector2.RIGHT, Vector2.LEFT),
+		SnakeTile.new("body", Vector2i(9,10), Vector2.RIGHT, Vector2.LEFT),
+		SnakeTile.new("body", Vector2i(8,10),  Vector2.RIGHT, Vector2.LEFT),
+		SnakeTile.new("tail", Vector2i(7,10),  Vector2.RIGHT, Vector2.LEFT),
 	]
 	renderNewSnake()
 	set_apple_cell()
@@ -171,7 +171,7 @@ func set_apple_cell():
 	# TODO: This will potentially slow the game down in later stages of the game. Maybe think
 	# of a more CPU-friendly implementation? 
 	while true:
-		appleCoords = Vector2i(randi_range(2,17), randi_range(2,17))
+		appleCoords = Vector2i(randi_range(1,16), randi_range(2,17))
 		if get_cell_tile_data(SnakeTile.Layer.SNAKE, appleCoords) == null:
 			break
 	
