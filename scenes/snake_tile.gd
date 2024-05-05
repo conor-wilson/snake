@@ -5,6 +5,7 @@ class_name SnakeTile
 var coords       : Vector2i
 var front_dir    : Vector2
 var back_dir     : Vector2
+var layer        : int
 var atlas_coords : Vector2i
 var alt_id       : int
 
@@ -23,10 +24,18 @@ func _init(type:String, coords:Vector2i, front_dir:Vector2, back_dir:Vector2):
 	var dir_sum = front_dir + back_dir
 	
 	self.coords = coords
+	set_layer(type)
 	set_atlas_coords(type)
 	set_direction(front_dir, back_dir)
 
-# TODO: Discriptor
+# TODO: Descriptor
+func set_layer(type:String):
+	if type == "dead_head":
+		self.layer = 2
+	else:
+		self.layer = 1
+
+# TODO: Descriptor
 func set_atlas_coords(type:String):
 	match type:
 		"head":
@@ -86,6 +95,8 @@ func direction_to_corner_alt_id(direction: Vector2) -> int:
 	
 	return altID
 
+# TODO: Reorder these, and maybe have them defined within the field definition?
+
 func get_atlas_coords() -> Vector2i:
 	return atlas_coords
 	
@@ -100,3 +111,6 @@ func get_front_dir() -> Vector2:
 
 func get_back_dir() -> Vector2:
 	return back_dir
+
+func get_layer() -> int:
+	return layer

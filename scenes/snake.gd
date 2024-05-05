@@ -135,7 +135,7 @@ func clear_snake_and_apple():
 	
 	# Clear the snake tiles
 	for s in snakeTiles:
-		erase_cell(1, s.coords)
+		erase_cell(s.get_layer(), s.get_coords())
 	snakeTiles = []
 	
 	# Clear the apple tile
@@ -147,7 +147,7 @@ func clear_snake_and_apple():
 
 # TODO: Descriptor
 func set_snake_cell(snake_tile : SnakeTile):
-	set_cell(1, snake_tile.get_coords(), 0, snake_tile.get_atlas_coords(), snake_tile.get_alt_id())
+	set_cell(snake_tile.get_layer(), snake_tile.get_coords(), 0, snake_tile.get_atlas_coords(), snake_tile.get_alt_id())
 
 # TODO: Descriptor
 func set_apple_cell(): 
