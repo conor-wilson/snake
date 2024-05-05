@@ -27,6 +27,7 @@ func start_game():
 	$Snake.spawn_new_snake()
 
 func pause():
+	# TODO: There's a bug here when the player pauses the game before the snake starts moving! 
 	$AudioPlayer.lower_music_volume()
 	$AudioPlayer.play_pause()
 	game_state = GameState.PAUSE

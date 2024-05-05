@@ -6,7 +6,7 @@
 font_size = 41
 
 [sub_resource type="InputEventAction" id="InputEventAction_khdbe"]
-action = &"start_game"
+action = &"select"
 
 [sub_resource type="Shortcut" id="Shortcut_lfh5n"]
 events = [SubResource("InputEventAction_khdbe")]

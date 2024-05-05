@@ -1,7 +1,7 @@
 extends Node2D
 
-const INGAME_MUSIC_VOLUME     = 0
-const PAUSE_MENU_MUSIC_VOLUME = -15
+const INGAME_MUSIC_VOLUME     = 0   # dB
+const PAUSE_MENU_MUSIC_VOLUME = -15 # dB
 
 func play_start_game():
 	$StartGame.play()
