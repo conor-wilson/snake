@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://gqxfblqe82to"]
+[gd_scene load_steps=6 format=3 uid="uid://gqxfblqe82to"]
 
 [ext_resource type="PackedScene" uid="uid://4af2ve2g5bho" path="res://scenes/snake.tscn" id="1_au0ln"]
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_wj633"]
 [ext_resource type="PackedScene" uid="uid://bgqiilqhmsujn" path="res://scenes/hud.tscn" id="3_kk0nh"]
 [ext_resource type="PackedScene" uid="uid://5h34575bwelc" path="res://scenes/player_input.tscn" id="4_k3txy"]
+[ext_resource type="PackedScene" uid="uid://bcbcnq632a1kc" path="res://scenes/audio_player.tscn" id="5_8fdji"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_wj633")
@@ -13,6 +14,8 @@ script = ExtResource("1_wj633")
 [node name="HUD" parent="." instance=ExtResource("3_kk0nh")]
 
 [node name="PlayerInput" parent="." instance=ExtResource("4_k3txy")]
+
+[node name="AudioPlayer" parent="." instance=ExtResource("5_8fdji")]
 
 [connection signal="apple_eaten" from="Snake" to="." method="_on_snake_apple_eaten"]
 [connection signal="hit" from="Snake" to="." method="_on_snake_hit"]

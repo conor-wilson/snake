@@ -59,6 +59,7 @@ func _on_snake_hit():
 func _on_snake_apple_eaten():
 	score += 1
 	$HUD.update_score(score)
+	$AudioPlayer.play_apple_collect()
 	
 	# Update high score if it's been beaten
 	if score > save_data.high_score:
