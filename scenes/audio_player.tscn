@@ -1,13 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://bcbcnq632a1kc"]
+[gd_scene load_steps=9 format=3 uid="uid://bcbcnq632a1kc"]
 
 [ext_resource type="Script" path="res://scenes/AudioPlayer.gd" id="1_dequm"]
 [ext_resource type="AudioStream" uid="uid://b4fwmov2xgq10" path="res://art/Fruit collect 1.wav" id="2_15il7"]
+[ext_resource type="AudioStream" uid="uid://cue73euglcsji" path="res://art/2019-01-02_-_8_Bit_Menu_-_David_Renda_-_FesliyanStudios.com.mp3" id="2_hqvxi"]
+[ext_resource type="AudioStream" uid="uid://bdb7prf7cayi8" path="res://art/Cancel 1.wav" id="3_kagqi"]
 [ext_resource type="AudioStream" uid="uid://bd2pwg46ejuh8" path="res://art/Hit damage 1.wav" id="3_sydvl"]
 [ext_resource type="AudioStream" uid="uid://0emowft232x6" path="res://art/Boss hit 1.wav" id="4_nhw1w"]
 [ext_resource type="AudioStream" uid="uid://d02tfmgypb0wc" path="res://art/Big Egg collect 1.wav" id="5_j7hfs"]
+[ext_resource type="AudioStream" uid="uid://b5c8xk6ax3288" path="res://art/Confirm 1.wav" id="7_qljeq"]
 
 [node name="AudioPlayer" type="Node2D"]
 script = ExtResource("1_dequm")
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_hqvxi")
 
 [node name="AppleCollect" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_15il7")
@@ -20,3 +26,9 @@ stream = ExtResource("4_nhw1w")
 
 [node name="StartGame" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_j7hfs")
+
+[node name="Pause" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_kagqi")
+
+[node name="Resume" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_qljeq")

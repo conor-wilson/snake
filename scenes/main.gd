@@ -27,16 +27,19 @@ func start_game():
 	$Snake.spawn_new_snake()
 
 func pause():
+	$AudioPlayer.play_pause()
 	game_state = GameState.PAUSE
 	$HUD.show_pause_menu()
 	$Snake.stop_ticker()
 
 func resume():
+	$AudioPlayer.play_resume()
 	game_state = GameState.PLAY
 	$HUD.show_in_game_hud()
 	$Snake.start_ticker()
 
 func game_over():
+	$AudioPlayer.stop_music()
 	$AudioPlayer.play_game_over()
 	
 	# Update game state
@@ -92,22 +95,28 @@ func _on_player_input_esc():
 		GameState.PAUSE:
 			resume()
 
+# TODO: Fix the way that these funcs handle the first player input. It's janky.
+
 func _on_player_input_up():
 	if game_state == GameState.PLAY:
+		$AudioPlayer.play_music()
 		$Snake.start_ticker()
 		$Snake.turn_head(Vector2.UP)
 
 func _on_player_input_right():
 	if game_state == GameState.PLAY:
+		$AudioPlayer.play_music()
 		$Snake.start_ticker()
 		$Snake.turn_head(Vector2.RIGHT)
 
 func _on_player_input_down():
 	if game_state == GameState.PLAY:
+		$AudioPlayer.play_music()
 		$Snake.start_ticker()
 		$Snake.turn_head(Vector2.DOWN)
 
 func _on_player_input_left():
 	if game_state == GameState.PLAY:
+		$AudioPlayer.play_music()
 		$Snake.start_ticker()
 		$Snake.turn_head(Vector2.LEFT)
