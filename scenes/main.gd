@@ -57,6 +57,7 @@ func _on_snake_turn():
 	$AudioPlayer.play_turn()
 
 func _on_snake_hit():
+	$AudioPlayer.play_game_over()
 	game_over()
 
 func _on_snake_apple_eaten():
