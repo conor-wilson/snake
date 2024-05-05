@@ -1,5 +1,8 @@
 extends Node2D
 
+const INGAME_MUSIC_VOLUME     = 0
+const PAUSE_MENU_MUSIC_VOLUME = -15
+
 func play_start_game():
 	$StartGame.play()
 
@@ -9,6 +12,12 @@ func play_music():
 
 func stop_music():
 	$Music.stop()
+
+func lower_music_volume():
+	$Music.volume_db = PAUSE_MENU_MUSIC_VOLUME
+
+func increase_music_volume():
+	$Music.volume_db = INGAME_MUSIC_VOLUME
 
 func play_turn():
 	$Turn.play()

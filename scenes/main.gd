@@ -27,12 +27,14 @@ func start_game():
 	$Snake.spawn_new_snake()
 
 func pause():
+	$AudioPlayer.lower_music_volume()
 	$AudioPlayer.play_pause()
 	game_state = GameState.PAUSE
 	$HUD.show_pause_menu()
 	$Snake.stop_ticker()
 
 func resume():
+	$AudioPlayer.increase_music_volume()
 	$AudioPlayer.play_resume()
 	game_state = GameState.PLAY
 	$HUD.show_in_game_hud()
