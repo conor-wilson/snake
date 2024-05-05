@@ -12,6 +12,7 @@ var alt_id       : int
 
 
 # The atlas coordinates of each snake tile type
+# TODO: This actually also feels like it should be globally available...
 const HEAD_ATLAS      = Vector2i(3,0)
 const STRAIGHT_ATLAS  = Vector2i(4,0)
 const CORNER_ATLAS    = Vector2i(5,0)

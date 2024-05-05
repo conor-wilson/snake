@@ -175,7 +175,7 @@ func set_apple_cell():
 		if get_cell_tile_data(SnakeTile.Layer.SNAKE, appleCoords) == null:
 			break
 	
-	set_cell(SnakeTile.Layer.LEVEL, appleCoords, 0, Vector2(2,1))
+	set_cell(SnakeTile.Layer.LEVEL, appleCoords, 0, SnakeTile.APPLE_ATLAS)
 
 
 ## --------------- Cell Checker Functions --------------- ##
