@@ -1,5 +1,6 @@
 extends TileMap
 
+signal turn
 signal hit # TODO: rename this to "dead"?
 signal apple_eaten
 
@@ -67,7 +68,11 @@ func turn_head(input_direction : Vector2):
 # TODO: Descriptor
 # TODO: Maybe this should be moved to the main scene...
 func _on_ticker_timeout():
-	direction = new_direction
+	
+	if new_direction != direction:
+		turn.emit()
+		direction = new_direction
+	
 	moveSnake()
 
 # TODO: Descriptor

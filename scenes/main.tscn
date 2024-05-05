@@ -19,6 +19,7 @@ script = ExtResource("1_wj633")
 
 [connection signal="apple_eaten" from="Snake" to="." method="_on_snake_apple_eaten"]
 [connection signal="hit" from="Snake" to="." method="_on_snake_hit"]
+[connection signal="turn" from="Snake" to="." method="_on_snake_turn"]
 [connection signal="start_game" from="HUD" to="." method="_on_hud_start_game"]
 [connection signal="down" from="PlayerInput" to="." method="_on_player_input_down"]
 [connection signal="esc" from="PlayerInput" to="." method="_on_player_input_esc"]

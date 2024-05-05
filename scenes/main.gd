@@ -53,13 +53,18 @@ func _ready():
 	save_data = SaveData.load()
 	start_menu()
 
+func _on_snake_turn():
+	$AudioPlayer.play_turn()
+
 func _on_snake_hit():
 	game_over()
 
 func _on_snake_apple_eaten():
+	$AudioPlayer.play_apple_collect()
+	
+	# Update score
 	score += 1
 	$HUD.update_score(score)
-	$AudioPlayer.play_apple_collect()
 	
 	# Update high score if it's been beaten
 	if score > save_data.high_score:
