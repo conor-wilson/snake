@@ -1,5 +1,7 @@
 extends Node2D
 
+func play_start_game():
+	$StartGame.play()
 
 func play_apple_collect():
 	$AppleCollect.play()

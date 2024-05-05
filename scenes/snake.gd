@@ -70,7 +70,7 @@ func turn_head(input_direction : Vector2):
 func _on_ticker_timeout():
 	
 	if new_direction != direction:
-		# TODO: Given the existance of this signal, it REALLY feels like this func should be in main...
+		# TODO: Given the existance of this signal, it REALLY feels like this func should be in Main...
 		turn.emit()
 		direction = new_direction
 	

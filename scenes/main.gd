@@ -14,6 +14,7 @@ func start_menu():
 	$Snake.stop_ticker()
 
 func start_game():
+	$AudioPlayer.play_start_game()
 	
 	# Reset game state
 	score = 0
@@ -36,6 +37,9 @@ func resume():
 	$Snake.start_ticker()
 
 func game_over():
+	$AudioPlayer.play_game_over()
+	
+	# Update game state
 	game_state = GameState.GAME_OVER
 	
 	# If there's a new high-score, save it!
@@ -57,7 +61,6 @@ func _on_snake_turn():
 	$AudioPlayer.play_turn()
 
 func _on_snake_hit():
-	$AudioPlayer.play_game_over()
 	game_over()
 
 func _on_snake_apple_eaten():
