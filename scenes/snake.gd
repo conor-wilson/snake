@@ -1,6 +1,6 @@
 extends TileMap
 
-signal hit
+signal hit # TODO: rename this to "dead"?
 signal apple_eaten
 
 var snakeTiles    : Array[SnakeTile] # The array of the snake's tiles
@@ -92,18 +92,24 @@ func moveSnake():
 	
 	# Case where the snake something that is not an apple
 	else:
+		move_tail()
+		move_head(newHeadCoord, true)
 		hit.emit()
 		return
 
 # TODO: descriptor
-func move_head(newHeadCoord : Vector2i):
+func move_head(newHeadCoord : Vector2i, dead : bool = false):
 	
 	# Change the old head tile to be a body tile facing the new direction
 	snakeTiles[0].set_atlas_coords("body")
 	snakeTiles[0].set_direction(direction, snakeTiles[0].get_back_dir())
 	
 	# Add the new head tile
-	var newHeadTile = SnakeTile.new("head", newHeadCoord, direction, direction.rotated(PI))
+	var newHeadTile : SnakeTile
+	if !dead: 
+		newHeadTile = SnakeTile.new("head", newHeadCoord, direction, direction.rotated(PI))
+	else: 
+		newHeadTile = SnakeTile.new("dead_head", newHeadCoord, direction, direction.rotated(PI))
 	snakeTiles.push_front(newHeadTile)
 	
 	# Render the updated cells
