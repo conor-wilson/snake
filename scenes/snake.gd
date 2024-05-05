@@ -9,13 +9,6 @@ var appleCoords   : Vector2i         # The coordinate of the apple tile
 var direction     : Vector2          # The direction of the snake's head
 var new_direction : Vector2          # The new direction for the snake's head
 
-# TODO: Descriptor
-# TODO: See if these can be obtained via the tilemap class's builtin features
-const BG_LAYER    : int = 0
-const OBST_LAYER  : int = 1 # TODO: Rename this to LEVEL_LAYER TODO: Put the apple on this layer
-const SNAKE_LAYER : int = 2
-const FG_LAYER    : int = 3
-
 
 ## ---------- High-Level Behaviour Functions ----------- ##
 
@@ -24,14 +17,14 @@ func _ready():
 	stop_ticker()
 	snakeTiles  = []
 	appleCoords = Vector2i(-1, -1)
-	set_layer_modulate(FG_LAYER, Color.GRAY)
+	set_layer_modulate(SnakeTile.Layer.FG, Color.GRAY)
 
 # TODO: descriptor
 func spawn_new_snake():
 	
 	# Clear any old snake tiles that exist
 	clear_snake_and_apple()
-	set_layer_modulate(SNAKE_LAYER, Color.WHITE)
+	set_layer_modulate(SnakeTile.Layer.SNAKE, Color.WHITE)
 	
 	# Set the snake and apple to their starting positions
 	direction     = Vector2.RIGHT
@@ -61,7 +54,7 @@ func stop_ticker():
 # TODO: Descriptor
 func kill_snake():
 	# TODO: Maybe set the alt_id for the head in this func?
-	set_layer_modulate(SNAKE_LAYER, Color.GRAY)
+	set_layer_modulate(SnakeTile.Layer.SNAKE, Color.GRAY)
 	hit.emit()
 
 
@@ -98,7 +91,6 @@ func moveSnake():
 	var newHeadCoord = snakeTiles[0].get_coords() + Vector2i(direction)
 	
 	# Move the snake according to what sort of tile it's about to run into:
-	var next_snake_cell_atlas_coords = get_cell_atlas_coords(SNAKE_LAYER, newHeadCoord)
 	
 	# Case where the snake eats the apple
 	if cell_is_apple(newHeadCoord):
@@ -149,19 +141,18 @@ func move_tail():
 	
 	# Render the updated cells
 	set_snake_cell(snakeTiles[-1])
-	erase_cell(SNAKE_LAYER, oldTailCoords)
+	erase_cell(SnakeTile.Layer.SNAKE, oldTailCoords)
 
 # TODO: Descriptor
 func clear_snake_and_apple():
 	
 	# Clear the snake tiles
 	for s in snakeTiles:
-		erase_cell(FG_LAYER, s.get_coords()) # TODO: THIS IS EXTREMELY JANKEY. FIX THIS!
-		erase_cell(SNAKE_LAYER, s.get_coords())
+		erase_cell(s.get_layer(), s.get_coords())
 	snakeTiles = []
 	
 	# Clear the apple tile
-	erase_cell(SNAKE_LAYER, appleCoords)
+	erase_cell(SnakeTile.Layer.LEVEL, appleCoords)
 	appleCoords = Vector2i(-1,-1)
 
 
@@ -169,25 +160,22 @@ func clear_snake_and_apple():
 
 # TODO: Descriptor
 func set_snake_cell(snake_tile : SnakeTile):
-	
-	# TODO: This is ungodly jankey. Fix this.
-	var layer : int = SNAKE_LAYER
-	if snake_tile.atlas_coords == SnakeTile.DEAD_HEAD_ATLAS: 
-		layer = FG_LAYER
-	
-	set_cell(layer, snake_tile.get_coords(), 0, snake_tile.get_atlas_coords(), snake_tile.get_alt_id())
+	set_cell(snake_tile.get_layer(), snake_tile.get_coords(), 0, snake_tile.get_atlas_coords(), snake_tile.get_alt_id())
 
 # TODO: Descriptor
-func set_apple_cell(): 
+func set_apple_cell():
+	
+	# Remove The old apple
+	erase_cell(SnakeTile.Layer.LEVEL, appleCoords)
 	
 	# TODO: This will potentially slow the game down in later stages of the game. Maybe think
 	# of a more CPU-friendly implementation? 
 	while true:
 		appleCoords = Vector2i(randi_range(2,17), randi_range(2,17))
-		if get_cell_tile_data(SNAKE_LAYER, appleCoords) == null:
+		if get_cell_tile_data(SnakeTile.Layer.SNAKE, appleCoords) == null:
 			break
 	
-	set_cell(SNAKE_LAYER, appleCoords, 0, Vector2(2,1))
+	set_cell(SnakeTile.Layer.LEVEL, appleCoords, 0, Vector2(2,1))
 
 
 ## --------------- Cell Checker Functions --------------- ##
@@ -196,9 +184,9 @@ func cell_is_apple(coords : Vector2i) -> bool:
 	return coords == appleCoords
 
 func cell_is_empty(coords : Vector2i) -> bool:
-	var obst_layer_data = get_cell_tile_data(OBST_LAYER, coords)
-	var snake_layer_data = get_cell_tile_data(SNAKE_LAYER, coords)
-	return obst_layer_data == null && snake_layer_data == null
+	var level_layer_data = get_cell_tile_data(SnakeTile.Layer.LEVEL, coords)
+	var snake_layer_data = get_cell_tile_data(SnakeTile.Layer.SNAKE, coords)
+	return level_layer_data == null && snake_layer_data == null
 
 func cell_is_tail(coords : Vector2i) -> bool:
-	return get_cell_atlas_coords(SNAKE_LAYER, coords) == SnakeTile.TAIL_ATLAS
+	return get_cell_atlas_coords(SnakeTile.Layer.SNAKE, coords) == SnakeTile.TAIL_ATLAS
