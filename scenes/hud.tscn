@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://bgqiilqhmsujn"]
+[gd_scene load_steps=7 format=3 uid="uid://bgqiilqhmsujn"]
 
 [ext_resource type="Script" path="res://scenes/HUD.gd" id="1_qdk3y"]
 [ext_resource type="FontFile" uid="uid://ddmsbwqyya44t" path="res://art/m6x11.ttf" id="2_jk30c"]
-[ext_resource type="Texture2D" uid="uid://c3glewuvwbqaj" path="res://art/snakehead.png" id="3_cg7uv"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ylqtf"]
 font = ExtResource("2_jk30c")
@@ -41,7 +40,6 @@ offset_bottom = 392.0
 size_flags_horizontal = 4
 shortcut = SubResource("Shortcut_lfh5n")
 text = "START GAME"
-icon = ExtResource("3_cg7uv")
 icon_alignment = 1
 
 [node name="Score" type="Label" parent="."]
