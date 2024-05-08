@@ -21,9 +21,13 @@ func _ready():
 func _process(delta):
 	pass
 
-func show_start_menu():
+func hide_all():
+	$MainMenu.hide()
 	$PauseMenu.hide()
-	
+	$GameOverMenu.hide()
+
+func show_start_menu():
+	hide_all()
 	$MainMenu.show_and_focus()
 	
 	# Message behaviour
@@ -35,8 +39,7 @@ func show_start_menu():
 	$HighScore.hide()
 
 func show_pause_menu():
-	$MainMenu.hide()
-	
+	hide_all()
 	$PauseMenu.show_and_focus()
 	
 	# Message behaviour
@@ -48,23 +51,19 @@ func show_pause_menu():
 	$HighScore.show()
 
 func show_game_over_screen(score: int):
-	$MainMenu.hide()
-	$PauseMenu.hide()
+	hide_all()
+	$GameOverMenu.show_and_focus()
 	
 	# Message behaviour
-	$Message.text = "Game Over\nScore: " + str(score)
-	$Message.show()
+	$Message.hide()
 	# Button behaviour
-	$StartButton.text = "TRY AGAIN"
-	$StartButton.set_position(default_button_pos + Vector2i(0, 32))
-	$StartButton.show()
+	$StartButton.hide()
 	# Score behaviour
 	$Score.show()
 	$HighScore.show()
 
 func show_in_game_hud():
-	$MainMenu.hide()
-	$PauseMenu.hide()
+	hide_all()
 	
 	# Message behaviour
 	$Message.hide()
@@ -102,3 +101,11 @@ func _on_pause_menu_options():
 
 func _on_pause_menu_quit_to_main():
 	main_menu.emit()
+
+
+func _on_game_over_menu_try_again():
+	start_game.emit()
+
+func _on_game_over_menu_main_menu():
+	main_menu.emit()
+

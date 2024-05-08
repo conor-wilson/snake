@@ -4,10 +4,6 @@ signal resume
 signal options
 signal quit_to_main
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass
-
 func show_and_focus():
 	show()
 	$VBoxContainer/ResumeButton.grab_focus()

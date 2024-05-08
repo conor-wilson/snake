@@ -4,10 +4,6 @@ signal start_game # TODO: Rename this to "play"
 signal options_menu # TODO: Rename this to "options"
 signal quit
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass
-
 func show_and_focus():
 	show()
 	$VBoxContainer/StartButton.grab_focus()
