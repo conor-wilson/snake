@@ -38,7 +38,7 @@ func show_pause_menu():
 
 func show_game_over_screen(score: int):
 	hide_all()
-	$GameOverMenu.show_and_focus()
+	$GameOverMenu.show_and_focus(score)
 	
 	# Score behaviour
 	$Score.show()
