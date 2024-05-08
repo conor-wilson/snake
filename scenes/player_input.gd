@@ -1,6 +1,6 @@
 extends Node
 
-signal esc
+signal pause
 signal up
 signal right
 signal down
@@ -13,8 +13,10 @@ func _process(delta):
 # TODO: Descriptor
 func process_player_input():
 	
-	if Input.is_action_just_pressed("pause"): 
-		esc.emit()
+	if Input.is_action_just_pressed("esc"): 
+		pause.emit()
+	#if Input.is_action_just_pressed("select"):
+		#pause.emit() (TODO)
 	if Input.is_action_pressed("move_up"):
 		up.emit()
 	if Input.is_action_pressed("move_right"):

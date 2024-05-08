@@ -18,18 +18,6 @@ func _ready():
 func _process(delta):
 	pass
 
-func show_start_menu():
-	# Message behaviour
-	$Message.text = "Welcome to Snake!"
-	$Message.show()
-	# Button behaviour
-	$StartButton.text = "START GAME"
-	$StartButton.set_position(default_button_pos)
-	$StartButton.show()
-	# Score behaviour
-	$Score.hide()
-	$HighScore.hide()
-
 func show_pause_menu():
 	# Message behaviour
 	$Message.text = "Paused"

@@ -10,7 +10,7 @@ var save_data : SaveData
 
 func start_menu():
 	game_state = GameState.START_MENU
-	$HUD.show_start_menu()
+	$MainMenu.show_start_menu()
 	$Snake.stop_ticker()
 
 func start_game():
@@ -23,6 +23,7 @@ func start_game():
 	# Start the game
 	$HUD.update_score(score)
 	$HUD.update_high_score(save_data.high_score)
+	$MainMenu.hide()
 	$HUD.show_in_game_hud()
 	$Snake.spawn_new_snake()
 
@@ -38,6 +39,7 @@ func resume():
 	$AudioPlayer.increase_music_volume()
 	$AudioPlayer.play_resume()
 	game_state = GameState.PLAY
+	$MainMenu.hide()
 	$HUD.show_in_game_hud()
 	$Snake.start_ticker()
 
@@ -90,7 +92,7 @@ func _on_hud_start_game():
 
 ## ---------- Player-Input-Triggered Functions --------- ##
 
-func _on_player_input_esc():
+func _on_player_input_pause():
 	match game_state: 
 		GameState.PLAY:
 			pause()
@@ -123,3 +125,14 @@ func _on_player_input_left():
 		$AudioPlayer.play_music()
 		$Snake.start_ticker()
 		$Snake.turn_head(Vector2.LEFT)
+
+
+func _on_main_menu_start_game():
+	start_game()
+
+func _on_main_menu_options_menu():
+	print("LOAD OPTIONS MENU NOW!")
+
+func _on_main_menu_quit():
+	get_tree().quit()
+
