@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bgqiilqhmsujn"]
+[gd_scene load_steps=9 format=3 uid="uid://bgqiilqhmsujn"]
 
 [ext_resource type="Script" path="res://scenes/HUD.gd" id="1_qdk3y"]
+[ext_resource type="PackedScene" uid="uid://bp3mkt6r82voo" path="res://scenes/main_menu.tscn" id="2_a43fe"]
 [ext_resource type="FontFile" uid="uid://ddmsbwqyya44t" path="res://art/m6x11.ttf" id="2_jk30c"]
+[ext_resource type="PackedScene" uid="uid://b8tnd6ufvuusw" path="res://scenes/pause_menu.tscn" id="3_ifjth"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ylqtf"]
 font = ExtResource("2_jk30c")
@@ -20,6 +22,10 @@ font_color = Color(0, 0, 0, 1)
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_qdk3y")
+
+[node name="MainMenu" parent="." instance=ExtResource("2_a43fe")]
+
+[node name="PauseMenu" parent="." instance=ExtResource("3_ifjth")]
 
 [node name="Message" type="Label" parent="."]
 offset_left = 104.0
@@ -59,4 +65,10 @@ label_settings = SubResource("LabelSettings_ve6is")
 horizontal_alignment = 2
 vertical_alignment = 1
 
+[connection signal="options_menu" from="MainMenu" to="." method="_on_main_menu_options_menu"]
+[connection signal="quit" from="MainMenu" to="." method="_on_main_menu_quit"]
+[connection signal="start_game" from="MainMenu" to="." method="_on_main_menu_start_game"]
+[connection signal="options" from="PauseMenu" to="." method="_on_pause_menu_options"]
+[connection signal="quit_to_main" from="PauseMenu" to="." method="_on_pause_menu_quit_to_main"]
+[connection signal="resume" from="PauseMenu" to="." method="_on_pause_menu_resume"]
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]

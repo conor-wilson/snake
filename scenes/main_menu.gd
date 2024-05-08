@@ -1,20 +1,16 @@
 extends Control
 
-signal start_game
-signal options_menu
+signal start_game # TODO: Rename this to "play"
+signal options_menu # TODO: Rename this to "options"
 signal quit
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
 
-func hide_all():
-	$MainMenu.hide()
-
-func show_start_menu():
-	hide_all() # Hide all active HUD items
-	$MainMenu.show()
-	$MainMenu/VBoxContainer/StartButton.grab_focus()
+func show_and_focus():
+	show()
+	$VBoxContainer/StartButton.grab_focus()
 
 func _on_start_button_pressed():
 	start_game.emit()
