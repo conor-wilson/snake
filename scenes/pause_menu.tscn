@@ -48,7 +48,7 @@ text = "OPTIONS"
 [node name="QuitToMainMenuButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../ResumeButton")
-text = "QUIT TO MAIN MENU"
+text = "MAIN MENU"
 
 [connection signal="pressed" from="VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]

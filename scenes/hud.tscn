@@ -1,20 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://bgqiilqhmsujn"]
+[gd_scene load_steps=7 format=3 uid="uid://bgqiilqhmsujn"]
 
 [ext_resource type="Script" path="res://scenes/HUD.gd" id="1_qdk3y"]
 [ext_resource type="PackedScene" uid="uid://bp3mkt6r82voo" path="res://scenes/main_menu.tscn" id="2_a43fe"]
 [ext_resource type="FontFile" uid="uid://ddmsbwqyya44t" path="res://art/m6x11.ttf" id="2_jk30c"]
 [ext_resource type="PackedScene" uid="uid://b8tnd6ufvuusw" path="res://scenes/pause_menu.tscn" id="3_ifjth"]
 [ext_resource type="PackedScene" uid="uid://bnncnyq3c3cr4" path="res://scenes/game_over_menu.tscn" id="4_5gjp0"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_ylqtf"]
-font = ExtResource("2_jk30c")
-font_size = 41
-
-[sub_resource type="InputEventAction" id="InputEventAction_khdbe"]
-action = &"select"
-
-[sub_resource type="Shortcut" id="Shortcut_lfh5n"]
-events = [SubResource("InputEventAction_khdbe")]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ve6is"]
 font = ExtResource("2_jk30c")
@@ -34,27 +24,6 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-
-[node name="Message" type="Label" parent="."]
-offset_left = 104.0
-offset_top = 128.0
-offset_right = 472.0
-offset_bottom = 384.0
-size_flags_horizontal = 4
-text = "Welcome to Snake"
-label_settings = SubResource("LabelSettings_ylqtf")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="StartButton" type="Button" parent="."]
-offset_left = 224.0
-offset_top = 312.0
-offset_right = 352.0
-offset_bottom = 392.0
-size_flags_horizontal = 4
-shortcut = SubResource("Shortcut_lfh5n")
-text = "START GAME"
-icon_alignment = 1
 
 [node name="Score" type="Label" parent="."]
 offset_left = 24.0
@@ -81,4 +50,3 @@ vertical_alignment = 1
 [connection signal="resume" from="PauseMenu" to="." method="_on_pause_menu_resume"]
 [connection signal="main_menu" from="GameOverMenu" to="." method="_on_game_over_menu_main_menu"]
 [connection signal="try_again" from="GameOverMenu" to="." method="_on_game_over_menu_try_again"]
-[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
