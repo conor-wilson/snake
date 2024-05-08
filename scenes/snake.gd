@@ -55,7 +55,6 @@ func stop_ticker():
 func kill_snake():
 	# TODO: Maybe set the alt_id for the head in this func?
 	set_layer_modulate(SnakeTile.Layer.SNAKE, Color.GRAY)
-	hit.emit()
 
 
 ## ------------- Snake Rendering Functions ------------- ##
@@ -107,7 +106,7 @@ func moveSnake():
 	else:
 		move_tail()
 		move_head(newHeadCoord, true)
-		kill_snake()
+		hit.emit()
 		return
 
 # TODO: descriptor

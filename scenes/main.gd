@@ -8,12 +8,19 @@ var save_data : SaveData
 
 ## ------------- State-Chaging Functions -------------- ##
 
-func start_menu():
+func start_menu(): #TODO: Rename this to "main_menu()"
+	$AudioPlayer.stop_music()
+	if game_state == GameState.PAUSE:
+		$AudioPlayer.play_game_over()
+	
 	game_state = GameState.START_MENU
-	$HUD.show_start_menu()
+	$Menus.show_start_menu()
+	$HUD.hide()
+	$Snake.kill_snake()
 	$Snake.stop_ticker()
 
 func start_game():
+	$AudioPlayer.increase_music_volume()
 	$AudioPlayer.play_start_game()
 	
 	# Reset game state
@@ -23,7 +30,8 @@ func start_game():
 	# Start the game
 	$HUD.update_score(score)
 	$HUD.update_high_score(save_data.high_score)
-	$HUD.show_in_game_hud()
+	$Menus.hide_all()
+	$HUD.show()
 	$Snake.spawn_new_snake()
 
 func pause():
@@ -31,14 +39,15 @@ func pause():
 	$AudioPlayer.lower_music_volume()
 	$AudioPlayer.play_pause()
 	game_state = GameState.PAUSE
-	$HUD.show_pause_menu()
+	$Menus.show_pause_menu()
 	$Snake.stop_ticker()
 
 func resume():
 	$AudioPlayer.increase_music_volume()
 	$AudioPlayer.play_resume()
 	game_state = GameState.PLAY
-	$HUD.show_in_game_hud()
+	$Menus.hide_all()
+	$HUD.show()
 	$Snake.start_ticker()
 
 func game_over():
@@ -53,7 +62,7 @@ func game_over():
 		save_data.save_new_high_score(score)
 	
 	# Update HUD
-	$HUD.show_game_over_screen(score)
+	$Menus.show_game_over_screen(score)
 	$Snake.stop_ticker()
 
 
@@ -67,6 +76,7 @@ func _on_snake_turn():
 	$AudioPlayer.play_turn()
 
 func _on_snake_hit():
+	$Snake.kill_snake()
 	game_over()
 
 func _on_snake_apple_eaten():
@@ -80,18 +90,22 @@ func _on_snake_apple_eaten():
 	if score > save_data.high_score:
 		$HUD.update_high_score(score)
 
-func _on_hud_start_game():
+
+func _on_menus_play():
 	match game_state:
 		GameState.START_MENU, GameState.GAME_OVER:
 			start_game()
 		GameState.PAUSE:
 			resume()
 
-func _on_hud_options():
+func _on_menus_options():
 	print("TODO: LOAD OPTIONS MENU NOW!")
 
-func _on_hud_quit():
+func _on_menus_quit():
 	get_tree().quit()
+
+func _on_menus_main_menu():
+	start_menu()
 
 
 ## ---------- Player-Input-Triggered Functions --------- ##
@@ -129,3 +143,4 @@ func _on_player_input_left():
 		$AudioPlayer.play_music()
 		$Snake.start_ticker()
 		$Snake.turn_head(Vector2.LEFT)
+
