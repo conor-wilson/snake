@@ -11,6 +11,7 @@
 script = ExtResource("1_wj633")
 
 [node name="Snake" parent="." instance=ExtResource("1_au0ln")]
+z_index = -20
 
 [node name="HUD" parent="." instance=ExtResource("3_kk0nh")]
 
