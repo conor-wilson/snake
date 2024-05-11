@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bp3mkt6r82voo"]
+[gd_scene load_steps=8 format=3 uid="uid://bp3mkt6r82voo"]
 
-[ext_resource type="Script" path="res://scenes/Menus.gd" id="1_863pw"]
+[ext_resource type="Script" path="res://scenes/Menus.gd" id="1_o5mua"]
 [ext_resource type="FontFile" uid="uid://ddmsbwqyya44t" path="res://art/m6x11.ttf" id="2_blrtl"]
+[ext_resource type="Theme" uid="uid://b0gks4806w8al" path="res://scenes/menus.tres" id="3_aqdmj"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_in3gl"]
 font = ExtResource("2_blrtl")
@@ -26,7 +27,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_863pw")
+script = ExtResource("1_o5mua")
 
 [node name="MainMenu" type="Control" parent="."]
 anchors_preset = 0
@@ -61,19 +62,22 @@ layout_mode = 2
 [node name="StartButton" type="Button" parent="MainMenu/VBoxContainer/CenterContainer/ButtonContainer"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../QuitButton")
+theme = ExtResource("3_aqdmj")
+theme_override_colors/font_focus_color = Color(1, 0, 0, 1)
 text = "START"
 
 [node name="OptionsButton" type="Button" parent="MainMenu/VBoxContainer/CenterContainer/ButtonContainer"]
 layout_mode = 2
+theme = ExtResource("3_aqdmj")
 text = "OPTIONS"
 
 [node name="QuitButton" type="Button" parent="MainMenu/VBoxContainer/CenterContainer/ButtonContainer"]
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../StartButton")
+theme = ExtResource("3_aqdmj")
 text = "QUIT"
 
 [node name="PauseMenu" type="Control" parent="."]
-visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -101,15 +105,18 @@ horizontal_alignment = 1
 [node name="ResumeButton" type="Button" parent="PauseMenu/VBoxContainer"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../MainMenuButton")
+theme = ExtResource("3_aqdmj")
 text = "RESUME"
 
 [node name="OptionsButton" type="Button" parent="PauseMenu/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("3_aqdmj")
 text = "OPTIONS"
 
 [node name="MainMenuButton" type="Button" parent="PauseMenu/VBoxContainer"]
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../ResumeButton")
+theme = ExtResource("3_aqdmj")
 text = "MAIN MENU"
 
 [node name="GameOverMenu" type="Control" parent="."]
@@ -147,11 +154,13 @@ horizontal_alignment = 1
 [node name="TryAgainButton" type="Button" parent="GameOverMenu/VBoxContainer"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../MainMenuButton")
+theme = ExtResource("3_aqdmj")
 text = "TRY AGAIN"
 
 [node name="MainMenuButton" type="Button" parent="GameOverMenu/VBoxContainer"]
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../TryAgainButton")
+theme = ExtResource("3_aqdmj")
 text = "MAIN MENU"
 
 [connection signal="pressed" from="MainMenu/VBoxContainer/CenterContainer/ButtonContainer/StartButton" to="." method="_on_start_button_pressed"]
