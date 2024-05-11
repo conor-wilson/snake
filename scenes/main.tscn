@@ -1,14 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://gqxfblqe82to"]
+[gd_scene load_steps=7 format=3 uid="uid://gqxfblqe82to"]
 
 [ext_resource type="PackedScene" uid="uid://4af2ve2g5bho" path="res://scenes/snake.tscn" id="1_au0ln"]
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_wj633"]
 [ext_resource type="PackedScene" uid="uid://bgqiilqhmsujn" path="res://scenes/hud.tscn" id="3_kk0nh"]
-[ext_resource type="Script" path="res://scenes/Menus.gd" id="4_4okuc"]
+[ext_resource type="PackedScene" uid="uid://bp3mkt6r82voo" path="res://scenes/menus.tscn" id="4_di6yd"]
 [ext_resource type="PackedScene" uid="uid://5h34575bwelc" path="res://scenes/player_input.tscn" id="4_k3txy"]
-[ext_resource type="PackedScene" uid="uid://bp3mkt6r82voo" path="res://scenes/main_menu.tscn" id="4_k14la"]
 [ext_resource type="PackedScene" uid="uid://bcbcnq632a1kc" path="res://scenes/audio_player.tscn" id="5_8fdji"]
-[ext_resource type="PackedScene" uid="uid://b8tnd6ufvuusw" path="res://scenes/pause_menu.tscn" id="6_3jocw"]
-[ext_resource type="PackedScene" uid="uid://bnncnyq3c3cr4" path="res://scenes/game_over_menu.tscn" id="7_xwwhu"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_wj633")
@@ -17,29 +14,7 @@ script = ExtResource("1_wj633")
 
 [node name="HUD" parent="." instance=ExtResource("3_kk0nh")]
 
-[node name="Menus" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("4_4okuc")
-
-[node name="MainMenu" parent="Menus" instance=ExtResource("4_k14la")]
-layout_mode = 1
-
-[node name="PauseMenu" parent="Menus" instance=ExtResource("6_3jocw")]
-layout_mode = 1
-
-[node name="GameOverMenu" parent="Menus" instance=ExtResource("7_xwwhu")]
-layout_mode = 1
+[node name="Menus" parent="." instance=ExtResource("4_di6yd")]
 
 [node name="PlayerInput" parent="." instance=ExtResource("4_k3txy")]
 
@@ -52,14 +27,6 @@ layout_mode = 1
 [connection signal="options" from="Menus" to="." method="_on_menus_options"]
 [connection signal="play" from="Menus" to="." method="_on_menus_play"]
 [connection signal="quit" from="Menus" to="." method="_on_menus_quit"]
-[connection signal="options_menu" from="Menus/MainMenu" to="Menus" method="_on_main_menu_options_menu"]
-[connection signal="quit" from="Menus/MainMenu" to="Menus" method="_on_main_menu_quit"]
-[connection signal="start_game" from="Menus/MainMenu" to="Menus" method="_on_main_menu_start_game"]
-[connection signal="options" from="Menus/PauseMenu" to="Menus" method="_on_pause_menu_options"]
-[connection signal="quit_to_main" from="Menus/PauseMenu" to="Menus" method="_on_pause_menu_quit_to_main"]
-[connection signal="resume" from="Menus/PauseMenu" to="Menus" method="_on_pause_menu_resume"]
-[connection signal="main_menu" from="Menus/GameOverMenu" to="Menus" method="_on_game_over_menu_main_menu"]
-[connection signal="try_again" from="Menus/GameOverMenu" to="Menus" method="_on_game_over_menu_try_again"]
 [connection signal="down" from="PlayerInput" to="." method="_on_player_input_down"]
 [connection signal="left" from="PlayerInput" to="." method="_on_player_input_left"]
 [connection signal="pause" from="PlayerInput" to="." method="_on_player_input_pause"]

@@ -91,6 +91,8 @@ func _on_snake_apple_eaten():
 		$HUD.update_high_score(score)
 
 
+## ----------- Menu-Triggered Functions ---------- ##
+
 func _on_menus_play():
 	match game_state:
 		GameState.START_MENU, GameState.GAME_OVER:

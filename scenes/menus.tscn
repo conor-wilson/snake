@@ -1,0 +1,164 @@
+[gd_scene load_steps=7 format=3 uid="uid://bp3mkt6r82voo"]
+
+[ext_resource type="Script" path="res://scenes/Menus.gd" id="1_863pw"]
+[ext_resource type="FontFile" uid="uid://ddmsbwqyya44t" path="res://art/m6x11.ttf" id="2_blrtl"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_in3gl"]
+font = ExtResource("2_blrtl")
+font_size = 48
+
+[sub_resource type="LabelSettings" id="LabelSettings_7b6cp"]
+font = ExtResource("2_blrtl")
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_4t0im"]
+font = ExtResource("2_blrtl")
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_wknwg"]
+font = ExtResource("2_blrtl")
+font_size = 32
+
+[node name="Menus" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_863pw")
+
+[node name="MainMenu" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 101.5
+offset_top = 210.5
+offset_right = 434.5
+offset_bottom = 357.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="MainMenu/VBoxContainer"]
+layout_mode = 2
+text = "Welcome to Snake!"
+label_settings = SubResource("LabelSettings_in3gl")
+
+[node name="CenterContainer" type="CenterContainer" parent="MainMenu/VBoxContainer"]
+layout_mode = 2
+
+[node name="ButtonContainer" type="VBoxContainer" parent="MainMenu/VBoxContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="StartButton" type="Button" parent="MainMenu/VBoxContainer/CenterContainer/ButtonContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../QuitButton")
+text = "START"
+
+[node name="OptionsButton" type="Button" parent="MainMenu/VBoxContainer/CenterContainer/ButtonContainer"]
+layout_mode = 2
+text = "OPTIONS"
+
+[node name="QuitButton" type="Button" parent="MainMenu/VBoxContainer/CenterContainer/ButtonContainer"]
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../StartButton")
+text = "QUIT"
+
+[node name="PauseMenu" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 216.0
+offset_top = 217.5
+offset_right = 320.0
+offset_bottom = 350.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Paused" type="Label" parent="PauseMenu/VBoxContainer"]
+layout_mode = 2
+text = "Paused"
+label_settings = SubResource("LabelSettings_7b6cp")
+horizontal_alignment = 1
+
+[node name="ResumeButton" type="Button" parent="PauseMenu/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../MainMenuButton")
+text = "RESUME"
+
+[node name="OptionsButton" type="Button" parent="PauseMenu/VBoxContainer"]
+layout_mode = 2
+text = "OPTIONS"
+
+[node name="MainMenuButton" type="Button" parent="PauseMenu/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../ResumeButton")
+text = "MAIN MENU"
+
+[node name="GameOverMenu" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOverMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 204.0
+offset_top = 219.0
+offset_right = 332.0
+offset_bottom = 349.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameOver" type="Label" parent="GameOverMenu/VBoxContainer"]
+layout_mode = 2
+text = "Game Over"
+label_settings = SubResource("LabelSettings_4t0im")
+horizontal_alignment = 1
+
+[node name="Score" type="Label" parent="GameOverMenu/VBoxContainer"]
+layout_mode = 2
+text = "Score: 123"
+label_settings = SubResource("LabelSettings_wknwg")
+horizontal_alignment = 1
+
+[node name="TryAgainButton" type="Button" parent="GameOverMenu/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../MainMenuButton")
+text = "TRY AGAIN"
+
+[node name="MainMenuButton" type="Button" parent="GameOverMenu/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../TryAgainButton")
+text = "MAIN MENU"
+
+[connection signal="pressed" from="MainMenu/VBoxContainer/CenterContainer/ButtonContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="MainMenu/VBoxContainer/CenterContainer/ButtonContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="MainMenu/VBoxContainer/CenterContainer/ButtonContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="PauseMenu/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="PauseMenu/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="PauseMenu/VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="GameOverMenu/VBoxContainer/TryAgainButton" to="." method="_on_try_again_button_pressed"]
+[connection signal="pressed" from="GameOverMenu/VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
