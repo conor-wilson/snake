@@ -16,43 +16,35 @@ func hide_all():
 
 func show_start_menu():
 	hide_all()
-	$MainMenu.show_and_focus()
+	$MainMenu.show()
+	$MainMenu/VBoxContainer/CenterContainer/ButtonContainer/StartButton.grab_focus()
 
 func show_pause_menu():
 	hide_all()
-	$PauseMenu.show_and_focus()
+	$PauseMenu.show()
+	$PauseMenu/VBoxContainer/ResumeButton.grab_focus()
 
 func show_game_over_screen(score: int):
 	hide_all()
-	$GameOverMenu.show_and_focus(score)
+	$GameOverMenu/VBoxContainer/Score.text = "Score: " + str(score)
+	$GameOverMenu.show()
+	$GameOverMenu/VBoxContainer/TryAgainButton.grab_focus()
 
-func show_in_game_hud():
-	hide_all()
 
-
-func _on_main_menu_start_game():
+func _on_start_button_pressed():
 	play.emit()
 
-func _on_main_menu_options_menu():
+func _on_options_button_pressed():
 	options.emit()
 
-func _on_main_menu_quit():
+func _on_quit_button_pressed():
 	quit.emit()
 
-
-func _on_pause_menu_resume():
+func _on_resume_button_pressed():
 	play.emit()
 
-func _on_pause_menu_options():
-	options.emit()
-
-func _on_pause_menu_quit_to_main():
+func _on_main_menu_button_pressed():
 	main_menu.emit()
 
-
-func _on_game_over_menu_try_again():
+func _on_try_again_button_pressed():
 	play.emit()
-
-func _on_game_over_menu_main_menu():
-	main_menu.emit()
-
