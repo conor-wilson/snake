@@ -7,20 +7,24 @@
 [sub_resource type="LabelSettings" id="LabelSettings_in3gl"]
 font = ExtResource("2_blrtl")
 font_size = 48
+font_color = Color(0.215686, 0.580392, 0.431373, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0dqla"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7b6cp"]
 font = ExtResource("2_blrtl")
 font_size = 48
+font_color = Color(0.215686, 0.580392, 0.431373, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_4t0im"]
 font = ExtResource("2_blrtl")
 font_size = 48
+font_color = Color(0.67451, 0.196078, 0.196078, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_wknwg"]
 font = ExtResource("2_blrtl")
 font_size = 32
+font_color = Color(0.607843, 0.678431, 0.717647, 1)
 
 [node name="Menus" type="Control"]
 visibility_layer = 524288
@@ -39,6 +43,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="ColorRect" type="ColorRect" parent="MainMenu"]
+layout_mode = 0
 offset_right = 576.0
 offset_bottom = 608.0
 color = Color(0, 0, 0, 1)
@@ -77,7 +82,9 @@ visibility_layer = 524288
 layout_mode = 2
 focus_neighbor_top = NodePath("../QuitButton")
 theme = ExtResource("3_aqdmj")
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.607843, 0.678431, 0.717647, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_styles/normal = SubResource("StyleBoxEmpty_0dqla")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_0dqla")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_0dqla")
@@ -89,7 +96,9 @@ text = "START"
 visibility_layer = 524288
 layout_mode = 2
 theme = ExtResource("3_aqdmj")
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.607843, 0.678431, 0.717647, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_styles/normal = SubResource("StyleBoxEmpty_0dqla")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_0dqla")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_0dqla")
@@ -102,7 +111,9 @@ visibility_layer = 524288
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../StartButton")
 theme = ExtResource("3_aqdmj")
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.607843, 0.678431, 0.717647, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_styles/normal = SubResource("StyleBoxEmpty_0dqla")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_0dqla")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_0dqla")
@@ -113,9 +124,33 @@ text = "QUIT"
 [node name="PauseMenu" type="Control" parent="."]
 visible = false
 visibility_layer = 524288
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="PauseMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -144.0
+offset_top = -96.0
+offset_right = 144.0
+offset_bottom = 96.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu"]
 visibility_layer = 524288
@@ -125,10 +160,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 216.0
-offset_top = 217.5
-offset_right = 320.0
-offset_bottom = 350.5
+offset_left = -65.0
+offset_top = -69.0
+offset_right = 65.0
+offset_bottom = 69.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -144,7 +179,9 @@ visibility_layer = 524288
 layout_mode = 2
 focus_neighbor_top = NodePath("../MainMenuButton")
 theme = ExtResource("3_aqdmj")
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.607843, 0.678431, 0.717647, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_styles/normal = SubResource("StyleBoxEmpty_0dqla")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_0dqla")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_0dqla")
@@ -156,7 +193,9 @@ text = "RESUME"
 visibility_layer = 524288
 layout_mode = 2
 theme = ExtResource("3_aqdmj")
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.607843, 0.678431, 0.717647, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_styles/normal = SubResource("StyleBoxEmpty_0dqla")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_0dqla")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_0dqla")
@@ -169,7 +208,9 @@ visibility_layer = 524288
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../ResumeButton")
 theme = ExtResource("3_aqdmj")
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.607843, 0.678431, 0.717647, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_styles/normal = SubResource("StyleBoxEmpty_0dqla")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_0dqla")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_0dqla")
@@ -180,9 +221,34 @@ text = "MAIN MENU"
 [node name="GameOverMenu" type="Control" parent="."]
 visible = false
 visibility_layer = 524288
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -288.0
+offset_top = -304.0
+offset_right = 288.0
+offset_bottom = 304.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="GameOverMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -144.0
+offset_top = -96.0
+offset_right = 144.0
+offset_bottom = 96.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+color = Color(0, 0, 0, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="GameOverMenu"]
 visibility_layer = 524288
@@ -192,12 +258,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 204.0
-offset_top = 219.0
-offset_right = 332.0
-offset_bottom = 349.0
+offset_left = -94.5
+offset_top = -69.0
+offset_right = 94.5
+offset_bottom = 69.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
 
 [node name="GameOver" type="Label" parent="GameOverMenu/VBoxContainer"]
 visibility_layer = 524288
@@ -218,7 +285,9 @@ visibility_layer = 524288
 layout_mode = 2
 focus_neighbor_top = NodePath("../MainMenuButton")
 theme = ExtResource("3_aqdmj")
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.607843, 0.678431, 0.717647, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_styles/normal = SubResource("StyleBoxEmpty_0dqla")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_0dqla")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_0dqla")
@@ -231,7 +300,9 @@ visibility_layer = 524288
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../TryAgainButton")
 theme = ExtResource("3_aqdmj")
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.607843, 0.678431, 0.717647, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_styles/normal = SubResource("StyleBoxEmpty_0dqla")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_0dqla")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_0dqla")
