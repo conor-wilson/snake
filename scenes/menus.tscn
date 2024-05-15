@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://bp3mkt6r82voo"]
+[gd_scene load_steps=10 format=3 uid="uid://bp3mkt6r82voo"]
 
 [ext_resource type="Script" path="res://scenes/Menus.gd" id="1_o5mua"]
 [ext_resource type="FontFile" uid="uid://ddmsbwqyya44t" path="res://art/m6x11.ttf" id="2_blrtl"]
 [ext_resource type="Theme" uid="uid://b0gks4806w8al" path="res://scenes/menus.tres" id="3_aqdmj"]
+[ext_resource type="Texture2D" uid="uid://bqjkmi0odbocm" path="res://art/popupMenu.png" id="4_2jht0"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_in3gl"]
 font = ExtResource("2_blrtl")
@@ -24,7 +25,7 @@ font_color = Color(0.67451, 0.196078, 0.196078, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_wknwg"]
 font = ExtResource("2_blrtl")
 font_size = 32
-font_color = Color(0.607843, 0.678431, 0.717647, 1)
+font_color = Color(0, 0, 0, 1)
 
 [node name="Menus" type="Control"]
 visibility_layer = 524288
@@ -37,15 +38,26 @@ grow_vertical = 2
 script = ExtResource("1_o5mua")
 
 [node name="MainMenu" type="Control" parent="."]
+visible = false
 visibility_layer = 524288
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+metadata/_edit_group_ = true
 
 [node name="ColorRect" type="ColorRect" parent="MainMenu"]
-layout_mode = 0
-offset_right = 576.0
-offset_bottom = 608.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 556.0
+offset_bottom = 588.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MainMenu"]
@@ -122,22 +134,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_0dqla")
 text = "QUIT"
 
 [node name="PauseMenu" type="Control" parent="."]
-visible = false
 visibility_layer = 524288
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ColorRect" type="ColorRect" parent="PauseMenu"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -147,10 +144,25 @@ anchor_bottom = 0.5
 offset_left = -144.0
 offset_top = -96.0
 offset_right = 144.0
-offset_bottom = 96.0
+offset_bottom = 128.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 1)
+metadata/_edit_group_ = true
+
+[node name="TextureRect" type="TextureRect" parent="PauseMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -144.0
+offset_top = -112.0
+offset_right = 144.0
+offset_bottom = 112.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_2jht0")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu"]
 visibility_layer = 524288
@@ -179,7 +191,7 @@ visibility_layer = 524288
 layout_mode = 2
 focus_neighbor_top = NodePath("../MainMenuButton")
 theme = ExtResource("3_aqdmj")
-theme_override_colors/font_color = Color(0.607843, 0.678431, 0.717647, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_styles/normal = SubResource("StyleBoxEmpty_0dqla")
@@ -193,7 +205,7 @@ text = "RESUME"
 visibility_layer = 524288
 layout_mode = 2
 theme = ExtResource("3_aqdmj")
-theme_override_colors/font_color = Color(0.607843, 0.678431, 0.717647, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_styles/normal = SubResource("StyleBoxEmpty_0dqla")
@@ -208,7 +220,7 @@ visibility_layer = 524288
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../ResumeButton")
 theme = ExtResource("3_aqdmj")
-theme_override_colors/font_color = Color(0.607843, 0.678431, 0.717647, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_styles/normal = SubResource("StyleBoxEmpty_0dqla")
@@ -219,22 +231,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_0dqla")
 text = "MAIN MENU"
 
 [node name="GameOverMenu" type="Control" parent="."]
-visible = false
 visibility_layer = 524288
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -288.0
-offset_top = -304.0
-offset_right = 288.0
-offset_bottom = 304.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ColorRect" type="ColorRect" parent="GameOverMenu"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -244,11 +241,25 @@ anchor_bottom = 0.5
 offset_left = -144.0
 offset_top = -96.0
 offset_right = 144.0
-offset_bottom = 96.0
+offset_bottom = 128.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 4
-color = Color(0, 0, 0, 1)
+metadata/_edit_group_ = true
+
+[node name="TextureRect" type="TextureRect" parent="GameOverMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -144.0
+offset_top = -112.0
+offset_right = 144.0
+offset_bottom = 112.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_2jht0")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="GameOverMenu"]
 visibility_layer = 524288
@@ -285,7 +296,7 @@ visibility_layer = 524288
 layout_mode = 2
 focus_neighbor_top = NodePath("../MainMenuButton")
 theme = ExtResource("3_aqdmj")
-theme_override_colors/font_color = Color(0.607843, 0.678431, 0.717647, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_styles/normal = SubResource("StyleBoxEmpty_0dqla")
@@ -300,7 +311,7 @@ visibility_layer = 524288
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../TryAgainButton")
 theme = ExtResource("3_aqdmj")
-theme_override_colors/font_color = Color(0.607843, 0.678431, 0.717647, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_styles/normal = SubResource("StyleBoxEmpty_0dqla")
