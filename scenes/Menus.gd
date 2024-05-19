@@ -17,7 +17,7 @@ func hide_all():
 func show_start_menu():
 	hide_all()
 	$MainMenu.show()
-	$MainMenu/VBoxContainer/CenterContainer/ButtonContainer/StartButton.grab_focus()
+	$MainMenu/MainMenu/VBoxContainer/StartButton.grab_focus()
 
 func show_pause_menu():
 	hide_all()

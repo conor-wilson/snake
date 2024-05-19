@@ -15,7 +15,7 @@ script = ExtResource("1_qdk3y")
 offset_left = 24.0
 offset_right = 181.0
 offset_bottom = 48.0
-text = "Score: 123"
+text = "Score: 001"
 label_settings = SubResource("LabelSettings_ve6is")
 vertical_alignment = 1
 
