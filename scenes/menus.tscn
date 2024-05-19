@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bp3mkt6r82voo"]
+[gd_scene load_steps=17 format=3 uid="uid://bp3mkt6r82voo"]
 
 [ext_resource type="Script" path="res://scenes/Menus.gd" id="1_o5mua"]
 [ext_resource type="Texture2D" uid="uid://ieijwkdv6khp" path="res://art/AnimatedTiles-Sheet.png" id="2_3bwjl"]
@@ -6,6 +6,7 @@
 [ext_resource type="Theme" uid="uid://b0gks4806w8al" path="res://scenes/menus.tres" id="3_aqdmj"]
 [ext_resource type="Texture2D" uid="uid://bqjkmi0odbocm" path="res://art/popupMenu.png" id="4_2jht0"]
 [ext_resource type="Texture2D" uid="uid://cjg18o74pwjya" path="res://art/Title.png" id="5_feg00"]
+[ext_resource type="Script" path="res://scenes/PressAnyKey.gd" id="5_gap2a"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_xylqp"]
 tile_data = PackedInt32Array(0, 0, 1, 65536, 0, 0, 1, 0, 0, 65537, 0, 1)
@@ -157,6 +158,10 @@ text = "PRESS ANY KEY"
 label_settings = SubResource("LabelSettings_7r51r")
 horizontal_alignment = 1
 vertical_alignment = 1
+script = ExtResource("5_gap2a")
+
+[node name="Timer" type="Timer" parent="StartScreen/PressAnyKey"]
+wait_time = 0.75
 
 [node name="MainMenu" type="Control" parent="."]
 visible = false
@@ -467,6 +472,7 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_0dqla")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_0dqla")
 text = "MAIN MENU"
 
+[connection signal="timeout" from="StartScreen/PressAnyKey/Timer" to="StartScreen/PressAnyKey" method="_on_timer_timeout"]
 [connection signal="pressed" from="MainMenu/VBoxContainer/StartContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="MainMenu/VBoxContainer/OptionsContainer/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="MainMenu/VBoxContainer/QuitContainer/QuitButton" to="." method="_on_quit_button_pressed"]

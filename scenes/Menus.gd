@@ -10,6 +10,7 @@ func _ready():
 	hide_all()
 
 func hide_all():
+	$StartScreen/PressAnyKey/Timer.stop()
 	$StartScreen.hide()
 	$MainMenu.hide()
 	$PauseMenu.hide()
@@ -18,6 +19,7 @@ func hide_all():
 func show_start_screen():
 	hide_all()
 	$StartScreen.show()
+	$StartScreen/PressAnyKey/Timer.start()
 
 func show_main_menu(high_score:int):
 	hide_all()
@@ -55,3 +57,4 @@ func _on_main_menu_button_pressed():
 
 func _on_try_again_button_pressed():
 	play.emit()
+
