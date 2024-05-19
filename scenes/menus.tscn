@@ -165,6 +165,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="PauseMenu" type="Control" parent="."]
+visible = false
 visibility_layer = 524288
 layout_mode = 1
 anchors_preset = 8
