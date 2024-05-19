@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bp3mkt6r82voo"]
+[gd_scene load_steps=13 format=3 uid="uid://bp3mkt6r82voo"]
 
 [ext_resource type="Script" path="res://scenes/Menus.gd" id="1_o5mua"]
 [ext_resource type="FontFile" uid="uid://ddmsbwqyya44t" path="res://art/m6x11.ttf" id="2_blrtl"]
@@ -7,12 +7,17 @@
 [ext_resource type="Texture2D" uid="uid://bqjkmi0odbocm" path="res://art/popupMenu.png" id="4_2jht0"]
 [ext_resource type="Texture2D" uid="uid://cjg18o74pwjya" path="res://art/Title.png" id="5_feg00"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0dqla"]
+[sub_resource type="LabelSettings" id="LabelSettings_7r51r"]
+font = ExtResource("2_blrtl")
+font_size = 32
+font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_lhjyn"]
 font = ExtResource("2_blrtl")
 font_size = 32
 font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0dqla"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7b6cp"]
 font = ExtResource("2_blrtl")
@@ -39,20 +44,20 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_o5mua")
 
-[node name="MainMenu" type="Control" parent="."]
+[node name="StartScreen" type="Control" parent="."]
 visibility_layer = 524288
 anchors_preset = 0
 offset_top = 64.0
 offset_right = 40.0
 offset_bottom = 104.0
 
-[node name="TileMap" type="TileMap" parent="MainMenu"]
+[node name="TileMap" type="TileMap" parent="StartScreen"]
 position = Vector2(0, -64)
 tile_set = ExtResource("3_o5en8")
 format = 2
 layer_0/tile_data = PackedInt32Array(1, 0, 0, 65537, 65536, 0, 2, 65536, 0, 65538, 0, 0, 131073, 0, 0, 196609, 65536, 0, 131074, 65536, 0, 196610, 0, 0, 131072, 65536, 0, 0, 65536, 0, 65536, 0, 0, 3, 0, 0, 65539, 65536, 0, 4, 65536, 0, 65540, 0, 0, 5, 0, 0, 65541, 65536, 0, 6, 65536, 0, 65542, 0, 0, 7, 0, 0, 65543, 65536, 0, 65544, 0, 0, 65545, 65536, 0, 65546, 0, 0, 65547, 65536, 0, 12, 65536, 0, 65548, 0, 0, 13, 0, 0, 65549, 65536, 0, 14, 65536, 0, 65550, 0, 0, 15, 0, 0, 65551, 65536, 0, 16, 65536, 0, 65552, 0, 0, 131087, 0, 0, 196623, 65536, 0, 131088, 65536, 0, 196624, 0, 0, 262159, 0, 0, 327695, 65536, 0, 262160, 65536, 0, 327696, 0, 0, 393231, 0, 0, 458767, 65536, 0, 393232, 65536, 0, 458768, 0, 0, 393233, 0, 0, 458769, 65536, 0, 262161, 0, 0, 327697, 65536, 0, 131089, 0, 0, 196625, 65536, 0, 17, 0, 0, 65553, 65536, 0, 393229, 0, 0, 458765, 65536, 0, 393230, 65536, 0, 458766, 0, 0, 393227, 0, 0, 458763, 65536, 0, 393228, 65536, 0, 458764, 0, 0, 393225, 0, 0, 458761, 65536, 0, 393226, 65536, 0, 458762, 0, 0, 393223, 0, 0, 458759, 65536, 0, 393224, 65536, 0, 458760, 0, 0, 393221, 0, 0, 458757, 65536, 0, 393222, 65536, 0, 458758, 0, 0, 393219, 0, 0, 458755, 65536, 0, 393220, 65536, 0, 458756, 0, 0, 393217, 0, 0, 458753, 65536, 0, 393218, 65536, 0, 458754, 0, 0, 458752, 0, 0, 262145, 0, 0, 327681, 65536, 0, 262146, 65536, 0, 327682, 0, 0, 262147, 0, 0, 327683, 65536, 0, 262148, 65536, 0, 327684, 0, 0, 262149, 0, 0, 327685, 65536, 0, 262150, 65536, 0, 327686, 0, 0, 262151, 0, 0, 327687, 65536, 0, 262152, 65536, 0, 327688, 0, 0, 262153, 0, 0, 327689, 65536, 0, 262154, 65536, 0, 327690, 0, 0, 262155, 0, 0, 327691, 65536, 0, 262156, 65536, 0, 327692, 0, 0, 262157, 0, 0, 327693, 65536, 0, 262158, 65536, 0, 327694, 0, 0, 131085, 0, 0, 196621, 65536, 0, 131086, 65536, 0, 196622, 0, 0, 131083, 0, 0, 196619, 65536, 0, 131084, 65536, 0, 196620, 0, 0, 131081, 0, 0, 196617, 65536, 0, 131082, 65536, 0, 196618, 0, 0, 131079, 0, 0, 196615, 65536, 0, 131080, 65536, 0, 196616, 0, 0, 131077, 0, 0, 196613, 65536, 0, 131078, 65536, 0, 196614, 0, 0, 131075, 0, 0, 196611, 65536, 0, 131076, 65536, 0, 196612, 0, 0, 524288, 65536, 0, 589824, 0, 0, 524289, 0, 0, 589825, 65536, 0, 524290, 65536, 0, 589826, 0, 0, 524291, 0, 0, 589827, 65536, 0, 524292, 65536, 0, 589828, 0, 0, 524293, 0, 0, 589829, 65536, 0, 524294, 65536, 0, 589830, 0, 0, 524295, 0, 0, 589831, 65536, 0, 524296, 65536, 0, 589832, 0, 0, 524297, 0, 0, 589833, 65536, 0, 524298, 65536, 0, 589834, 0, 0, 524299, 0, 0, 589835, 65536, 0, 524300, 65536, 0, 589836, 0, 0, 524301, 0, 0, 589837, 65536, 0, 524302, 65536, 0, 589838, 0, 0, 524303, 0, 0, 589839, 65536, 0, 524304, 65536, 0, 589840, 0, 0, 524305, 0, 0, 589841, 65536, 0, 655377, 0, 0, 720913, 65536, 0, 786449, 0, 0, 851985, 65536, 0, 917521, 0, 0, 983057, 65536, 0, 1048593, 0, 0, 1048591, 0, 0, 1114127, 65536, 0, 1048592, 65536, 0, 1114128, 0, 0, 917519, 0, 0, 983055, 65536, 0, 917520, 65536, 0, 983056, 0, 0, 917517, 0, 0, 983053, 65536, 0, 917518, 65536, 0, 983054, 0, 0, 786445, 0, 0, 851981, 65536, 0, 786446, 65536, 0, 851982, 0, 0, 655373, 0, 0, 720909, 65536, 0, 655374, 65536, 0, 720910, 0, 0, 655371, 0, 0, 720907, 65536, 0, 655372, 65536, 0, 720908, 0, 0, 786443, 0, 0, 851979, 65536, 0, 786444, 65536, 0, 851980, 0, 0, 786441, 0, 0, 851977, 65536, 0, 786442, 65536, 0, 851978, 0, 0, 655375, 0, 0, 720911, 65536, 0, 655376, 65536, 0, 720912, 0, 0, 786447, 0, 0, 851983, 65536, 0, 786448, 65536, 0, 851984, 0, 0, 655369, 0, 0, 720905, 65536, 0, 655370, 65536, 0, 720906, 0, 0, 655365, 0, 0, 720901, 65536, 0, 655366, 65536, 0, 720902, 0, 0, 655363, 0, 0, 720899, 65536, 0, 655364, 65536, 0, 720900, 0, 0, 655361, 0, 0, 720897, 65536, 0, 655362, 65536, 0, 720898, 0, 0, 655360, 65536, 0, 720896, 0, 0, 655367, 0, 0, 720903, 65536, 0, 655368, 65536, 0, 720904, 0, 0, 786439, 0, 0, 851975, 65536, 0, 786440, 65536, 0, 851976, 0, 0, 786437, 0, 0, 851973, 65536, 0, 786438, 65536, 0, 851974, 0, 0, 917509, 0, 0, 983045, 65536, 0, 917510, 65536, 0, 983046, 0, 0, 917511, 0, 0, 983047, 65536, 0, 917512, 65536, 0, 983048, 0, 0, 917513, 0, 0, 983049, 65536, 0, 917514, 65536, 0, 983050, 0, 0, 917515, 0, 0, 983051, 65536, 0, 917516, 65536, 0, 983052, 0, 0, 1048589, 0, 0, 1114125, 65536, 0, 1048590, 65536, 0, 1114126, 0, 0, 1048587, 0, 0, 1114123, 65536, 0, 1048588, 65536, 0, 1114124, 0, 0, 1048585, 0, 0, 1114121, 65536, 0, 1048586, 65536, 0, 1114122, 0, 0, 1048583, 0, 0, 1114119, 65536, 0, 1048584, 65536, 0, 1114120, 0, 0, 1048581, 0, 0, 1114117, 65536, 0, 1048582, 65536, 0, 1114118, 0, 0, 1048579, 0, 0, 1114115, 65536, 0, 1048580, 65536, 0, 1114116, 0, 0, 1048577, 0, 0, 1114113, 65536, 0, 1048578, 65536, 0, 1114114, 0, 0, 1048576, 65536, 0, 1114112, 0, 0, 917504, 65536, 0, 983040, 0, 0, 917505, 0, 0, 983041, 65536, 0, 917506, 65536, 0, 983042, 0, 0, 786433, 0, 0, 851969, 65536, 0, 786434, 65536, 0, 851970, 0, 0, 786432, 65536, 0, 851968, 0, 0, 786435, 0, 0, 851971, 65536, 0, 786436, 65536, 0, 851972, 0, 0, 917507, 0, 0, 983043, 65536, 0, 917508, 65536, 0, 983044, 0, 0, 1179655, 0, 0, 1179656, 65536, 0, 1179657, 0, 0, 1179658, 65536, 0, 1179659, 0, 0, 1179660, 65536, 0, 1179661, 0, 0, 1179662, 65536, 0, 8, 65536, 0, 9, 0, 0, 10, 65536, 0, 11, 0, 0, 196608, 0, 0, 262144, 65536, 0, 327680, 0, 0, 393216, 65536, 0, 1114129, 65536, 0, 1179665, 0, 0, 1179664, 65536, 0, 1179663, 0, 0, 1179648, 65536, 0, 1179649, 0, 0, 1179650, 65536, 0, 1179651, 0, 0, 1179652, 65536, 0, 1179653, 0, 0, 1179654, 65536, 0)
 
-[node name="Title" type="TextureRect" parent="MainMenu"]
+[node name="Title" type="TextureRect" parent="StartScreen"]
 layout_mode = 0
 offset_left = 88.0
 offset_top = 64.0
@@ -60,15 +65,38 @@ offset_right = 488.0
 offset_bottom = 160.0
 texture = ExtResource("5_feg00")
 
-[node name="MainMenu" type="Control" parent="MainMenu"]
+[node name="PressAnyKey" type="Label" parent="StartScreen"]
+layout_mode = 1
+offset_left = 144.0
+offset_top = 304.0
+offset_right = 432.0
+offset_bottom = 336.0
+text = "PRESS ANY KEY"
+label_settings = SubResource("LabelSettings_7r51r")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MainMenu" type="Control" parent="."]
+visible = false
 anchors_preset = 0
 offset_left = 144.0
-offset_top = 240.0
+offset_top = 304.0
 offset_right = 432.0
-offset_bottom = 464.0
+offset_bottom = 528.0
 metadata/_edit_group_ = true
 
-[node name="Frame" type="TextureRect" parent="MainMenu/MainMenu"]
+[node name="HighScore" type="Label" parent="MainMenu"]
+visibility_layer = 524288
+layout_mode = 2
+offset_top = -256.0
+offset_right = 288.0
+offset_bottom = -224.0
+text = "High Score: 199"
+label_settings = SubResource("LabelSettings_lhjyn")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Frame" type="TextureRect" parent="MainMenu"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -83,7 +111,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_2jht0")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/MainMenu"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu"]
 visibility_layer = 524288
 layout_mode = 1
 anchors_preset = 8
@@ -99,10 +127,10 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="StartContainer" type="CenterContainer" parent="MainMenu/MainMenu/VBoxContainer"]
+[node name="StartContainer" type="CenterContainer" parent="MainMenu/VBoxContainer"]
 layout_mode = 2
 
-[node name="StartButton" type="Button" parent="MainMenu/MainMenu/VBoxContainer/StartContainer"]
+[node name="StartButton" type="Button" parent="MainMenu/VBoxContainer/StartContainer"]
 visibility_layer = 524288
 layout_mode = 2
 focus_neighbor_top = NodePath("../../QuitContainer/QuitButton")
@@ -117,10 +145,10 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_0dqla")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_0dqla")
 text = "START"
 
-[node name="OptionsContainer" type="CenterContainer" parent="MainMenu/MainMenu/VBoxContainer"]
+[node name="OptionsContainer" type="CenterContainer" parent="MainMenu/VBoxContainer"]
 layout_mode = 2
 
-[node name="OptionsButton" type="Button" parent="MainMenu/MainMenu/VBoxContainer/OptionsContainer"]
+[node name="OptionsButton" type="Button" parent="MainMenu/VBoxContainer/OptionsContainer"]
 visibility_layer = 524288
 layout_mode = 2
 theme = ExtResource("3_aqdmj")
@@ -134,10 +162,10 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_0dqla")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_0dqla")
 text = "OPTIONS"
 
-[node name="QuitContainer" type="CenterContainer" parent="MainMenu/MainMenu/VBoxContainer"]
+[node name="QuitContainer" type="CenterContainer" parent="MainMenu/VBoxContainer"]
 layout_mode = 2
 
-[node name="QuitButton" type="Button" parent="MainMenu/MainMenu/VBoxContainer/QuitContainer"]
+[node name="QuitButton" type="Button" parent="MainMenu/VBoxContainer/QuitContainer"]
 visibility_layer = 524288
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../../StartContainer/StartButton")
@@ -151,18 +179,6 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_0dqla")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_0dqla")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_0dqla")
 text = "QUIT"
-
-[node name="HighScore" type="Label" parent="MainMenu"]
-visibility_layer = 524288
-layout_mode = 2
-offset_left = 144.0
-offset_top = -16.0
-offset_right = 432.0
-offset_bottom = 16.0
-text = "High Score: 199"
-label_settings = SubResource("LabelSettings_lhjyn")
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="PauseMenu" type="Control" parent="."]
 visible = false
@@ -369,9 +385,9 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_0dqla")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_0dqla")
 text = "MAIN MENU"
 
-[connection signal="pressed" from="MainMenu/MainMenu/VBoxContainer/StartContainer/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="MainMenu/MainMenu/VBoxContainer/OptionsContainer/OptionsButton" to="." method="_on_options_button_pressed"]
-[connection signal="pressed" from="MainMenu/MainMenu/VBoxContainer/QuitContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="MainMenu/VBoxContainer/StartContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="MainMenu/VBoxContainer/OptionsContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="MainMenu/VBoxContainer/QuitContainer/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="PauseMenu/VBoxContainer/ResumeContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="PauseMenu/VBoxContainer/OptionsContainer/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="PauseMenu/VBoxContainer/MainMenuContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]

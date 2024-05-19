@@ -10,15 +10,21 @@ func _ready():
 	hide_all()
 
 func hide_all():
+	$StartScreen.hide()
 	$MainMenu.hide()
 	$PauseMenu.hide()
 	$GameOverMenu.hide()
 
-func show_start_menu(high_score:int):
+func show_start_screen():
+	hide_all()
+	$StartScreen.show()
+
+func show_main_menu(high_score:int):
 	hide_all()
 	$MainMenu/HighScore.text = "High Score: " + str(high_score)
+	$StartScreen.show()
 	$MainMenu.show()
-	$MainMenu/MainMenu/VBoxContainer/StartContainer/StartButton.grab_focus()
+	$MainMenu/VBoxContainer/StartContainer/StartButton.grab_focus()
 
 func show_pause_menu():
 	hide_all()

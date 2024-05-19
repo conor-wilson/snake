@@ -1,6 +1,6 @@
 extends Node
 
-enum GameState {START_MENU, PLAY, PAUSE, GAME_OVER}
+enum GameState {START_SCREEN, MAIN_MENU, PLAY, PAUSE, GAME_OVER}
 var game_state : GameState
 var score : int
 var save_data : SaveData
@@ -8,13 +8,19 @@ var save_data : SaveData
 
 ## ------------- State-Chaging Functions -------------- ##
 
-func start_menu(): #TODO: Rename this to "main_menu()"
+func start_screen():
+	$AudioPlayer.stop_music()
+	game_state = GameState.START_SCREEN
+	$Menus.show_start_screen()
+	$HUD.hide()
+
+func main_menu():
 	$AudioPlayer.stop_music()
 	if game_state == GameState.PAUSE:
 		$AudioPlayer.play_game_over()
 	
-	game_state = GameState.START_MENU
-	$Menus.show_start_menu(save_data.high_score)
+	game_state = GameState.MAIN_MENU
+	$Menus.show_main_menu(save_data.high_score)
 	$HUD.hide()
 	$Snake.kill_snake()
 	$Snake.stop_ticker()
@@ -70,7 +76,7 @@ func game_over():
 
 func _ready():
 	save_data = SaveData.load()
-	start_menu()
+	start_screen()
 
 func _on_snake_turn():
 	$AudioPlayer.play_turn()
@@ -95,7 +101,7 @@ func _on_snake_apple_eaten():
 
 func _on_menus_play():
 	match game_state:
-		GameState.START_MENU, GameState.GAME_OVER:
+		GameState.MAIN_MENU, GameState.GAME_OVER:
 			start_game()
 		GameState.PAUSE:
 			resume()
@@ -107,10 +113,14 @@ func _on_menus_quit():
 	get_tree().quit()
 
 func _on_menus_main_menu():
-	start_menu()
+	start_screen()
 
 
 ## ---------- Player-Input-Triggered Functions --------- ##
+
+func _on_player_input_any():
+	if game_state == GameState.START_SCREEN:
+		main_menu()
 
 func _on_player_input_pause():
 	match game_state: 
@@ -145,4 +155,3 @@ func _on_player_input_left():
 		$AudioPlayer.play_music()
 		$Snake.start_ticker()
 		$Snake.turn_head(Vector2.LEFT)
-

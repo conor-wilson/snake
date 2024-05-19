@@ -28,6 +28,7 @@ z_index = -20
 [connection signal="options" from="Menus" to="." method="_on_menus_options"]
 [connection signal="play" from="Menus" to="." method="_on_menus_play"]
 [connection signal="quit" from="Menus" to="." method="_on_menus_quit"]
+[connection signal="any" from="PlayerInput" to="." method="_on_player_input_any"]
 [connection signal="down" from="PlayerInput" to="." method="_on_player_input_down"]
 [connection signal="left" from="PlayerInput" to="." method="_on_player_input_left"]
 [connection signal="pause" from="PlayerInput" to="." method="_on_player_input_pause"]
