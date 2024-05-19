@@ -14,7 +14,7 @@ func start_menu(): #TODO: Rename this to "main_menu()"
 		$AudioPlayer.play_game_over()
 	
 	game_state = GameState.START_MENU
-	$Menus.show_start_menu()
+	$Menus.show_start_menu(save_data.high_score)
 	$HUD.hide()
 	$Snake.kill_snake()
 	$Snake.stop_ticker()

@@ -14,21 +14,22 @@ func hide_all():
 	$PauseMenu.hide()
 	$GameOverMenu.hide()
 
-func show_start_menu():
+func show_start_menu(high_score:int):
 	hide_all()
+	$MainMenu/HighScore.text = "High Score: " + str(high_score)
 	$MainMenu.show()
-	$MainMenu/MainMenu/VBoxContainer/StartButton.grab_focus()
+	$MainMenu/MainMenu/VBoxContainer/StartContainer/StartButton.grab_focus()
 
 func show_pause_menu():
 	hide_all()
 	$PauseMenu.show()
-	$PauseMenu/VBoxContainer/ResumeButton.grab_focus()
+	$PauseMenu/VBoxContainer/ResumeContainer/ResumeButton.grab_focus()
 
-func show_game_over_screen(score: int):
+func show_game_over_screen(score:int):
 	hide_all()
 	$GameOverMenu/VBoxContainer/Score.text = "Score: " + str(score)
 	$GameOverMenu.show()
-	$GameOverMenu/VBoxContainer/TryAgainButton.grab_focus()
+	$GameOverMenu/VBoxContainer/TryAgainContainer/TryAgainButton.grab_focus()
 
 
 func _on_start_button_pressed():

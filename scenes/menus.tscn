@@ -99,10 +99,13 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="StartButton" type="Button" parent="MainMenu/MainMenu/VBoxContainer"]
+[node name="StartContainer" type="CenterContainer" parent="MainMenu/MainMenu/VBoxContainer"]
+layout_mode = 2
+
+[node name="StartButton" type="Button" parent="MainMenu/MainMenu/VBoxContainer/StartContainer"]
 visibility_layer = 524288
 layout_mode = 2
-focus_neighbor_top = NodePath("../QuitButton")
+focus_neighbor_top = NodePath("../../QuitContainer/QuitButton")
 theme = ExtResource("3_aqdmj")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
@@ -114,7 +117,10 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_0dqla")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_0dqla")
 text = "START"
 
-[node name="OptionsButton" type="Button" parent="MainMenu/MainMenu/VBoxContainer"]
+[node name="OptionsContainer" type="CenterContainer" parent="MainMenu/MainMenu/VBoxContainer"]
+layout_mode = 2
+
+[node name="OptionsButton" type="Button" parent="MainMenu/MainMenu/VBoxContainer/OptionsContainer"]
 visibility_layer = 524288
 layout_mode = 2
 theme = ExtResource("3_aqdmj")
@@ -128,10 +134,13 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_0dqla")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_0dqla")
 text = "OPTIONS"
 
-[node name="QuitButton" type="Button" parent="MainMenu/MainMenu/VBoxContainer"]
+[node name="QuitContainer" type="CenterContainer" parent="MainMenu/MainMenu/VBoxContainer"]
+layout_mode = 2
+
+[node name="QuitButton" type="Button" parent="MainMenu/MainMenu/VBoxContainer/QuitContainer"]
 visibility_layer = 524288
 layout_mode = 2
-focus_neighbor_bottom = NodePath("../StartButton")
+focus_neighbor_bottom = NodePath("../../StartContainer/StartButton")
 theme = ExtResource("3_aqdmj")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
@@ -143,13 +152,13 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_0dqla")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_0dqla")
 text = "QUIT"
 
-[node name="High Score" type="Label" parent="."]
+[node name="HighScore" type="Label" parent="MainMenu"]
 visibility_layer = 524288
 layout_mode = 2
 offset_left = 144.0
-offset_top = 48.0
+offset_top = -16.0
 offset_right = 432.0
-offset_bottom = 80.0
+offset_bottom = 16.0
 text = "High Score: 0199"
 label_settings = SubResource("LabelSettings_lhjyn")
 horizontal_alignment = 1
@@ -209,10 +218,13 @@ text = "Paused"
 label_settings = SubResource("LabelSettings_7b6cp")
 horizontal_alignment = 1
 
-[node name="ResumeButton" type="Button" parent="PauseMenu/VBoxContainer"]
+[node name="ResumeContainer" type="CenterContainer" parent="PauseMenu/VBoxContainer"]
+layout_mode = 2
+
+[node name="ResumeButton" type="Button" parent="PauseMenu/VBoxContainer/ResumeContainer"]
 visibility_layer = 524288
 layout_mode = 2
-focus_neighbor_top = NodePath("../MainMenuButton")
+focus_neighbor_top = NodePath("../../MainMenuContainer/MainMenuButton")
 theme = ExtResource("3_aqdmj")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
@@ -224,7 +236,10 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_0dqla")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_0dqla")
 text = "RESUME"
 
-[node name="OptionsButton" type="Button" parent="PauseMenu/VBoxContainer"]
+[node name="OptionsContainer" type="CenterContainer" parent="PauseMenu/VBoxContainer"]
+layout_mode = 2
+
+[node name="OptionsButton" type="Button" parent="PauseMenu/VBoxContainer/OptionsContainer"]
 visibility_layer = 524288
 layout_mode = 2
 theme = ExtResource("3_aqdmj")
@@ -238,10 +253,13 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_0dqla")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_0dqla")
 text = "OPTIONS"
 
-[node name="MainMenuButton" type="Button" parent="PauseMenu/VBoxContainer"]
+[node name="MainMenuContainer" type="CenterContainer" parent="PauseMenu/VBoxContainer"]
+layout_mode = 2
+
+[node name="MainMenuButton" type="Button" parent="PauseMenu/VBoxContainer/MainMenuContainer"]
 visibility_layer = 524288
 layout_mode = 2
-focus_neighbor_bottom = NodePath("../ResumeButton")
+focus_neighbor_bottom = NodePath("../../ResumeContainer/ResumeButton")
 theme = ExtResource("3_aqdmj")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
@@ -315,10 +333,13 @@ text = "Score: 123"
 label_settings = SubResource("LabelSettings_wknwg")
 horizontal_alignment = 1
 
-[node name="TryAgainButton" type="Button" parent="GameOverMenu/VBoxContainer"]
+[node name="TryAgainContainer" type="CenterContainer" parent="GameOverMenu/VBoxContainer"]
+layout_mode = 2
+
+[node name="TryAgainButton" type="Button" parent="GameOverMenu/VBoxContainer/TryAgainContainer"]
 visibility_layer = 524288
 layout_mode = 2
-focus_neighbor_top = NodePath("../MainMenuButton")
+focus_neighbor_top = NodePath("../../MainMenuContainer/MainMenuButton")
 theme = ExtResource("3_aqdmj")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
@@ -330,10 +351,13 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_0dqla")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_0dqla")
 text = "TRY AGAIN"
 
-[node name="MainMenuButton" type="Button" parent="GameOverMenu/VBoxContainer"]
+[node name="MainMenuContainer" type="CenterContainer" parent="GameOverMenu/VBoxContainer"]
+layout_mode = 2
+
+[node name="MainMenuButton" type="Button" parent="GameOverMenu/VBoxContainer/MainMenuContainer"]
 visibility_layer = 524288
 layout_mode = 2
-focus_neighbor_bottom = NodePath("../TryAgainButton")
+focus_neighbor_bottom = NodePath("../../TryAgainContainer/TryAgainButton")
 theme = ExtResource("3_aqdmj")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
@@ -345,11 +369,11 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_0dqla")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_0dqla")
 text = "MAIN MENU"
 
-[connection signal="pressed" from="MainMenu/MainMenu/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="MainMenu/MainMenu/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
-[connection signal="pressed" from="MainMenu/MainMenu/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
-[connection signal="pressed" from="PauseMenu/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
-[connection signal="pressed" from="PauseMenu/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
-[connection signal="pressed" from="PauseMenu/VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
-[connection signal="pressed" from="GameOverMenu/VBoxContainer/TryAgainButton" to="." method="_on_try_again_button_pressed"]
-[connection signal="pressed" from="GameOverMenu/VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="MainMenu/MainMenu/VBoxContainer/StartContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="MainMenu/MainMenu/VBoxContainer/OptionsContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="MainMenu/MainMenu/VBoxContainer/QuitContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="PauseMenu/VBoxContainer/ResumeContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="PauseMenu/VBoxContainer/OptionsContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="PauseMenu/VBoxContainer/MainMenuContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="GameOverMenu/VBoxContainer/TryAgainContainer/TryAgainButton" to="." method="_on_try_again_button_pressed"]
+[connection signal="pressed" from="GameOverMenu/VBoxContainer/MainMenuContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
