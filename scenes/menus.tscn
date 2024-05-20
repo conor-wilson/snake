@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bp3mkt6r82voo"]
+[gd_scene load_steps=18 format=3 uid="uid://bp3mkt6r82voo"]
 
 [ext_resource type="Script" path="res://scenes/Menus.gd" id="1_o5mua"]
 [ext_resource type="Texture2D" uid="uid://ieijwkdv6khp" path="res://art/AnimatedTiles-Sheet.png" id="2_3bwjl"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bqjkmi0odbocm" path="res://art/popupMenu.png" id="4_2jht0"]
 [ext_resource type="Texture2D" uid="uid://cjg18o74pwjya" path="res://art/Title.png" id="5_feg00"]
 [ext_resource type="Script" path="res://scenes/PressAnyKey.gd" id="5_gap2a"]
+[ext_resource type="Script" path="res://scenes/OptionsButton.gd" id="8_m3lak"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_xylqp"]
 tile_data = PackedInt32Array(0, 0, 1, 65536, 0, 0, 1, 0, 0, 65537, 0, 1)
@@ -128,6 +129,7 @@ grow_vertical = 2
 script = ExtResource("1_o5mua")
 
 [node name="StartScreen" type="Control" parent="."]
+visible = false
 visibility_layer = 524288
 anchors_preset = 0
 offset_top = 64.0
@@ -164,7 +166,6 @@ script = ExtResource("5_gap2a")
 wait_time = 0.75
 
 [node name="MainMenu" type="Control" parent="."]
-visible = false
 anchors_preset = 0
 offset_left = 144.0
 offset_top = 304.0
@@ -221,6 +222,7 @@ layout_mode = 2
 visibility_layer = 524288
 layout_mode = 2
 focus_neighbor_top = NodePath("../../QuitContainer/QuitButton")
+focus_neighbor_bottom = NodePath("../../OptionsContainer/OptionsButton")
 theme = ExtResource("3_aqdmj")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
@@ -238,6 +240,8 @@ layout_mode = 2
 [node name="OptionsButton" type="Button" parent="MainMenu/VBoxContainer/OptionsContainer"]
 visibility_layer = 524288
 layout_mode = 2
+focus_neighbor_top = NodePath("../../StartContainer/StartButton")
+focus_neighbor_bottom = NodePath("../../QuitContainer/QuitButton")
 theme = ExtResource("3_aqdmj")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
@@ -248,6 +252,21 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_0dqla")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_0dqla")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_0dqla")
 text = "OPTIONS"
+script = ExtResource("8_m3lak")
+
+[node name="OptionsMenu" type="MenuButton" parent="MainMenu/VBoxContainer/OptionsContainer/OptionsButton"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+item_count = 3
+popup/item_0/text = "MUTE"
+popup/item_0/checkable = 1
+popup/item_0/id = 0
+popup/item_1/text = "WORM MODE"
+popup/item_1/checkable = 1
+popup/item_1/id = 1
+popup/item_2/text = "BACK"
+popup/item_2/id = 2
 
 [node name="QuitContainer" type="CenterContainer" parent="MainMenu/VBoxContainer"]
 layout_mode = 2
@@ -255,6 +274,7 @@ layout_mode = 2
 [node name="QuitButton" type="Button" parent="MainMenu/VBoxContainer/QuitContainer"]
 visibility_layer = 524288
 layout_mode = 2
+focus_neighbor_top = NodePath("../../OptionsContainer/OptionsButton")
 focus_neighbor_bottom = NodePath("../../StartContainer/StartButton")
 theme = ExtResource("3_aqdmj")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -266,6 +286,120 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_0dqla")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_0dqla")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_0dqla")
 text = "QUIT"
+
+[node name="OptionsMenu" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_left = 280.0
+offset_top = 176.0
+offset_right = 320.0
+offset_bottom = 216.0
+
+[node name="Frame" type="TextureRect" parent="OptionsMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -144.0
+offset_top = -112.0
+offset_right = 144.0
+offset_bottom = 112.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_2jht0")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="OptionsMenu"]
+layout_mode = 2
+offset_left = -77.0
+offset_top = -44.0
+offset_right = 117.0
+offset_bottom = -44.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OptionsMenu/HBoxContainer"]
+visibility_layer = 524288
+layout_mode = 2
+
+[node name="SpeedLabel" type="Label" parent="OptionsMenu/HBoxContainer/VBoxContainer"]
+visibility_layer = 524288
+layout_mode = 2
+text = "SPEED: "
+label_settings = SubResource("LabelSettings_lhjyn")
+vertical_alignment = 1
+
+[node name="MuteLabel" type="Label" parent="OptionsMenu/HBoxContainer/VBoxContainer"]
+visibility_layer = 524288
+layout_mode = 2
+text = "MUTE: "
+label_settings = SubResource("LabelSettings_lhjyn")
+vertical_alignment = 1
+
+[node name="WormLabel" type="Label" parent="OptionsMenu/HBoxContainer/VBoxContainer"]
+visibility_layer = 524288
+layout_mode = 2
+text = "WORM: "
+label_settings = SubResource("LabelSettings_lhjyn")
+vertical_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="OptionsMenu/HBoxContainer"]
+visibility_layer = 524288
+layout_mode = 2
+
+[node name="SpeedOptions" type="OptionButton" parent="OptionsMenu/HBoxContainer/VBoxContainer2"]
+visibility_layer = 524288
+layout_mode = 2
+theme = ExtResource("3_aqdmj")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0dqla")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_0dqla")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0dqla")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_0dqla")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_0dqla")
+item_count = 3
+selected = 1
+popup/item_0/text = "SLOW"
+popup/item_0/id = 0
+popup/item_1/text = "NORMAL"
+popup/item_1/id = 1
+popup/item_2/text = "FAST"
+popup/item_2/id = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="OptionsMenu/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="MuteCheckBox" type="CheckBox" parent="OptionsMenu/HBoxContainer/VBoxContainer2/CenterContainer"]
+visibility_layer = 524288
+layout_mode = 2
+theme = ExtResource("3_aqdmj")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_0dqla")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_0dqla")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_0dqla")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0dqla")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0dqla")
+text = "MUTE"
+flat = true
+
+[node name="CenterContainer2" type="CenterContainer" parent="OptionsMenu/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="WormCheckBox" type="CheckBox" parent="OptionsMenu/HBoxContainer/VBoxContainer2/CenterContainer2"]
+visibility_layer = 524288
+layout_mode = 2
+theme = ExtResource("3_aqdmj")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_0dqla")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_0dqla")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_0dqla")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0dqla")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0dqla")
 
 [node name="PauseMenu" type="Control" parent="."]
 visible = false
@@ -475,6 +609,7 @@ text = "MAIN MENU"
 [connection signal="timeout" from="StartScreen/PressAnyKey/Timer" to="StartScreen/PressAnyKey" method="_on_timer_timeout"]
 [connection signal="pressed" from="MainMenu/VBoxContainer/StartContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="MainMenu/VBoxContainer/OptionsContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="MainMenu/VBoxContainer/OptionsContainer/OptionsButton" to="MainMenu/VBoxContainer/OptionsContainer/OptionsButton" method="_on_pressed"]
 [connection signal="pressed" from="MainMenu/VBoxContainer/QuitContainer/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="PauseMenu/VBoxContainer/ResumeContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="PauseMenu/VBoxContainer/OptionsContainer/OptionsButton" to="." method="_on_options_button_pressed"]
