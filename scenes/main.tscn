@@ -26,7 +26,6 @@ visible = false
 [connection signal="hit" from="Snake" to="." method="_on_snake_hit"]
 [connection signal="turn" from="Snake" to="." method="_on_snake_turn"]
 [connection signal="main_menu" from="Menus" to="." method="_on_menus_main_menu"]
-[connection signal="options" from="Menus" to="." method="_on_menus_options"]
 [connection signal="play" from="Menus" to="." method="_on_menus_play"]
 [connection signal="quit" from="Menus" to="." method="_on_menus_quit"]
 [connection signal="any" from="PlayerInput" to="." method="_on_player_input_any"]

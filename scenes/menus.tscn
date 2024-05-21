@@ -166,11 +166,13 @@ script = ExtResource("5_gap2a")
 wait_time = 0.75
 
 [node name="MainMenu" type="Control" parent="."]
+visible = false
 anchors_preset = 0
 offset_left = 144.0
 offset_top = 304.0
 offset_right = 432.0
 offset_bottom = 528.0
+metadata/_edit_group_ = true
 
 [node name="HighScore" type="Label" parent="MainMenu"]
 visibility_layer = 524288
@@ -269,129 +271,14 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_0dqla")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_0dqla")
 text = "QUIT"
 
-[node name="OptionsMenu" parent="MainMenu" instance=ExtResource("8_6xxxe")]
+[node name="MainOptionsMenu" parent="MainMenu" instance=ExtResource("8_6xxxe")]
 layout_mode = 1
-offset_left = 144.0
-offset_top = 48.0
-offset_right = 144.0
-offset_bottom = 48.0
-
-[node name="OptionsMenu" type="Control" parent="."]
-visible = false
-anchors_preset = 0
-offset_left = 280.0
-offset_top = 176.0
-offset_right = 320.0
-offset_bottom = 216.0
-
-[node name="Frame" type="TextureRect" parent="OptionsMenu"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -144.0
-offset_top = -112.0
-offset_right = 144.0
-offset_bottom = 112.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("4_2jht0")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="OptionsMenu"]
-layout_mode = 2
-offset_left = -77.0
-offset_top = -44.0
-offset_right = 117.0
-offset_bottom = -44.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="OptionsMenu/HBoxContainer"]
-visibility_layer = 524288
-layout_mode = 2
-
-[node name="SpeedLabel" type="Label" parent="OptionsMenu/HBoxContainer/VBoxContainer"]
-visibility_layer = 524288
-layout_mode = 2
-text = "SPEED: "
-label_settings = SubResource("LabelSettings_lhjyn")
-vertical_alignment = 1
-
-[node name="MuteLabel" type="Label" parent="OptionsMenu/HBoxContainer/VBoxContainer"]
-visibility_layer = 524288
-layout_mode = 2
-text = "MUTE: "
-label_settings = SubResource("LabelSettings_lhjyn")
-vertical_alignment = 1
-
-[node name="WormLabel" type="Label" parent="OptionsMenu/HBoxContainer/VBoxContainer"]
-visibility_layer = 524288
-layout_mode = 2
-text = "WORM: "
-label_settings = SubResource("LabelSettings_lhjyn")
-vertical_alignment = 1
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="OptionsMenu/HBoxContainer"]
-visibility_layer = 524288
-layout_mode = 2
-
-[node name="SpeedOptions" type="OptionButton" parent="OptionsMenu/HBoxContainer/VBoxContainer2"]
-visibility_layer = 524288
-layout_mode = 2
-theme = ExtResource("3_aqdmj")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
-theme_override_styles/focus = SubResource("StyleBoxEmpty_0dqla")
-theme_override_styles/normal = SubResource("StyleBoxEmpty_0dqla")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_0dqla")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_0dqla")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_0dqla")
-item_count = 3
-selected = 1
-popup/item_0/text = "SLOW"
-popup/item_0/id = 0
-popup/item_1/text = "NORMAL"
-popup/item_1/id = 1
-popup/item_2/text = "FAST"
-popup/item_2/id = 2
-
-[node name="CenterContainer" type="CenterContainer" parent="OptionsMenu/HBoxContainer/VBoxContainer2"]
-layout_mode = 2
-
-[node name="MuteCheckBox" type="CheckBox" parent="OptionsMenu/HBoxContainer/VBoxContainer2/CenterContainer"]
-visibility_layer = 524288
-layout_mode = 2
-theme = ExtResource("3_aqdmj")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
-theme_override_styles/normal = SubResource("StyleBoxEmpty_0dqla")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_0dqla")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_0dqla")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_0dqla")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_0dqla")
-text = "MUTE"
-flat = true
-
-[node name="CenterContainer2" type="CenterContainer" parent="OptionsMenu/HBoxContainer/VBoxContainer2"]
-layout_mode = 2
-
-[node name="WormCheckBox" type="CheckBox" parent="OptionsMenu/HBoxContainer/VBoxContainer2/CenterContainer2"]
-visibility_layer = 524288
-layout_mode = 2
-theme = ExtResource("3_aqdmj")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
-theme_override_styles/normal = SubResource("StyleBoxEmpty_0dqla")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_0dqla")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_0dqla")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_0dqla")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_0dqla")
+offset_left = 56.0
+offset_top = -16.0
+offset_right = 232.0
+offset_bottom = 120.0
 
 [node name="PauseMenu" type="Control" parent="."]
-visible = false
 visibility_layer = 524288
 layout_mode = 1
 anchors_preset = 8
@@ -465,7 +352,7 @@ text = "RESUME"
 [node name="OptionsContainer" type="CenterContainer" parent="PauseMenu/VBoxContainer"]
 layout_mode = 2
 
-[node name="OptionsButton" type="Button" parent="PauseMenu/VBoxContainer/OptionsContainer"]
+[node name="PauseOptionsButton" type="Button" parent="PauseMenu/VBoxContainer/OptionsContainer"]
 visibility_layer = 524288
 layout_mode = 2
 theme = ExtResource("3_aqdmj")
@@ -496,6 +383,13 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_0dqla")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_0dqla")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_0dqla")
 text = "MAIN MENU"
+
+[node name="PauseOptionsMenu" parent="PauseMenu" instance=ExtResource("8_6xxxe")]
+layout_mode = 1
+offset_left = 56.0
+offset_top = 0.0
+offset_right = 232.0
+offset_bottom = 136.0
 
 [node name="GameOverMenu" type="Control" parent="."]
 visible = false
@@ -599,9 +493,10 @@ text = "MAIN MENU"
 [connection signal="pressed" from="MainMenu/VBoxContainer/StartContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="MainMenu/VBoxContainer/OptionsContainer/MainOptionsButton" to="." method="_on_main_options_button_pressed"]
 [connection signal="pressed" from="MainMenu/VBoxContainer/QuitContainer/QuitButton" to="." method="_on_quit_button_pressed"]
-[connection signal="close" from="MainMenu/OptionsMenu" to="." method="_on_options_menu_close"]
+[connection signal="close" from="MainMenu/MainOptionsMenu" to="." method="_on_main_options_menu_close"]
 [connection signal="pressed" from="PauseMenu/VBoxContainer/ResumeContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
-[connection signal="pressed" from="PauseMenu/VBoxContainer/OptionsContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="PauseMenu/VBoxContainer/OptionsContainer/PauseOptionsButton" to="." method="_on_pause_options_button_pressed"]
 [connection signal="pressed" from="PauseMenu/VBoxContainer/MainMenuContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="close" from="PauseMenu/PauseOptionsMenu" to="." method="_on_pause_options_menu_close"]
 [connection signal="pressed" from="GameOverMenu/VBoxContainer/TryAgainContainer/TryAgainButton" to="." method="_on_try_again_button_pressed"]
 [connection signal="pressed" from="GameOverMenu/VBoxContainer/MainMenuContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]

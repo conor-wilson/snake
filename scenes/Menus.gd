@@ -1,7 +1,10 @@
 extends Control
 
+#TODO: Restructure this file, and think about splitting this scene up.
+
 signal play
-signal options
+signal mute
+signal worm_mode
 signal quit
 signal main_menu
 
@@ -26,12 +29,20 @@ func show_main_menu(high_score:int):
 	$MainMenu/HighScore.text = "High Score: " + str(high_score)
 	$StartScreen.show()
 	$MainMenu.show()
-	$MainMenu/OptionsMenu.hide()
+	$MainMenu/MainOptionsMenu.hide()
 	$MainMenu/VBoxContainer/StartContainer/StartButton.grab_focus()
+
+func show_main_options_menu():
+	hide_all()
+	$StartScreen.show()
+	$MainMenu.show()
+	$MainMenu/MainOptionsMenu.toggle_visibility()
+	$MainMenu/MainOptionsMenu/VBoxContainer/MuteButton.grab_focus()
 
 func show_pause_menu():
 	hide_all()
 	$PauseMenu.show()
+	$PauseMenu/PauseOptionsMenu.hide()
 	$PauseMenu/VBoxContainer/ResumeContainer/ResumeButton.grab_focus()
 
 func show_game_over_screen(score:int):
@@ -43,9 +54,6 @@ func show_game_over_screen(score:int):
 
 func _on_start_button_pressed():
 	play.emit()
-
-func _on_options_button_pressed():
-	options.emit()
 
 func _on_quit_button_pressed():
 	quit.emit()
@@ -60,10 +68,20 @@ func _on_try_again_button_pressed():
 	play.emit()
 
 
-func _on_main_options_button_pressed():
-	$MainMenu/OptionsMenu.toggle_visibility()
-	$MainMenu/OptionsMenu/VBoxContainer/MuteButton.grab_focus()
+## ------ Options Popup Menu Behaviour ------ ##
 
-func _on_options_menu_close():
-	$MainMenu/OptionsMenu.hide()
+func _on_main_options_button_pressed():
+	$MainMenu/MainOptionsMenu.toggle_visibility()
+	$MainMenu/MainOptionsMenu/VBoxContainer/MuteButton.grab_focus()
+
+func _on_pause_options_button_pressed():
+	$PauseMenu/PauseOptionsMenu.toggle_visibility()
+	$PauseMenu/PauseOptionsMenu/VBoxContainer/MuteButton.grab_focus()
+
+func _on_main_options_menu_close():
+	$MainMenu/MainOptionsMenu.hide()
 	$MainMenu/VBoxContainer/OptionsContainer/MainOptionsButton.grab_focus()
+
+func _on_pause_options_menu_close():
+	$PauseMenu/PauseOptionsMenu.hide()
+	$PauseMenu/VBoxContainer/OptionsContainer/PauseOptionsButton.grab_focus()
