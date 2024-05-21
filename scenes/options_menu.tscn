@@ -1,0 +1,105 @@
+[gd_scene load_steps=4 format=3 uid="uid://ebgv2em0agr3"]
+
+[ext_resource type="Theme" uid="uid://b0gks4806w8al" path="res://scenes/menus.tres" id="1_3ve8q"]
+[ext_resource type="Script" path="res://scenes/options_menu.gd" id="1_8pohp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mocdb"]
+
+[node name="OptionsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8pohp")
+metadata/_edit_group_ = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -88.0
+offset_top = -68.0
+offset_right = 88.0
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.388235, 0.607843, 1, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -67.0
+offset_top = -46.0
+offset_right = 67.0
+offset_bottom = 46.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MuteButton" type="Button" parent="VBoxContainer"]
+visibility_layer = 524288
+layout_mode = 2
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../CloseButton")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../WormModeButton")
+theme = ExtResource("1_3ve8q")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_mocdb")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_mocdb")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_mocdb")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_mocdb")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_mocdb")
+text = "MUTE"
+
+[node name="WormModeButton" type="Button" parent="VBoxContainer"]
+visibility_layer = 524288
+layout_mode = 2
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../MuteButton")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../CloseButton")
+theme = ExtResource("1_3ve8q")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_mocdb")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_mocdb")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_mocdb")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_mocdb")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_mocdb")
+text = "WORM MODE"
+
+[node name="CloseButton" type="Button" parent="VBoxContainer"]
+visibility_layer = 524288
+layout_mode = 2
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../WormModeButton")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../MuteButton")
+theme = ExtResource("1_3ve8q")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_mocdb")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_mocdb")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_mocdb")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_mocdb")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_mocdb")
+text = "CLOSE"
+
+[connection signal="pressed" from="VBoxContainer/MuteButton" to="." method="_on_mute_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/WormModeButton" to="." method="_on_worm_mode_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/CloseButton" to="." method="_on_close_button_pressed"]

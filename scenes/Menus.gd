@@ -26,6 +26,7 @@ func show_main_menu(high_score:int):
 	$MainMenu/HighScore.text = "High Score: " + str(high_score)
 	$StartScreen.show()
 	$MainMenu.show()
+	$MainMenu/OptionsMenu.hide()
 	$MainMenu/VBoxContainer/StartContainer/StartButton.grab_focus()
 
 func show_pause_menu():
@@ -58,3 +59,11 @@ func _on_main_menu_button_pressed():
 func _on_try_again_button_pressed():
 	play.emit()
 
+
+func _on_main_options_button_pressed():
+	$MainMenu/OptionsMenu.toggle_visibility()
+	$MainMenu/OptionsMenu/VBoxContainer/MuteButton.grab_focus()
+
+func _on_options_menu_close():
+	$MainMenu/OptionsMenu.hide()
+	$MainMenu/VBoxContainer/OptionsContainer/MainOptionsButton.grab_focus()
