@@ -1,13 +1,26 @@
 extends Node2D
 
+@export var muted:bool
+
 const INGAME_MUSIC_VOLUME     = 0   # dB
 const PAUSE_MENU_MUSIC_VOLUME = -15 # dB
 
+func _ready():
+	muted = false
+
+func mute():
+	muted = true
+	stop_music()
+
+func unmute():
+	muted = false
+
 func play_start_game():
-	$StartGame.play()
+	if !muted:
+		$StartGame.play()
 
 func play_music():
-	if !$Music.playing:
+	if !$Music.playing && !muted :
 		$Music.play()
 
 func stop_music():
@@ -20,16 +33,21 @@ func increase_music_volume():
 	$Music.volume_db = INGAME_MUSIC_VOLUME
 
 func play_turn():
-	$Turn.play()
+	if !muted:
+		$Turn.play()
 
 func play_apple_collect():
-	$AppleCollect.play()
+	if !muted:
+		$AppleCollect.play()
 
 func play_pause():
-	$Pause.play()
+	if !muted:
+		$Pause.play()
 
 func play_resume():
-	$Resume.play()
+	if !muted:
+		$Resume.play()
 
 func play_game_over():
-	$GameOver.play()
+	if !muted:
+		$GameOver.play()

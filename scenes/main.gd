@@ -106,14 +106,20 @@ func _on_menus_play():
 		GameState.PAUSE:
 			resume()
 
-func _on_menus_options():
-	print("TODO: LOAD OPTIONS MENU NOW!")
-
 func _on_menus_quit():
 	get_tree().quit()
 
 func _on_menus_main_menu():
 	start_screen()
+
+func _on_menus_mute():
+	if !$AudioPlayer.muted:
+		$AudioPlayer.mute()
+	else:
+		$AudioPlayer.unmute()
+
+func _on_menus_worm_mode():
+	print("TODO: WORM MODE NOW!")
 
 
 ## ---------- Player-Input-Triggered Functions --------- ##

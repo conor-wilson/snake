@@ -67,6 +67,12 @@ func _on_main_menu_button_pressed():
 func _on_try_again_button_pressed():
 	play.emit()
 
+func _on_options_menu_mute():
+	mute.emit()
+
+func _on_options_menu_worm_mode():
+	worm_mode.emit()
+
 ## ------ Options Popup Menu Behaviour ------ ##
 
 func _on_main_options_button_pressed():

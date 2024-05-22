@@ -23,21 +23,6 @@ size_flags_horizontal = 4
 script = ExtResource("1_8pohp")
 metadata/_edit_group_ = true
 
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -104.0
-offset_top = -72.0
-offset_right = 104.0
-offset_bottom = 72.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.607843, 0.678431, 0.717647, 1)
-
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
 offset_right = 40.0
