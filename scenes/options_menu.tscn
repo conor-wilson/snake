@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://ebgv2em0agr3"]
+[gd_scene load_steps=5 format=3 uid="uid://ebgv2em0agr3"]
 
 [ext_resource type="Theme" uid="uid://b0gks4806w8al" path="res://scenes/menus.tres" id="1_3ve8q"]
 [ext_resource type="Script" path="res://scenes/options_menu.gd" id="1_8pohp"]
+[ext_resource type="Texture2D" uid="uid://daqo0ybitne2w" path="res://art/optionsMenu.png" id="2_3ch3w"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mocdb"]
 
@@ -12,10 +13,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -88.0
-offset_top = -68.0
-offset_right = 88.0
-offset_bottom = 68.0
+offset_left = -104.0
+offset_top = -72.0
+offset_right = 104.0
+offset_bottom = 72.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -29,13 +30,19 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -88.0
-offset_top = -68.0
-offset_right = 88.0
-offset_bottom = 68.0
+offset_left = -104.0
+offset_top = -72.0
+offset_right = 104.0
+offset_bottom = 72.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.388235, 0.607843, 1, 1)
+color = Color(0.607843, 0.678431, 0.717647, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_3ch3w")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -45,9 +52,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -67.0
-offset_top = -46.0
+offset_top = -44.0
 offset_right = 67.0
-offset_bottom = 46.0
+offset_bottom = 48.0
 grow_horizontal = 2
 grow_vertical = 2
 

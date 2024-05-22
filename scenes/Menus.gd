@@ -67,7 +67,6 @@ func _on_main_menu_button_pressed():
 func _on_try_again_button_pressed():
 	play.emit()
 
-
 ## ------ Options Popup Menu Behaviour ------ ##
 
 func _on_main_options_button_pressed():

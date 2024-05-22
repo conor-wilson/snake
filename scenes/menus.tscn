@@ -129,7 +129,6 @@ grow_vertical = 2
 script = ExtResource("1_o5mua")
 
 [node name="StartScreen" type="Control" parent="."]
-visible = false
 visibility_layer = 524288
 anchors_preset = 0
 offset_top = 64.0
@@ -172,7 +171,6 @@ offset_left = 144.0
 offset_top = 304.0
 offset_right = 432.0
 offset_bottom = 528.0
-metadata/_edit_group_ = true
 
 [node name="HighScore" type="Label" parent="MainMenu"]
 visibility_layer = 524288
@@ -273,10 +271,6 @@ text = "QUIT"
 
 [node name="MainOptionsMenu" parent="MainMenu" instance=ExtResource("8_6xxxe")]
 layout_mode = 1
-offset_left = 56.0
-offset_top = -16.0
-offset_right = 232.0
-offset_bottom = 120.0
 
 [node name="PauseMenu" type="Control" parent="."]
 visibility_layer = 524288
@@ -292,7 +286,6 @@ offset_right = 144.0
 offset_bottom = 128.0
 grow_horizontal = 2
 grow_vertical = 2
-metadata/_edit_group_ = true
 
 [node name="Frame" type="TextureRect" parent="PauseMenu"]
 layout_mode = 1
@@ -386,10 +379,6 @@ text = "MAIN MENU"
 
 [node name="PauseOptionsMenu" parent="PauseMenu" instance=ExtResource("8_6xxxe")]
 layout_mode = 1
-offset_left = 56.0
-offset_top = 0.0
-offset_right = 232.0
-offset_bottom = 136.0
 
 [node name="GameOverMenu" type="Control" parent="."]
 visible = false
