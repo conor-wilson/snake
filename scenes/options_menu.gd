@@ -4,10 +4,15 @@ signal mute
 signal worm_mode
 signal close
 
-func _ready():
-	set_mute_icon(false)
-	set_worm_mode_icon(false)
-
+func show_and_focus(worm_mode_unlocked:bool):
+	
+	show()
+	if worm_mode_unlocked:
+		$HelpMessage.show()
+	else: 
+		$HelpMessage.hide()
+	
+	$VBoxContainer/MuteContainer/MuteButton.grab_focus()
 
 func set_mute_icon(checked:bool):
 	$VBoxContainer/MuteContainer/MuteButton.set_icon(checked)
