@@ -83,11 +83,11 @@ func _on_options_menu_worm_mode():
 ## ------ Options Popup Menu Behaviour ------ ##
 
 func _on_main_options_button_pressed():
-	$MainMenu/MainOptionsMenu.toggle_visibility()
+	$MainMenu/MainOptionsMenu.show()
 	$MainMenu/MainOptionsMenu/VBoxContainer/MuteContainer/MuteButton.grab_focus()
 
 func _on_pause_options_button_pressed():
-	$PauseMenu/PauseOptionsMenu.toggle_visibility()
+	$PauseMenu/PauseOptionsMenu.show()
 	$PauseMenu/PauseOptionsMenu/VBoxContainer/MuteContainer/MuteButton.grab_focus()
 
 func _on_main_options_menu_close():

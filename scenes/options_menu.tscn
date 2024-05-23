@@ -1,8 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://ebgv2em0agr3"]
+[gd_scene load_steps=10 format=3 uid="uid://ebgv2em0agr3"]
 
 [ext_resource type="Theme" uid="uid://b0gks4806w8al" path="res://scenes/menus.tres" id="1_3ve8q"]
 [ext_resource type="Script" path="res://scenes/options_menu.gd" id="1_8pohp"]
-[ext_resource type="Texture2D" uid="uid://daqo0ybitne2w" path="res://art/optionsMenu.png" id="2_3ch3w"]
+[ext_resource type="Texture2D" uid="uid://bqjkmi0odbocm" path="res://art/popupMenu.png" id="2_vup7s"]
 [ext_resource type="FontFile" uid="uid://ddmsbwqyya44t" path="res://art/m6x11.ttf" id="3_5jrau"]
 [ext_resource type="Texture2D" uid="uid://bglvqkrwxjxiv" path="res://art/checkBoxUnchecked.png" id="5_s41d8"]
 [ext_resource type="Script" path="res://scenes/OptionButton.gd" id="6_mtma2"]
@@ -14,8 +14,28 @@ font_color = Color(0.215686, 0.580392, 0.431373, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mocdb"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_xy2mf"]
+font = ExtResource("3_5jrau")
+font_color = Color(0, 0, 0, 1)
+
 [node name="OptionsMenu" type="Control"]
 layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.0
+offset_top = -80.0
+offset_right = 112.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+script = ExtResource("1_8pohp")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -27,21 +47,7 @@ offset_right = 104.0
 offset_bottom = 72.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 4
-script = ExtResource("1_8pohp")
-metadata/_edit_group_ = true
-
-[node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("2_3ch3w")
-
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 0
-offset_right = 208.0
-offset_bottom = 144.0
-color = Color(0.607843, 0.678431, 0.717647, 1)
+texture = ExtResource("2_vup7s")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -50,10 +56,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -67.0
-offset_top = -44.0
-offset_right = 67.0
-offset_bottom = 48.0
+offset_left = -81.0
+offset_top = -69.0
+offset_right = 81.0
+offset_bottom = 69.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -63,6 +69,9 @@ layout_mode = 2
 text = "Options"
 label_settings = SubResource("LabelSettings_k47dm")
 horizontal_alignment = 1
+
+[node name="Spacer" type="CenterContainer" parent="VBoxContainer"]
+layout_mode = 2
 
 [node name="MuteContainer" type="CenterContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -107,6 +116,7 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_mocdb")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_mocdb")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_mocdb")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_mocdb")
+disabled = true
 text = "WORM MODE"
 icon = ExtResource("5_s41d8")
 icon_alignment = 2
@@ -131,7 +141,24 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_mocdb")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_mocdb")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_mocdb")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_mocdb")
-text = "CLOSE"
+text = "BACK"
+
+[node name="HelpMessage" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -144.0
+offset_top = 40.0
+offset_right = 144.0
+offset_bottom = 54.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Achieve a score of 100 to unlock WORM MODE"
+label_settings = SubResource("LabelSettings_xy2mf")
+horizontal_alignment = 1
 
 [connection signal="pressed" from="VBoxContainer/MuteContainer/MuteButton" to="." method="_on_mute_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/WormModeContainer/WormModeButton" to="." method="_on_worm_mode_button_pressed"]
