@@ -115,8 +115,10 @@ func _on_menus_main_menu():
 func _on_menus_mute():
 	if !$AudioPlayer.muted:
 		$AudioPlayer.mute()
+		$Menus.set_mute_icons(true)
 	else:
 		$AudioPlayer.unmute()
+		$Menus.set_mute_icons(false)
 
 func _on_menus_worm_mode():
 	print("TODO: WORM MODE NOW!")

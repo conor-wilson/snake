@@ -4,6 +4,8 @@ signal mute
 signal worm_mode
 signal close
 
+func _ready():
+	set_mute_icon(false)
 
 func toggle_visibility():
 	if !is_visible_in_tree():
@@ -11,8 +13,9 @@ func toggle_visibility():
 	else:
 		hide()
 
-func focus():
-	$VBoxContainer/MuteButton.grab_focus()
+func set_mute_icon(checked:bool):
+	$VBoxContainer/MuteContainer/MuteButton.set_icon(checked)
+
 
 func _on_mute_button_pressed():
 	mute.emit()

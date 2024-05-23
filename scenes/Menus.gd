@@ -37,7 +37,7 @@ func show_main_options_menu():
 	$StartScreen.show()
 	$MainMenu.show()
 	$MainMenu/MainOptionsMenu.toggle_visibility()
-	$MainMenu/MainOptionsMenu/VBoxContainer/MuteButton.grab_focus()
+	$MainMenu/MainOptionsMenu/VBoxContainer/MuteContainer/MuteButton.grab_focus()
 
 func show_pause_menu():
 	hide_all()
@@ -51,6 +51,9 @@ func show_game_over_screen(score:int):
 	$GameOverMenu.show()
 	$GameOverMenu/VBoxContainer/TryAgainContainer/TryAgainButton.grab_focus()
 
+func set_mute_icons(checked:bool):
+	$MainMenu/MainOptionsMenu.set_mute_icon(checked)
+	$PauseMenu/PauseOptionsMenu.set_mute_icon(checked)
 
 func _on_start_button_pressed():
 	play.emit()
@@ -77,11 +80,11 @@ func _on_options_menu_worm_mode():
 
 func _on_main_options_button_pressed():
 	$MainMenu/MainOptionsMenu.toggle_visibility()
-	$MainMenu/MainOptionsMenu/VBoxContainer/MuteButton.grab_focus()
+	$MainMenu/MainOptionsMenu/VBoxContainer/MuteContainer/MuteButton.grab_focus()
 
 func _on_pause_options_button_pressed():
 	$PauseMenu/PauseOptionsMenu.toggle_visibility()
-	$PauseMenu/PauseOptionsMenu/VBoxContainer/MuteButton.grab_focus()
+	$PauseMenu/PauseOptionsMenu/VBoxContainer/MuteContainer/MuteButton.grab_focus()
 
 func _on_main_options_menu_close():
 	$MainMenu/MainOptionsMenu.hide()
