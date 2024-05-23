@@ -16,6 +16,8 @@ func toggle_visibility():
 func set_mute_icon(checked:bool):
 	$VBoxContainer/MuteContainer/MuteButton.set_icon(checked)
 
+func set_worm_mode_icon(checked:bool):
+	$VBoxContainer/WormModeContainer/WormModeButton.set_icon(checked)
 
 func _on_mute_button_pressed():
 	mute.emit()

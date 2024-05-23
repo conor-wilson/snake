@@ -55,6 +55,10 @@ func set_mute_icons(checked:bool):
 	$MainMenu/MainOptionsMenu.set_mute_icon(checked)
 	$PauseMenu/PauseOptionsMenu.set_mute_icon(checked)
 
+func set_worm_mode_icons(checked:bool):
+	$MainMenu/MainOptionsMenu.set_worm_mode_icon(checked)
+	$PauseMenu/PauseOptionsMenu.set_worm_mode_icon(checked)
+
 func _on_start_button_pressed():
 	play.emit()
 

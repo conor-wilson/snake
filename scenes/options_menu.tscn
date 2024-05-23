@@ -108,6 +108,9 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_mocdb")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_mocdb")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_mocdb")
 text = "WORM MODE"
+icon = ExtResource("5_s41d8")
+icon_alignment = 2
+script = ExtResource("6_mtma2")
 
 [node name="CloseContainer" type="CenterContainer" parent="VBoxContainer"]
 layout_mode = 2
