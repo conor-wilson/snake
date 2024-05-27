@@ -1,10 +1,10 @@
 extends Node
 
 enum GameState {START_SCREEN, MAIN_MENU, PLAY, PAUSE, GAME_OVER}
-var game_state : GameState
-var score : int
-var save_data : SaveData
-var worm_mode : bool # TODO: Add functionality to this
+var game_state     : GameState
+var score          : int
+var save_data      : SaveData
+var worm_mode      : bool # TODO: Add functionality to this
 
 ## ------------- State-Chaging Functions -------------- ##
 
@@ -64,11 +64,12 @@ func game_over():
 	game_state = GameState.GAME_OVER
 	
 	# If there's a new high-score, save it!
-	if score > save_data.high_score:
+	var new_high_score : bool = score > 10
+	if new_high_score:
 		save_data.save_new_high_score(score)
 	
 	# Update HUD
-	$Menus.show_game_over_screen(score)
+	$Menus.show_game_over_screen(score, new_high_score)
 	$Snake.stop_ticker()
 
 

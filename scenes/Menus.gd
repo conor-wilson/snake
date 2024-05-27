@@ -45,11 +45,16 @@ func show_pause_menu():
 	$PauseMenu/PauseOptionsMenu.hide()
 	$PauseMenu/VBoxContainer/ResumeContainer/ResumeButton.grab_focus()
 
-func show_game_over_screen(score:int):
+func show_game_over_screen(score:int, new_high_score:bool):
 	hide_all()
 	$GameOverMenu/VBoxContainer/Score.text = "Score: " + str(score)
 	$GameOverMenu.show()
 	$GameOverMenu/VBoxContainer/TryAgainContainer/TryAgainButton.grab_focus()
+	
+	if new_high_score:
+		$GameOverMenu/NewHighScore.show()
+	else:
+		$GameOverMenu/NewHighScore.hide()
 
 func set_mute_icons(checked:bool):
 	$MainMenu/MainOptionsMenu.set_mute_icon(checked)
@@ -83,10 +88,10 @@ func _on_options_menu_worm_mode():
 ## ------ Options Popup Menu Behaviour ------ ##
 
 func _on_main_options_button_pressed():
-	$MainMenu/MainOptionsMenu.show_and_focus(true)
+	$MainMenu/MainOptionsMenu.show_and_focus(true) # TODO: Worm Mode
 
 func _on_pause_options_button_pressed():
-	$PauseMenu/PauseOptionsMenu.show_and_focus(true)
+	$PauseMenu/PauseOptionsMenu.show_and_focus(true) # TODO: Worm Mode
 
 func _on_main_options_menu_close():
 	$MainMenu/MainOptionsMenu.hide()
