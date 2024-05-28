@@ -486,9 +486,8 @@ text = "MAIN MENU"
 [node name="NewHighScore" type="Label" parent="GameOverMenu"]
 visibility_layer = 524288
 layout_mode = 2
-offset_top = 224.0
+offset_top = -64.0
 offset_right = 288.0
-offset_bottom = 288.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "New High Score!"

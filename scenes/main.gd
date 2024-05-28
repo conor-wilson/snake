@@ -64,7 +64,7 @@ func game_over():
 	game_state = GameState.GAME_OVER
 	
 	# If there's a new high-score, save it!
-	var new_high_score : bool = score > 10
+	var new_high_score : bool = score > save_data.high_score
 	if new_high_score:
 		save_data.save_new_high_score(score)
 	
