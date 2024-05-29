@@ -5,28 +5,43 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_ve6is"]
 font = ExtResource("2_jk30c")
-font_size = 28
+font_size = 32
 font_color = Color(0, 0, 0, 1)
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_qdk3y")
 
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+offset_left = 59.0
+offset_top = 16.0
+offset_right = 197.0
+offset_bottom = 52.0
+color = Color(0.607843, 0.678431, 0.717647, 1)
+
 [node name="Score" type="Label" parent="."]
-offset_left = 32.0
-offset_top = 2.0
-offset_right = 192.0
-offset_bottom = 50.0
-text = "Score: 001"
+offset_left = 80.0
+offset_right = 184.0
+offset_bottom = 72.0
+text = "001"
 label_settings = SubResource("LabelSettings_ve6is")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="ColorRect2" type="ColorRect" parent="."]
+visible = false
+offset_left = 380.0
+offset_top = 16.0
+offset_right = 518.0
+offset_bottom = 52.0
+color = Color(0.607843, 0.678431, 0.717647, 1)
+
 [node name="HighScore" type="Label" parent="."]
-offset_left = 384.0
-offset_top = 2.0
-offset_right = 544.0
-offset_bottom = 50.0
-text = "High Score: 123"
+offset_left = 440.0
+offset_top = 8.0
+offset_right = 560.0
+offset_bottom = 56.0
+text = "123"
 label_settings = SubResource("LabelSettings_ve6is")
 horizontal_alignment = 1
 vertical_alignment = 1

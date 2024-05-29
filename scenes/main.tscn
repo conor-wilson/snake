@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://gqxfblqe82to"]
+[gd_scene load_steps=12 format=3 uid="uid://gqxfblqe82to"]
 
 [ext_resource type="PackedScene" uid="uid://4af2ve2g5bho" path="res://scenes/snake.tscn" id="1_au0ln"]
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_wj633"]
@@ -6,6 +6,19 @@
 [ext_resource type="PackedScene" uid="uid://bp3mkt6r82voo" path="res://scenes/menus.tscn" id="4_di6yd"]
 [ext_resource type="PackedScene" uid="uid://5h34575bwelc" path="res://scenes/player_input.tscn" id="4_k3txy"]
 [ext_resource type="PackedScene" uid="uid://bcbcnq632a1kc" path="res://scenes/audio_player.tscn" id="5_8fdji"]
+[ext_resource type="FontFile" uid="uid://ddmsbwqyya44t" path="res://art/m6x11.ttf" id="7_dkfjo"]
+[ext_resource type="Texture2D" uid="uid://bsrmbjgwb2ak1" path="res://art/trophy.png" id="8_yblgr"]
+[ext_resource type="Texture2D" uid="uid://ci4c4yj47rjoa" path="res://art/apple.png" id="9_rj2xp"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ptw70"]
+font = ExtResource("7_dkfjo")
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_naost"]
+font = ExtResource("7_dkfjo")
+font_size = 32
+font_color = Color(0, 0, 0, 1)
 
 [node name="Main" type="Node"]
 script = ExtResource("1_wj633")
@@ -21,6 +34,34 @@ visible = false
 [node name="PlayerInput" parent="." instance=ExtResource("4_k3txy")]
 
 [node name="AudioPlayer" parent="." instance=ExtResource("5_8fdji")]
+
+[node name="HighScore" type="Label" parent="."]
+offset_left = 466.0
+offset_top = 14.0
+offset_right = 528.0
+offset_bottom = 63.0
+text = "123"
+label_settings = SubResource("LabelSettings_ptw70")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Trophy" type="Sprite2D" parent="."]
+position = Vector2(459, 35)
+texture = ExtResource("8_yblgr")
+
+[node name="Score" type="Label" parent="."]
+offset_left = 82.0
+offset_top = 12.0
+offset_right = 144.0
+offset_bottom = 61.0
+text = "001"
+label_settings = SubResource("LabelSettings_naost")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Apple" type="Sprite2D" parent="."]
+position = Vector2(74, 32)
+texture = ExtResource("9_rj2xp")
 
 [connection signal="apple_eaten" from="Snake" to="." method="_on_snake_apple_eaten"]
 [connection signal="hit" from="Snake" to="." method="_on_snake_hit"]
