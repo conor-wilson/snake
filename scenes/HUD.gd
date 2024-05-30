@@ -7,10 +7,10 @@ func _ready():
 	hide()
 
 func update_score(score: int):
-	$Score.text = "Score: " + get_zeros(score) + str(score)
+	$Score.text = get_zeros(score) + str(score)
 
 func update_high_score(high_score: int):
-	$HighScore.text = "High Score: " + get_zeros(high_score) + str(high_score)
+	$HighScore.text = get_zeros(high_score) + str(high_score)
 
 
 # TODO: Descriptor
