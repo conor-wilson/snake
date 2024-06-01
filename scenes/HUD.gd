@@ -2,13 +2,12 @@ extends Control
 
 @export var max_num_digits:int = 3
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	hide()
 
+# TODO: Descriptor
 func update_score(score: int):
 	$Score.text = get_zeros(score) + str(score)
 
+# TODO: Descriptor
 func update_high_score(high_score: int):
 	$HighScore.text = get_zeros(high_score) + str(high_score)
 

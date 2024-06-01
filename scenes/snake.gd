@@ -46,15 +46,26 @@ func start_ticker():
 	if $Ticker.is_stopped():
 		$Ticker.start()
 
-# TODO: descriptor
+# TODO: Descriptor
+func kill_snake():
+	# TODO: Maybe set the alt_id for the head in this func?
+	set_layer_modulate(SnakeTile.Layer.SNAKE, Color.GRAY)
+
+
+## ----------- Child Node Behaviour Functions ---------- ##
+
+# TODO: Descriptor
 func stop_ticker():
 	if !$Ticker.is_stopped():
 		$Ticker.stop()
 
 # TODO: Descriptor
-func kill_snake():
-	# TODO: Maybe set the alt_id for the head in this func?
-	set_layer_modulate(SnakeTile.Layer.SNAKE, Color.GRAY)
+func update_score(score:int):
+	$HUD.update_score(score)
+
+# TODO: Descriptor
+func update_high_score(high_score:int):
+	$HUD.update_high_score(high_score)
 
 
 ## ------------- Snake Rendering Functions ------------- ##

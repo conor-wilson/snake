@@ -14,6 +14,7 @@ script = ExtResource("1_wj633")
 z_index = -20
 
 [node name="HUD" parent="." instance=ExtResource("3_kk0nh")]
+visible = false
 
 [node name="Menus" parent="." instance=ExtResource("4_di6yd")]
 

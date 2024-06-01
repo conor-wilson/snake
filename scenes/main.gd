@@ -12,7 +12,6 @@ func start_screen():
 	$AudioPlayer.stop_music()
 	game_state = GameState.START_SCREEN
 	$Menus.show_start_screen()
-	$HUD.hide()
 
 func main_menu():
 	$AudioPlayer.stop_music()
@@ -21,7 +20,6 @@ func main_menu():
 	
 	game_state = GameState.MAIN_MENU
 	$Menus.show_main_menu(save_data.high_score)
-	$HUD.hide()
 	$Snake.kill_snake()
 	$Snake.stop_ticker()
 
@@ -34,10 +32,9 @@ func start_game():
 	game_state = GameState.PLAY
 	
 	# Start the game
-	$HUD.update_score(score)
-	$HUD.update_high_score(save_data.high_score)
+	$Snake.update_score(score)
+	$Snake.update_high_score(save_data.high_score)
 	$Menus.hide_all()
-	$HUD.show()
 	$Snake.spawn_new_snake()
 
 func pause():
@@ -53,7 +50,6 @@ func resume():
 	$AudioPlayer.play_resume()
 	game_state = GameState.PLAY
 	$Menus.hide_all()
-	$HUD.show()
 	$Snake.start_ticker()
 
 func game_over():
@@ -92,11 +88,11 @@ func _on_snake_apple_eaten():
 	
 	# Update score
 	score += 1
-	$HUD.update_score(score)
+	$Snake.update_score(score)
 	
 	# Update high score if it's been beaten
 	if score > save_data.high_score:
-		$HUD.update_high_score(score)
+		$Snake.update_high_score(score)
 
 
 ## ----------- Menu-Triggered Functions ---------- ##
