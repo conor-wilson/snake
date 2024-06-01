@@ -1,5 +1,7 @@
 extends Control
 
+@export var game_over_timeout:float 
+
 #TODO: Restructure this file, and think about splitting this scene up.
 
 signal play
@@ -46,6 +48,9 @@ func show_pause_menu():
 	$PauseMenu/VBoxContainer/ResumeContainer/ResumeButton.grab_focus()
 
 func show_game_over_screen(score:int, new_high_score:bool):
+	
+	await get_tree().create_timer(game_over_timeout).timeout
+	
 	hide_all()
 	$GameOverMenu/VBoxContainer/Score.text = "Score: " + str(score)
 	$GameOverMenu.show()
