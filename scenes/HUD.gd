@@ -1,4 +1,4 @@
-extends CanvasLayer
+extends Control
 
 @export var max_num_digits:int = 3
 
