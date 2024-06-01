@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bgqiilqhmsujn"]
+[gd_scene load_steps=5 format=3 uid="uid://bgqiilqhmsujn"]
 
 [ext_resource type="Script" path="res://scenes/HUD.gd" id="1_qdk3y"]
 [ext_resource type="FontFile" uid="uid://ddmsbwqyya44t" path="res://art/m6x11.ttf" id="2_jk30c"]
-[ext_resource type="Texture2D" uid="uid://bjmjrp2ccfabx" path="res://art/apple22x22.png" id="3_bpjhc"]
-[ext_resource type="Texture2D" uid="uid://bdftaihbdrhhg" path="res://art/trophy22x22.png" id="4_r6x0l"]
+[ext_resource type="Texture2D" uid="uid://b25pyxdk02yn0" path="res://art/hudArt.png" id="3_moeyq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ve6is"]
 font = ExtResource("2_jk30c")
@@ -26,7 +25,9 @@ metadata/_edit_group_ = true
 
 [node name="Apple" type="Sprite2D" parent="Score"]
 position = Vector2(-16, 11)
-texture = ExtResource("3_bpjhc")
+texture = ExtResource("3_moeyq")
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 32)
 
 [node name="HighScore" type="Label" parent="."]
 offset_left = 473.0
@@ -41,4 +42,6 @@ metadata/_edit_group_ = true
 
 [node name="Trophy" type="Sprite2D" parent="HighScore"]
 position = Vector2(-16, 11)
-texture = ExtResource("4_r6x0l")
+texture = ExtResource("3_moeyq")
+region_enabled = true
+region_rect = Rect2(32, 0, 32, 32)
