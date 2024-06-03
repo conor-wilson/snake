@@ -38,6 +38,7 @@ offset_bottom = 64.0
 script = ExtResource("3_tkdut")
 
 [node name="Score" type="Label" parent="HUD"]
+layout_mode = 0
 offset_left = 89.0
 offset_top = 22.0
 offset_right = 131.0
@@ -48,6 +49,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="HighScore" type="Label" parent="HUD"]
+layout_mode = 0
 offset_left = 473.0
 offset_top = 22.0
 offset_right = 515.0
