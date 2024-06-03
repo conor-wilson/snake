@@ -1,101 +1,12 @@
-[gd_scene load_steps=20 format=3 uid="uid://bp3mkt6r82voo"]
+[gd_scene load_steps=14 format=3 uid="uid://bp3mkt6r82voo"]
 
 [ext_resource type="Script" path="res://scenes/Menus.gd" id="1_o5mua"]
-[ext_resource type="Texture2D" uid="uid://ieijwkdv6khp" path="res://art/AnimatedTiles-Sheet.png" id="2_3bwjl"]
 [ext_resource type="FontFile" uid="uid://ddmsbwqyya44t" path="res://art/m6x11.ttf" id="2_blrtl"]
+[ext_resource type="PackedScene" uid="uid://c67mu3qkdsf8a" path="res://scenes/start_screen.tscn" id="2_uc8ni"]
 [ext_resource type="Theme" uid="uid://b0gks4806w8al" path="res://scenes/menus.tres" id="3_aqdmj"]
 [ext_resource type="Texture2D" uid="uid://bqjkmi0odbocm" path="res://art/popupMenu.png" id="4_2jht0"]
-[ext_resource type="Texture2D" uid="uid://cjg18o74pwjya" path="res://art/Title.png" id="5_feg00"]
-[ext_resource type="Script" path="res://scenes/PressAnyKey.gd" id="5_gap2a"]
 [ext_resource type="PackedScene" uid="uid://753dvq3mxgal" path="res://scenes/menu_button.tscn" id="7_5xogu"]
 [ext_resource type="PackedScene" uid="uid://ebgv2em0agr3" path="res://scenes/options_menu.tscn" id="8_6xxxe"]
-
-[sub_resource type="TileMapPattern" id="TileMapPattern_xylqp"]
-tile_data = PackedInt32Array(0, 0, 1, 65536, 0, 0, 1, 0, 0, 65537, 0, 1)
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cqwvh"]
-texture = ExtResource("2_3bwjl")
-texture_region_size = Vector2i(32, 32)
-0:0/animation_columns = 32
-0:0/animation_speed = 16.0
-0:0/animation_frame_0/duration = 1.0
-0:0/animation_frame_1/duration = 1.0
-0:0/animation_frame_2/duration = 1.0
-0:0/animation_frame_3/duration = 1.0
-0:0/animation_frame_4/duration = 1.0
-0:0/animation_frame_5/duration = 1.0
-0:0/animation_frame_6/duration = 1.0
-0:0/animation_frame_7/duration = 1.0
-0:0/animation_frame_8/duration = 1.0
-0:0/animation_frame_9/duration = 1.0
-0:0/animation_frame_10/duration = 1.0
-0:0/animation_frame_11/duration = 1.0
-0:0/animation_frame_12/duration = 1.0
-0:0/animation_frame_13/duration = 1.0
-0:0/animation_frame_14/duration = 1.0
-0:0/animation_frame_15/duration = 1.0
-0:0/animation_frame_16/duration = 1.0
-0:0/animation_frame_17/duration = 1.0
-0:0/animation_frame_18/duration = 1.0
-0:0/animation_frame_19/duration = 1.0
-0:0/animation_frame_20/duration = 1.0
-0:0/animation_frame_21/duration = 1.0
-0:0/animation_frame_22/duration = 1.0
-0:0/animation_frame_23/duration = 1.0
-0:0/animation_frame_24/duration = 1.0
-0:0/animation_frame_25/duration = 1.0
-0:0/animation_frame_26/duration = 1.0
-0:0/animation_frame_27/duration = 1.0
-0:0/animation_frame_28/duration = 1.0
-0:0/animation_frame_29/duration = 1.0
-0:0/animation_frame_30/duration = 1.0
-0:0/animation_frame_31/duration = 1.0
-0:0/0 = 0
-0:1/animation_columns = 32
-0:1/animation_speed = 16.0
-0:1/animation_frame_0/duration = 1.0
-0:1/animation_frame_1/duration = 1.0
-0:1/animation_frame_2/duration = 1.0
-0:1/animation_frame_3/duration = 1.0
-0:1/animation_frame_4/duration = 1.0
-0:1/animation_frame_5/duration = 1.0
-0:1/animation_frame_6/duration = 1.0
-0:1/animation_frame_7/duration = 1.0
-0:1/animation_frame_8/duration = 1.0
-0:1/animation_frame_9/duration = 1.0
-0:1/animation_frame_10/duration = 1.0
-0:1/animation_frame_11/duration = 1.0
-0:1/animation_frame_12/duration = 1.0
-0:1/animation_frame_13/duration = 1.0
-0:1/animation_frame_14/duration = 1.0
-0:1/animation_frame_15/duration = 1.0
-0:1/animation_frame_16/duration = 1.0
-0:1/animation_frame_17/duration = 1.0
-0:1/animation_frame_18/duration = 1.0
-0:1/animation_frame_19/duration = 1.0
-0:1/animation_frame_20/duration = 1.0
-0:1/animation_frame_21/duration = 1.0
-0:1/animation_frame_22/duration = 1.0
-0:1/animation_frame_23/duration = 1.0
-0:1/animation_frame_24/duration = 1.0
-0:1/animation_frame_25/duration = 1.0
-0:1/animation_frame_26/duration = 1.0
-0:1/animation_frame_27/duration = 1.0
-0:1/animation_frame_28/duration = 1.0
-0:1/animation_frame_29/duration = 1.0
-0:1/animation_frame_30/duration = 1.0
-0:1/animation_frame_31/duration = 1.0
-0:1/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_3a2x7"]
-tile_size = Vector2i(32, 32)
-sources/0 = SubResource("TileSetAtlasSource_cqwvh")
-pattern_0 = SubResource("TileMapPattern_xylqp")
-
-[sub_resource type="LabelSettings" id="LabelSettings_7r51r"]
-font = ExtResource("2_blrtl")
-font_size = 32
-font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_lhjyn"]
 font = ExtResource("2_blrtl")
@@ -134,44 +45,11 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_o5mua")
 
-[node name="StartScreen" type="Control" parent="."]
-visible = false
-visibility_layer = 524288
-anchors_preset = 0
-offset_top = 64.0
-offset_right = 40.0
-offset_bottom = 104.0
-
-[node name="TileMap" type="TileMap" parent="StartScreen"]
-position = Vector2(0, -64)
-tile_set = SubResource("TileSet_3a2x7")
-format = 2
-layer_0/tile_data = PackedInt32Array(1, 0, 0, 65537, 0, 1, 2, 0, 1, 65538, 0, 0, 0, 0, 1, 65536, 0, 0, 3, 0, 0, 65539, 0, 1, 4, 0, 1, 65540, 0, 0, 131072, 0, 1, 196608, 0, 0, 131073, 0, 0, 196609, 0, 1, 131074, 0, 1, 196610, 0, 0, 131075, 0, 0, 196611, 0, 1, 131076, 0, 1, 196612, 0, 0, 131077, 0, 0, 196613, 0, 1, 5, 0, 0, 65541, 0, 1, 6, 0, 1, 65542, 0, 0, 7, 0, 0, 65543, 0, 1, 8, 0, 1, 65544, 0, 0, 9, 0, 0, 65545, 0, 1, 10, 0, 1, 65546, 0, 0, 11, 0, 0, 65547, 0, 1, 12, 0, 1, 65548, 0, 0, 13, 0, 0, 65549, 0, 1, 14, 0, 1, 65550, 0, 0, 15, 0, 0, 65551, 0, 1, 16, 0, 1, 65552, 0, 0, 17, 0, 0, 65553, 0, 1, 131088, 0, 1, 196624, 0, 0, 131089, 0, 0, 196625, 0, 1, 131086, 0, 1, 196622, 0, 0, 131087, 0, 0, 196623, 0, 1, 131084, 0, 1, 196620, 0, 0, 131085, 0, 0, 196621, 0, 1, 131082, 0, 1, 196618, 0, 0, 131083, 0, 0, 196619, 0, 1, 131080, 0, 1, 196616, 0, 0, 131081, 0, 0, 196617, 0, 1, 131078, 0, 1, 196614, 0, 0, 131079, 0, 0, 196615, 0, 1, 262148, 0, 1, 327684, 0, 0, 262149, 0, 0, 327685, 0, 1, 262146, 0, 1, 327682, 0, 0, 262147, 0, 0, 327683, 0, 1, 262144, 0, 1, 327680, 0, 0, 262145, 0, 0, 327681, 0, 1, 262150, 0, 1, 327686, 0, 0, 262151, 0, 0, 327687, 0, 1, 262152, 0, 1, 327688, 0, 0, 262153, 0, 0, 327689, 0, 1, 262154, 0, 1, 327690, 0, 0, 262155, 0, 0, 327691, 0, 1, 262156, 0, 1, 327692, 0, 0, 262157, 0, 0, 327693, 0, 1, 262158, 0, 1, 327694, 0, 0, 262159, 0, 0, 327695, 0, 1, 262160, 0, 1, 327696, 0, 0, 262161, 0, 0, 327697, 0, 1, 393232, 0, 1, 458768, 0, 0, 393233, 0, 0, 458769, 0, 1, 393230, 0, 1, 458766, 0, 0, 393231, 0, 0, 458767, 0, 1, 393228, 0, 1, 458764, 0, 0, 393229, 0, 0, 458765, 0, 1, 393226, 0, 1, 458762, 0, 0, 393227, 0, 0, 458763, 0, 1, 393224, 0, 1, 458760, 0, 0, 393225, 0, 0, 458761, 0, 1, 393222, 0, 1, 458758, 0, 0, 393223, 0, 0, 458759, 0, 1, 393220, 0, 1, 458756, 0, 0, 393221, 0, 0, 458757, 0, 1, 393218, 0, 1, 458754, 0, 0, 393219, 0, 0, 458755, 0, 1, 393216, 0, 1, 458752, 0, 0, 393217, 0, 0, 458753, 0, 1, 524288, 0, 1, 589824, 0, 0, 524289, 0, 0, 589825, 0, 1, 524290, 0, 1, 589826, 0, 0, 524291, 0, 0, 589827, 0, 1, 524292, 0, 1, 589828, 0, 0, 524293, 0, 0, 589829, 0, 1, 524294, 0, 1, 589830, 0, 0, 524295, 0, 0, 589831, 0, 1, 524296, 0, 1, 589832, 0, 0, 524297, 0, 0, 589833, 0, 1, 524298, 0, 1, 589834, 0, 0, 524299, 0, 0, 589835, 0, 1, 524300, 0, 1, 589836, 0, 0, 524301, 0, 0, 589837, 0, 1, 524302, 0, 1, 589838, 0, 0, 524303, 0, 0, 589839, 0, 1, 524304, 0, 1, 589840, 0, 0, 524305, 0, 0, 589841, 0, 1, 655376, 0, 1, 720912, 0, 0, 655377, 0, 0, 720913, 0, 1, 655374, 0, 1, 720910, 0, 0, 655375, 0, 0, 720911, 0, 1, 655372, 0, 1, 720908, 0, 0, 655373, 0, 0, 720909, 0, 1, 655370, 0, 1, 720906, 0, 0, 655371, 0, 0, 720907, 0, 1, 655368, 0, 1, 720904, 0, 0, 655369, 0, 0, 720905, 0, 1, 655366, 0, 1, 720902, 0, 0, 655367, 0, 0, 720903, 0, 1, 655364, 0, 1, 720900, 0, 0, 655365, 0, 0, 720901, 0, 1, 655362, 0, 1, 720898, 0, 0, 655363, 0, 0, 720899, 0, 1, 655360, 0, 1, 720896, 0, 0, 655361, 0, 0, 720897, 0, 1, 786432, 0, 1, 851968, 0, 0, 786433, 0, 0, 851969, 0, 1, 917504, 0, 1, 983040, 0, 0, 917505, 0, 0, 983041, 0, 1, 1048576, 0, 1, 1114112, 0, 0, 1048577, 0, 0, 1114113, 0, 1, 1179648, 0, 1, 1179649, 0, 0, 786434, 0, 1, 851970, 0, 0, 786435, 0, 0, 851971, 0, 1, 786436, 0, 1, 851972, 0, 0, 786437, 0, 0, 851973, 0, 1, 786438, 0, 1, 851974, 0, 0, 786439, 0, 0, 851975, 0, 1, 786440, 0, 1, 851976, 0, 0, 786441, 0, 0, 851977, 0, 1, 786442, 0, 1, 851978, 0, 0, 786443, 0, 0, 851979, 0, 1, 786444, 0, 1, 851980, 0, 0, 786445, 0, 0, 851981, 0, 1, 786446, 0, 1, 851982, 0, 0, 786447, 0, 0, 851983, 0, 1, 786448, 0, 1, 851984, 0, 0, 786449, 0, 0, 851985, 0, 1, 917520, 0, 1, 983056, 0, 0, 917521, 0, 0, 983057, 0, 1, 1048592, 0, 1, 1114128, 0, 0, 1048593, 0, 0, 1114129, 0, 1, 1179664, 0, 1, 1179665, 0, 0, 1179662, 0, 1, 1179663, 0, 0, 1179660, 0, 1, 1179661, 0, 0, 1179658, 0, 1, 1179659, 0, 0, 1179656, 0, 1, 1179657, 0, 0, 1179654, 0, 1, 1179655, 0, 0, 1179652, 0, 1, 1179653, 0, 0, 1179650, 0, 1, 1179651, 0, 0, 1048578, 0, 1, 1114114, 0, 0, 1048579, 0, 0, 1114115, 0, 1, 917506, 0, 1, 983042, 0, 0, 917507, 0, 0, 983043, 0, 1, 917508, 0, 1, 983044, 0, 0, 917509, 0, 0, 983045, 0, 1, 917510, 0, 1, 983046, 0, 0, 917511, 0, 0, 983047, 0, 1, 917512, 0, 1, 983048, 0, 0, 917513, 0, 0, 983049, 0, 1, 917514, 0, 1, 983050, 0, 0, 917515, 0, 0, 983051, 0, 1, 917516, 0, 1, 983052, 0, 0, 917517, 0, 0, 983053, 0, 1, 917518, 0, 1, 983054, 0, 0, 917519, 0, 0, 983055, 0, 1, 1048580, 0, 1, 1114116, 0, 0, 1048581, 0, 0, 1114117, 0, 1, 1048582, 0, 1, 1114118, 0, 0, 1048583, 0, 0, 1114119, 0, 1, 1048584, 0, 1, 1114120, 0, 0, 1048585, 0, 0, 1114121, 0, 1, 1048586, 0, 1, 1114122, 0, 0, 1048587, 0, 0, 1114123, 0, 1, 1048588, 0, 1, 1114124, 0, 0, 1048589, 0, 0, 1114125, 0, 1, 1048590, 0, 1, 1114126, 0, 0, 1048591, 0, 0, 1114127, 0, 1)
-
-[node name="Title" type="TextureRect" parent="StartScreen"]
-layout_mode = 0
-offset_left = 88.0
-offset_top = 64.0
-offset_right = 488.0
-offset_bottom = 160.0
-texture = ExtResource("5_feg00")
-
-[node name="PressAnyKey" type="Label" parent="StartScreen"]
+[node name="StartScreen" parent="." instance=ExtResource("2_uc8ni")]
 layout_mode = 1
-offset_left = 144.0
-offset_top = 304.0
-offset_right = 432.0
-offset_bottom = 336.0
-text = "PRESS ANY KEY"
-label_settings = SubResource("LabelSettings_7r51r")
-horizontal_alignment = 1
-vertical_alignment = 1
-script = ExtResource("5_gap2a")
-
-[node name="Timer" type="Timer" parent="StartScreen/PressAnyKey"]
-wait_time = 0.75
 
 [node name="MainMenu" type="Control" parent="."]
+visible = false
 anchors_preset = 0
 offset_left = 144.0
 offset_top = 304.0
@@ -488,7 +366,6 @@ label_settings = SubResource("LabelSettings_tbeqy")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="timeout" from="StartScreen/PressAnyKey/Timer" to="StartScreen/PressAnyKey" method="_on_timer_timeout"]
 [connection signal="pressed" from="MainMenu/VBoxContainer/StartContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="MainMenu/VBoxContainer/OptionsContainer/MainOptionsButton" to="." method="_on_main_options_button_pressed"]
 [connection signal="pressed" from="MainMenu/VBoxContainer/QuitContainer/QuitButton" to="." method="_on_quit_button_pressed"]
