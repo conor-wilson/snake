@@ -15,7 +15,6 @@ func _ready():
 	hide_all()
 
 func hide_all():
-	#$StartScreen/PressAnyKey/Timer.stop()
 	$StartScreen.hide()
 	$MainMenu.hide()
 	$PauseMenu.hide()
@@ -27,18 +26,8 @@ func show_start_screen():
 
 func show_main_menu(high_score:int):
 	hide_all()
-	$MainMenu/HighScore.text = "High Score: " + str(high_score)
 	$StartScreen.show()
-	$MainMenu.show()
-	$MainMenu/MainOptionsMenu.hide()
-	$MainMenu/VBoxContainer/StartContainer/StartButton.grab_focus()
-
-func show_main_options_menu():
-	hide_all()
-	$StartScreen.show()
-	$MainMenu.show()
-	$MainMenu/MainOptionsMenu.toggle_visibility()
-	$MainMenu/MainOptionsMenu/VBoxContainer/MuteContainer/MuteButton.grab_focus()
+	$MainMenu.show_and_focus(high_score)
 
 func show_pause_menu():
 	hide_all()
@@ -61,17 +50,18 @@ func show_game_over_screen(score:int, new_high_score:bool):
 		$GameOverMenu/NewHighScore.hide()
 
 func set_mute_icons(checked:bool):
-	$MainMenu/MainOptionsMenu.set_mute_icon(checked)
-	$PauseMenu/PauseOptionsMenu.set_mute_icon(checked)
+	$MainMenu/OptionsMenu.set_mute_icon(checked) # TODO: Actually handle this with a global var
+	$PauseMenu/PauseOptionsMenu.set_mute_icon(checked) # TODO: Actually handle this with a global var
 
 func set_worm_mode_icons(checked:bool):
-	$MainMenu/MainOptionsMenu.set_worm_mode_icon(checked)
-	$PauseMenu/PauseOptionsMenu.set_worm_mode_icon(checked)
+	$MainMenu/OptionsMenu.set_worm_mode_icon(checked) # TODO: Actually handle this with a global var
+	$PauseMenu/PauseOptionsMenu.set_worm_mode_icon(checked) # TODO: Actually handle this with a global var
 
-func _on_start_button_pressed():
+
+func _on_main_menu_start_game():
 	play.emit()
 
-func _on_quit_button_pressed():
+func _on_main_menu_quit():
 	quit.emit()
 
 func _on_resume_button_pressed():
@@ -91,16 +81,10 @@ func _on_options_menu_worm_mode():
 
 ## ------ Options Popup Menu Behaviour ------ ##
 
-func _on_main_options_button_pressed():
-	$MainMenu/MainOptionsMenu.show_and_focus(true) # TODO: Worm Mode
-
 func _on_pause_options_button_pressed():
 	$PauseMenu/PauseOptionsMenu.show_and_focus(true) # TODO: Worm Mode
-
-func _on_main_options_menu_close():
-	$MainMenu/MainOptionsMenu.hide()
-	$MainMenu/VBoxContainer/OptionsContainer/MainOptionsButton.grab_focus()
 
 func _on_pause_options_menu_close():
 	$PauseMenu/PauseOptionsMenu.hide()
 	$PauseMenu/VBoxContainer/OptionsContainer/PauseOptionsButton.grab_focus()
+
