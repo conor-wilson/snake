@@ -8,9 +8,9 @@ func show_and_focus(worm_mode_unlocked:bool):
 	
 	show()
 	if worm_mode_unlocked:
-		$HelpMessage.show()
-	else: 
 		$HelpMessage.hide()
+	else:
+		$HelpMessage.show()
 	
 	$VBoxContainer/MuteContainer/MuteButton.grab_focus()
 

@@ -1,24 +1,12 @@
-[gd_scene load_steps=14 format=3 uid="uid://bp3mkt6r82voo"]
+[gd_scene load_steps=12 format=3 uid="uid://bp3mkt6r82voo"]
 
 [ext_resource type="Script" path="res://scenes/Menus.gd" id="1_o5mua"]
 [ext_resource type="FontFile" uid="uid://ddmsbwqyya44t" path="res://art/m6x11.ttf" id="2_blrtl"]
 [ext_resource type="PackedScene" uid="uid://c67mu3qkdsf8a" path="res://scenes/start_screen.tscn" id="2_uc8ni"]
 [ext_resource type="Theme" uid="uid://b0gks4806w8al" path="res://scenes/menus.tres" id="3_aqdmj"]
+[ext_resource type="PackedScene" uid="uid://bjvj1gux5vqm5" path="res://scenes/main_menu.tscn" id="3_jm744"]
 [ext_resource type="Texture2D" uid="uid://bqjkmi0odbocm" path="res://art/popupMenu.png" id="4_2jht0"]
-[ext_resource type="PackedScene" uid="uid://753dvq3mxgal" path="res://scenes/menu_button.tscn" id="7_5xogu"]
-[ext_resource type="PackedScene" uid="uid://ebgv2em0agr3" path="res://scenes/options_menu.tscn" id="8_6xxxe"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_lhjyn"]
-font = ExtResource("2_blrtl")
-font_size = 32
-font_color = Color(0, 0, 0, 1)
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0dqla"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_7b6cp"]
-font = ExtResource("2_blrtl")
-font_size = 48
-font_color = Color(0.215686, 0.580392, 0.431373, 1)
+[ext_resource type="PackedScene" uid="uid://dffcqo1e57tl" path="res://scenes/pause_menu.tscn" id="8_n3snx"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4t0im"]
 font = ExtResource("2_blrtl")
@@ -29,6 +17,8 @@ font_color = Color(0.67451, 0.196078, 0.196078, 1)
 font = ExtResource("2_blrtl")
 font_size = 32
 font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0dqla"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_tbeqy"]
 font = ExtResource("2_blrtl")
@@ -48,213 +38,10 @@ script = ExtResource("1_o5mua")
 [node name="StartScreen" parent="." instance=ExtResource("2_uc8ni")]
 layout_mode = 1
 
-[node name="MainMenu" type="Control" parent="."]
-visible = false
-anchors_preset = 0
-offset_left = 144.0
-offset_top = 304.0
-offset_right = 432.0
-offset_bottom = 528.0
-
-[node name="HighScore" type="Label" parent="MainMenu"]
-visibility_layer = 524288
-layout_mode = 2
-offset_top = -256.0
-offset_right = 288.0
-offset_bottom = -224.0
-text = "High Score: 199"
-label_settings = SubResource("LabelSettings_lhjyn")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Frame" type="TextureRect" parent="MainMenu"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -144.0
-offset_top = -112.0
-offset_right = 144.0
-offset_bottom = 112.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("4_2jht0")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu"]
-visibility_layer = 524288
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -144.0
-offset_top = -112.0
-offset_right = 144.0
-offset_bottom = 112.0
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
-
-[node name="StartContainer" type="CenterContainer" parent="MainMenu/VBoxContainer"]
-layout_mode = 2
-
-[node name="StartButton" parent="MainMenu/VBoxContainer/StartContainer" instance=ExtResource("7_5xogu")]
-layout_mode = 2
-focus_neighbor_top = NodePath("../../QuitContainer/QuitButton")
-focus_neighbor_bottom = NodePath("../../OptionsContainer/MainOptionsButton")
-text = "START"
-
-[node name="OptionsContainer" type="CenterContainer" parent="MainMenu/VBoxContainer"]
-layout_mode = 2
-
-[node name="MainOptionsButton" type="Button" parent="MainMenu/VBoxContainer/OptionsContainer"]
-visibility_layer = 524288
-layout_mode = 2
-focus_neighbor_bottom = NodePath("../../QuitContainer/QuitButton")
-theme = ExtResource("3_aqdmj")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
-theme_override_styles/normal = SubResource("StyleBoxEmpty_0dqla")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_0dqla")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_0dqla")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_0dqla")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_0dqla")
-text = "OPTIONS"
-
-[node name="QuitContainer" type="CenterContainer" parent="MainMenu/VBoxContainer"]
-layout_mode = 2
-
-[node name="QuitButton" type="Button" parent="MainMenu/VBoxContainer/QuitContainer"]
-visibility_layer = 524288
-layout_mode = 2
-focus_neighbor_top = NodePath("../../OptionsContainer/MainOptionsButton")
-focus_neighbor_bottom = NodePath("../../StartContainer/StartButton")
-theme = ExtResource("3_aqdmj")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
-theme_override_styles/normal = SubResource("StyleBoxEmpty_0dqla")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_0dqla")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_0dqla")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_0dqla")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_0dqla")
-text = "QUIT"
-
-[node name="MainOptionsMenu" parent="MainMenu" instance=ExtResource("8_6xxxe")]
-visible = false
+[node name="MainMenu" parent="." instance=ExtResource("3_jm744")]
 layout_mode = 1
 
-[node name="PauseMenu" type="Control" parent="."]
-visible = false
-visibility_layer = 524288
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -144.0
-offset_top = -96.0
-offset_right = 144.0
-offset_bottom = 128.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Frame" type="TextureRect" parent="PauseMenu"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -144.0
-offset_top = -112.0
-offset_right = 144.0
-offset_bottom = 112.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("4_2jht0")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu"]
-visibility_layer = 524288
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -65.0
-offset_top = -69.0
-offset_right = 65.0
-offset_bottom = 69.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Paused" type="Label" parent="PauseMenu/VBoxContainer"]
-visibility_layer = 524288
-layout_mode = 2
-text = "Paused"
-label_settings = SubResource("LabelSettings_7b6cp")
-horizontal_alignment = 1
-
-[node name="ResumeContainer" type="CenterContainer" parent="PauseMenu/VBoxContainer"]
-layout_mode = 2
-
-[node name="ResumeButton" type="Button" parent="PauseMenu/VBoxContainer/ResumeContainer"]
-visibility_layer = 524288
-layout_mode = 2
-focus_neighbor_top = NodePath("../../MainMenuContainer/MainMenuButton")
-theme = ExtResource("3_aqdmj")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
-theme_override_styles/normal = SubResource("StyleBoxEmpty_0dqla")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_0dqla")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_0dqla")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_0dqla")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_0dqla")
-text = "RESUME"
-
-[node name="OptionsContainer" type="CenterContainer" parent="PauseMenu/VBoxContainer"]
-layout_mode = 2
-
-[node name="PauseOptionsButton" type="Button" parent="PauseMenu/VBoxContainer/OptionsContainer"]
-visibility_layer = 524288
-layout_mode = 2
-theme = ExtResource("3_aqdmj")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
-theme_override_styles/normal = SubResource("StyleBoxEmpty_0dqla")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_0dqla")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_0dqla")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_0dqla")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_0dqla")
-text = "OPTIONS"
-
-[node name="MainMenuContainer" type="CenterContainer" parent="PauseMenu/VBoxContainer"]
-layout_mode = 2
-
-[node name="MainMenuButton" type="Button" parent="PauseMenu/VBoxContainer/MainMenuContainer"]
-visibility_layer = 524288
-layout_mode = 2
-focus_neighbor_bottom = NodePath("../../ResumeContainer/ResumeButton")
-theme = ExtResource("3_aqdmj")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
-theme_override_styles/normal = SubResource("StyleBoxEmpty_0dqla")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_0dqla")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_0dqla")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_0dqla")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_0dqla")
-text = "MAIN MENU"
-
-[node name="PauseOptionsMenu" parent="PauseMenu" instance=ExtResource("8_6xxxe")]
+[node name="PauseMenu" parent="." instance=ExtResource("8_n3snx")]
 layout_mode = 1
 
 [node name="GameOverMenu" type="Control" parent="."]
@@ -366,17 +153,13 @@ label_settings = SubResource("LabelSettings_tbeqy")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="pressed" from="MainMenu/VBoxContainer/StartContainer/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="MainMenu/VBoxContainer/OptionsContainer/MainOptionsButton" to="." method="_on_main_options_button_pressed"]
-[connection signal="pressed" from="MainMenu/VBoxContainer/QuitContainer/QuitButton" to="." method="_on_quit_button_pressed"]
-[connection signal="close" from="MainMenu/MainOptionsMenu" to="." method="_on_main_options_menu_close"]
-[connection signal="mute" from="MainMenu/MainOptionsMenu" to="." method="_on_options_menu_mute"]
-[connection signal="worm_mode" from="MainMenu/MainOptionsMenu" to="." method="_on_options_menu_worm_mode"]
-[connection signal="pressed" from="PauseMenu/VBoxContainer/ResumeContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
-[connection signal="pressed" from="PauseMenu/VBoxContainer/OptionsContainer/PauseOptionsButton" to="." method="_on_pause_options_button_pressed"]
-[connection signal="pressed" from="PauseMenu/VBoxContainer/MainMenuContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
-[connection signal="close" from="PauseMenu/PauseOptionsMenu" to="." method="_on_pause_options_menu_close"]
-[connection signal="mute" from="PauseMenu/PauseOptionsMenu" to="." method="_on_options_menu_mute"]
-[connection signal="worm_mode" from="PauseMenu/PauseOptionsMenu" to="." method="_on_options_menu_worm_mode"]
+[connection signal="mute" from="MainMenu" to="." method="_on_options_menu_mute"]
+[connection signal="quit" from="MainMenu" to="." method="_on_main_menu_quit"]
+[connection signal="start_game" from="MainMenu" to="." method="_on_main_menu_start_game"]
+[connection signal="worm_mode" from="MainMenu" to="." method="_on_options_menu_worm_mode"]
+[connection signal="main_menu" from="PauseMenu" to="." method="_on_main_menu_button_pressed"]
+[connection signal="mute" from="PauseMenu" to="." method="_on_options_menu_mute"]
+[connection signal="resume" from="PauseMenu" to="." method="_on_resume_button_pressed"]
+[connection signal="worm_mode" from="PauseMenu" to="." method="_on_options_menu_worm_mode"]
 [connection signal="pressed" from="GameOverMenu/VBoxContainer/TryAgainContainer/TryAgainButton" to="." method="_on_try_again_button_pressed"]
 [connection signal="pressed" from="GameOverMenu/VBoxContainer/MainMenuContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
