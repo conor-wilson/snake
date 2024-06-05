@@ -38,14 +38,7 @@ func show_game_over_screen(score:int, new_high_score:bool):
 	await get_tree().create_timer(game_over_timeout).timeout
 	
 	hide_all()
-	$GameOverMenu/VBoxContainer/Score.text = "Score: " + str(score)
-	$GameOverMenu.show()
-	$GameOverMenu/VBoxContainer/TryAgainContainer/TryAgainButton.grab_focus()
-	
-	if new_high_score:
-		$GameOverMenu/NewHighScore.show()
-	else:
-		$GameOverMenu/NewHighScore.hide()
+	$GameOverMenu.show_and_focus(score, new_high_score)
 
 func set_mute_icons(checked:bool):
 	$MainMenu/OptionsMenu.set_mute_icon(checked) # TODO: Actually handle this with a global var
@@ -56,24 +49,26 @@ func set_worm_mode_icons(checked:bool):
 	$PauseMenu/OptionsMenu.set_worm_mode_icon(checked) # TODO: Actually handle this with a global var
 
 
-func _on_main_menu_start_game():
-	play.emit()
+# TODO: Rename all these to "_on_xxx_button_pressed()"
 
-func _on_main_menu_quit():
-	quit.emit()
+func _on_start_button_pressed():
+	play.emit()
 
 func _on_resume_button_pressed():
 	play.emit()
 
-func _on_main_menu_button_pressed():
-	main_menu.emit()
-
 func _on_try_again_button_pressed():
 	play.emit()
 
-func _on_options_menu_mute():
+func _on_quit_button_pressed():
+	quit.emit()
+
+func _on_main_menu_button_pressed():
+	main_menu.emit()
+
+func _on_mute_button_pressed():
 	mute.emit()
 
-func _on_options_menu_worm_mode():
+func _on_worm_mode_button_pressed():
 	worm_mode.emit()
 
