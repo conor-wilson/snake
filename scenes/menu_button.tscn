@@ -21,11 +21,15 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_5kwxt")
 text = "SAMPLE TEXT"
 script = ExtResource("2_3q3ls")
 
-[node name="FocusNoise" type="AudioStreamPlayer2D" parent="."]
+[node name="SelectSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_fk15f")
 
-[node name="PressNoise" type="AudioStreamPlayer2D" parent="."]
+[node name="ConfirmSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_fdw4t")
+
+[node name="CancelSound" type="AudioStreamPlayer2D" parent="."]
+
+[node name="StartGameSound" type="AudioStreamPlayer2D" parent="."]
 
 [connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
 [connection signal="pressed" from="." to="." method="_on_pressed"]
