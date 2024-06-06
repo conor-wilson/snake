@@ -82,6 +82,7 @@ focus_neighbor_bottom = NodePath("../../WormModeContainer/WormModeButton")
 text = "MUTE "
 icon = ExtResource("5_s41d8")
 icon_alignment = 2
+invert_mute_behavior = true
 
 [node name="WormModeContainer" type="CenterContainer" parent="VBoxContainer"]
 layout_mode = 2

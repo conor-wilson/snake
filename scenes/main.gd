@@ -106,12 +106,8 @@ func _on_menus_main_menu():
 	start_screen()
 
 func _on_menus_mute():
-	if !$AudioPlayer.muted:
-		$AudioPlayer.mute()
-		$Menus.set_mute_icons(true)
-	else:
-		$AudioPlayer.unmute()
-		$Menus.set_mute_icons(false)
+	Global.toggle_mute()
+	$AudioPlayer.stop_music_if_muted()
 
 func _on_menus_worm_mode():
 	if !worm_mode: 

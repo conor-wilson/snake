@@ -40,10 +40,6 @@ func show_game_over_screen(score:int, new_high_score:bool):
 	hide_all()
 	$GameOverMenu.show_and_focus(score, new_high_score)
 
-func set_mute_icons(checked:bool):
-	$MainMenu/OptionsMenu.set_mute_icon(checked) # TODO: Actually handle this with a global var
-	$PauseMenu/OptionsMenu.set_mute_icon(checked) # TODO: Actually handle this with a global var
-
 func set_worm_mode_icons(checked:bool):
 	$MainMenu/OptionsMenu.set_worm_mode_icon(checked) # TODO: Actually handle this with a global var
 	$PauseMenu/OptionsMenu.set_worm_mode_icon(checked) # TODO: Actually handle this with a global var
