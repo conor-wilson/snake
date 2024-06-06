@@ -60,15 +60,15 @@ func _on_resume_button_pressed():
 func _on_try_again_button_pressed():
 	play.emit()
 
-func _on_quit_button_pressed():
-	quit.emit()
-
-func _on_main_menu_button_pressed():
-	main_menu.emit()
-
 func _on_mute_button_pressed():
 	mute.emit()
 
 func _on_worm_mode_button_pressed():
 	worm_mode.emit()
+
+func _on_main_menu_button_pressed():
+	main_menu.emit()
+
+func _on_quit_button_pressed():
+	quit.emit()
 

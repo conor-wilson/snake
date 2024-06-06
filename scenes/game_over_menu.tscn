@@ -1,9 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://mc7his0230o4"]
+[gd_scene load_steps=8 format=3 uid="uid://mc7his0230o4"]
 
 [ext_resource type="Script" path="res://scenes/game_over_menu.gd" id="1_kaubm"]
 [ext_resource type="Texture2D" uid="uid://bqjkmi0odbocm" path="res://art/popupMenu.png" id="1_xapo3"]
 [ext_resource type="FontFile" uid="uid://ddmsbwqyya44t" path="res://art/m6x11.ttf" id="2_k8etd"]
-[ext_resource type="Theme" uid="uid://b0gks4806w8al" path="res://scenes/menus.tres" id="3_reh6t"]
+[ext_resource type="PackedScene" uid="uid://753dvq3mxgal" path="res://scenes/menu_button.tscn" id="4_ielhk"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_f4frt"]
 font = ExtResource("2_k8etd")
@@ -14,8 +14,6 @@ font_color = Color(0.67451, 0.196078, 0.196078, 1)
 font = ExtResource("2_k8etd")
 font_size = 32
 font_color = Color(0, 0, 0, 1)
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eove6"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ba1w8"]
 font = ExtResource("2_k8etd")
@@ -79,41 +77,24 @@ horizontal_alignment = 1
 [node name="TryAgainContainer" type="CenterContainer" parent="VBoxContainer"]
 layout_mode = 2
 
-[node name="TryAgainButton" type="Button" parent="VBoxContainer/TryAgainContainer"]
-visibility_layer = 524288
+[node name="TryAgainButton" parent="VBoxContainer/TryAgainContainer" instance=ExtResource("4_ielhk")]
 layout_mode = 2
 focus_neighbor_top = NodePath("../../MainMenuContainer/MainMenuButton")
-theme = ExtResource("3_reh6t")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
-theme_override_styles/normal = SubResource("StyleBoxEmpty_eove6")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_eove6")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_eove6")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_eove6")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_eove6")
+focus_neighbor_bottom = NodePath("../../MainMenuContainer/MainMenuButton")
 text = "TRY AGAIN"
 
 [node name="MainMenuContainer" type="CenterContainer" parent="VBoxContainer"]
 layout_mode = 2
 
-[node name="MainMenuButton" type="Button" parent="VBoxContainer/MainMenuContainer"]
-visibility_layer = 524288
+[node name="MainMenuButton" parent="VBoxContainer/MainMenuContainer" instance=ExtResource("4_ielhk")]
 layout_mode = 2
+focus_neighbor_top = NodePath("../../TryAgainContainer/TryAgainButton")
 focus_neighbor_bottom = NodePath("../../TryAgainContainer/TryAgainButton")
-theme = ExtResource("3_reh6t")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
-theme_override_styles/normal = SubResource("StyleBoxEmpty_eove6")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_eove6")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_eove6")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_eove6")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_eove6")
 text = "MAIN MENU"
 
 [node name="NewHighScore" type="Label" parent="."]
 visibility_layer = 524288
+layout_mode = 0
 offset_left = 144.0
 offset_top = 88.0
 offset_right = 432.0

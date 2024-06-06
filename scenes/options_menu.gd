@@ -4,6 +4,9 @@ signal mute
 signal worm_mode
 signal close
 
+var unchecked_icon = preload("res://art/checkBoxUnchecked.png")
+var checked_icon = preload("res://art/checkBoxChecked.png")
+
 func show_and_focus(worm_mode_unlocked:bool):
 	
 	show()
@@ -15,10 +18,18 @@ func show_and_focus(worm_mode_unlocked:bool):
 	$VBoxContainer/MuteContainer/MuteButton.grab_focus()
 
 func set_mute_icon(checked:bool):
-	$VBoxContainer/MuteContainer/MuteButton.set_icon(checked)
+	# TODO: Move this functionality over to menu_button.gd?
+	if checked:
+		$VBoxContainer/MuteContainer/MuteButton.icon = checked_icon
+	else:
+		$VBoxContainer/MuteContainer/MuteButton.icon = unchecked_icon
 
 func set_worm_mode_icon(checked:bool):
-	$VBoxContainer/WormModeContainer/WormModeButton.set_icon(checked)
+	# TODO: Move this functionality over to menu_button.gd (or at least de-duplicate this)?
+	if checked:
+		$VBoxContainer/MuteContainer/WormModeButton.icon = checked_icon
+	else:
+		$VBoxContainer/MuteContainer/WormModeButton.icon = unchecked_icon
 
 
 func _on_mute_button_pressed():

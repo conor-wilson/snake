@@ -1,18 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://ebgv2em0agr3"]
+[gd_scene load_steps=8 format=3 uid="uid://ebgv2em0agr3"]
 
-[ext_resource type="Theme" uid="uid://b0gks4806w8al" path="res://scenes/menus.tres" id="1_3ve8q"]
 [ext_resource type="Script" path="res://scenes/options_menu.gd" id="1_8pohp"]
 [ext_resource type="Texture2D" uid="uid://bqjkmi0odbocm" path="res://art/popupMenu.png" id="2_vup7s"]
 [ext_resource type="FontFile" uid="uid://ddmsbwqyya44t" path="res://art/m6x11.ttf" id="3_5jrau"]
+[ext_resource type="PackedScene" uid="uid://753dvq3mxgal" path="res://scenes/menu_button.tscn" id="4_7l5dp"]
 [ext_resource type="Texture2D" uid="uid://bglvqkrwxjxiv" path="res://art/checkBoxUnchecked.png" id="5_s41d8"]
-[ext_resource type="Script" path="res://scenes/OptionButton.gd" id="6_mtma2"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_k47dm"]
 font = ExtResource("3_5jrau")
 font_size = 48
 font_color = Color(0.215686, 0.580392, 0.431373, 1)
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mocdb"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_xy2mf"]
 font = ExtResource("3_5jrau")
@@ -76,71 +73,39 @@ layout_mode = 2
 [node name="MuteContainer" type="CenterContainer" parent="VBoxContainer"]
 layout_mode = 2
 
-[node name="MuteButton" type="Button" parent="VBoxContainer/MuteContainer"]
-visibility_layer = 524288
+[node name="MuteButton" parent="VBoxContainer/MuteContainer" instance=ExtResource("4_7l5dp")]
 layout_mode = 2
 focus_neighbor_left = NodePath(".")
 focus_neighbor_top = NodePath("../../CloseContainer/CloseButton")
 focus_neighbor_right = NodePath(".")
 focus_neighbor_bottom = NodePath("../../WormModeContainer/WormModeButton")
-theme = ExtResource("1_3ve8q")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
-theme_override_styles/normal = SubResource("StyleBoxEmpty_mocdb")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_mocdb")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_mocdb")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_mocdb")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_mocdb")
 text = "MUTE "
 icon = ExtResource("5_s41d8")
 icon_alignment = 2
-script = ExtResource("6_mtma2")
 
 [node name="WormModeContainer" type="CenterContainer" parent="VBoxContainer"]
 layout_mode = 2
 
-[node name="WormModeButton" type="Button" parent="VBoxContainer/WormModeContainer"]
-visibility_layer = 524288
+[node name="WormModeButton" parent="VBoxContainer/WormModeContainer" instance=ExtResource("4_7l5dp")]
 layout_mode = 2
 focus_neighbor_left = NodePath(".")
 focus_neighbor_top = NodePath("../../MuteContainer/MuteButton")
 focus_neighbor_right = NodePath(".")
 focus_neighbor_bottom = NodePath("../../CloseContainer/CloseButton")
-theme = ExtResource("1_3ve8q")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
-theme_override_styles/normal = SubResource("StyleBoxEmpty_mocdb")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_mocdb")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_mocdb")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_mocdb")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_mocdb")
 disabled = true
 text = "WORM MODE"
 icon = ExtResource("5_s41d8")
 icon_alignment = 2
-script = ExtResource("6_mtma2")
 
 [node name="CloseContainer" type="CenterContainer" parent="VBoxContainer"]
 layout_mode = 2
 
-[node name="CloseButton" type="Button" parent="VBoxContainer/CloseContainer"]
-visibility_layer = 524288
+[node name="CloseButton" parent="VBoxContainer/CloseContainer" instance=ExtResource("4_7l5dp")]
 layout_mode = 2
 focus_neighbor_left = NodePath(".")
 focus_neighbor_top = NodePath("../../WormModeContainer/WormModeButton")
 focus_neighbor_right = NodePath(".")
 focus_neighbor_bottom = NodePath("../../MuteContainer/MuteButton")
-theme = ExtResource("1_3ve8q")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
-theme_override_styles/normal = SubResource("StyleBoxEmpty_mocdb")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_mocdb")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_mocdb")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_mocdb")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_mocdb")
 text = "BACK"
 
 [node name="HelpMessage" type="Label" parent="."]
