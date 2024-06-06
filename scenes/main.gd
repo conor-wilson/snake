@@ -15,8 +15,6 @@ func start_screen():
 
 func main_menu():
 	$AudioPlayer.stop_music()
-	if game_state == GameState.PAUSE:
-		$AudioPlayer.play_game_over()
 	
 	game_state = GameState.MAIN_MENU
 	$Menus.show_main_menu(save_data.high_score)
@@ -25,7 +23,6 @@ func main_menu():
 
 func start_game():
 	$AudioPlayer.increase_music_volume()
-	$AudioPlayer.play_start_game()
 	
 	# Reset game state
 	score = 0
@@ -40,14 +37,12 @@ func start_game():
 func pause():
 	# TODO: There's a bug here when the player pauses the game before the snake starts moving! 
 	$AudioPlayer.lower_music_volume()
-	$AudioPlayer.play_pause()
 	game_state = GameState.PAUSE
 	$Menus.show_pause_menu()
 	$Snake.stop_ticker()
 
 func resume():
 	$AudioPlayer.increase_music_volume()
-	$AudioPlayer.play_resume()
 	game_state = GameState.PLAY
 	$Menus.hide_all()
 	$Snake.start_ticker()

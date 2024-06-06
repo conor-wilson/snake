@@ -9,7 +9,7 @@ func show_and_focus(high_score:int):
 	$HighScore.text = "High Score: " + str(high_score)
 	show()
 	$OptionsMenu.hide()
-	$VBoxContainer/StartContainer/StartButton.grab_focus()
+	$VBoxContainer/StartContainer/StartButton.focus()
 
 
 func _on_start_button_pressed():
@@ -30,4 +30,4 @@ func _on_options_menu_worm_mode():
 
 func _on_options_menu_close():
 	$OptionsMenu.hide()
-	$VBoxContainer/OptionsContainer/OptionsButton.grab_focus()
+	$VBoxContainer/OptionsContainer/OptionsButton.focus(true)

@@ -7,7 +7,7 @@ func show_and_focus(score:int, new_high_score:bool):
 	
 	$VBoxContainer/Score.text = "Score: " + str(score)
 	show()
-	$VBoxContainer/TryAgainContainer/TryAgainButton.grab_focus()
+	$VBoxContainer/TryAgainContainer/TryAgainButton.focus(true)
 	
 	# TODO: Try $NewHighScore.visible = new_high_score
 	if new_high_score:

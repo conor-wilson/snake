@@ -107,6 +107,7 @@ focus_neighbor_top = NodePath("../../WormModeContainer/WormModeButton")
 focus_neighbor_right = NodePath(".")
 focus_neighbor_bottom = NodePath("../../MuteContainer/MuteButton")
 text = "BACK"
+pressed_sound = 4
 
 [node name="HelpMessage" type="Label" parent="."]
 layout_mode = 1

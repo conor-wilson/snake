@@ -65,6 +65,7 @@ layout_mode = 2
 focus_neighbor_top = NodePath("../../MainMenuContainer/MainMenuButton")
 focus_neighbor_bottom = NodePath("../../OptionsContainer/OptionsButton")
 text = "RESUME"
+pressed_sound = 4
 
 [node name="OptionsContainer" type="CenterContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -83,6 +84,7 @@ layout_mode = 2
 focus_neighbor_top = NodePath("../../OptionsContainer/OptionsButton")
 focus_neighbor_bottom = NodePath("../../ResumeContainer/ResumeButton")
 text = "MAIN MENU"
+pressed_sound = 4
 
 [node name="OptionsMenu" parent="." instance=ExtResource("5_dmuks")]
 visible = false

@@ -69,6 +69,7 @@ layout_mode = 2
 focus_neighbor_top = NodePath("../../QuitContainer/QuitButton")
 focus_neighbor_bottom = NodePath("../../OptionsContainer/OptionsButton")
 text = "START"
+pressed_sound = 1
 
 [node name="OptionsContainer" type="CenterContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -87,6 +88,7 @@ layout_mode = 2
 focus_neighbor_top = NodePath("../../OptionsContainer/OptionsButton")
 focus_neighbor_bottom = NodePath("../../StartContainer/StartButton")
 text = "QUIT"
+pressed_sound = 0
 
 [node name="OptionsMenu" parent="." instance=ExtResource("5_g4xge")]
 visible = false

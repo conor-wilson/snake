@@ -15,7 +15,7 @@ func show_and_focus(worm_mode_unlocked:bool):
 	else:
 		$HelpMessage.show()
 	
-	$VBoxContainer/MuteContainer/MuteButton.grab_focus()
+	$VBoxContainer/MuteContainer/MuteButton.focus(true)
 
 func set_mute_icon(checked:bool):
 	# TODO: Move this functionality over to menu_button.gd?

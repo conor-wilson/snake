@@ -82,6 +82,7 @@ layout_mode = 2
 focus_neighbor_top = NodePath("../../MainMenuContainer/MainMenuButton")
 focus_neighbor_bottom = NodePath("../../MainMenuContainer/MainMenuButton")
 text = "TRY AGAIN"
+pressed_sound = 1
 
 [node name="MainMenuContainer" type="CenterContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -91,6 +92,7 @@ layout_mode = 2
 focus_neighbor_top = NodePath("../../TryAgainContainer/TryAgainButton")
 focus_neighbor_bottom = NodePath("../../TryAgainContainer/TryAgainButton")
 text = "MAIN MENU"
+pressed_sound = 4
 
 [node name="NewHighScore" type="Label" parent="."]
 visibility_layer = 524288
