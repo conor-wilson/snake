@@ -23,9 +23,11 @@ layout_mode = 1
 layout_mode = 1
 
 [node name="PauseMenu" parent="." instance=ExtResource("8_n3snx")]
+visible = false
 layout_mode = 1
 
 [node name="GameOverMenu" parent="." instance=ExtResource("5_ebva7")]
+visible = false
 layout_mode = 1
 
 [connection signal="mute" from="MainMenu" to="." method="_on_mute_button_pressed"]
