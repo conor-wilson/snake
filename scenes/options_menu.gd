@@ -23,9 +23,9 @@ func refresh_mute_icon():
 func set_worm_mode_icon(checked:bool):
 	# TODO: Move this functionality over to menu_button.gd (or at least de-duplicate this)?
 	if checked:
-		$VBoxContainer/MuteContainer/WormModeButton.icon = checked_icon
+		$VBoxContainer/WormModeContainer/WormModeButton.icon = checked_icon
 	else:
-		$VBoxContainer/MuteContainer/WormModeButton.icon = unchecked_icon
+		$VBoxContainer/WormModeContainer/WormModeButton.icon = unchecked_icon
 
 # TODO: Move this functionality over to menu_button.gd?
 func get_checkbox_icon(checked:bool) -> Resource:

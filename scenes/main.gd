@@ -110,14 +110,17 @@ func _on_menus_mute():
 	$AudioPlayer.stop_music_if_muted()
 
 func _on_menus_worm_mode():
-	if !worm_mode: 
-		$Menus.set_worm_mode_icons(true)
-		worm_mode = true
-		print("TODO: WORM MODE NOW!")
-	else: 
-		$Menus.set_worm_mode_icons(false)
-		worm_mode = false
-		print("TODO: SNAKE MODE NOW!")
+	worm_mode = !worm_mode
+	$Menus.set_worm_mode_icons(worm_mode)
+	$Snake.worm_mode(worm_mode)
+	#if !worm_mode: 
+		#$Menus.set_worm_mode_icons(true)
+		#worm_mode = true
+		#print("TODO: WORM MODE NOW!")
+	#else: 
+		#$Menus.set_worm_mode_icons(false)
+		#worm_mode = false
+		#print("TODO: SNAKE MODE NOW!")
 
 
 ## ---------- Player-Input-Triggered Functions --------- ##

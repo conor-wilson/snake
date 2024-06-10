@@ -19,9 +19,7 @@ func _ready():
 	snakeTiles  = []
 	appleCoords = Vector2i(-1, -1)
 	set_layer_modulate(SnakeTile.Layer.FG, Color.GRAY)
-	
-	worm_mode(true)
-	
+
 
 # TODO: descriptor
 func spawn_new_snake():

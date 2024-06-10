@@ -93,7 +93,6 @@ focus_neighbor_left = NodePath(".")
 focus_neighbor_top = NodePath("../../MuteContainer/MuteButton")
 focus_neighbor_right = NodePath(".")
 focus_neighbor_bottom = NodePath("../../CloseContainer/CloseButton")
-disabled = true
 text = "WORM MODE"
 icon = ExtResource("5_s41d8")
 icon_alignment = 2
