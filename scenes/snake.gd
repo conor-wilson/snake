@@ -4,6 +4,7 @@ signal turn
 signal hit # TODO: rename this to "dead"?
 signal apple_eaten
 
+var source_id     : int = 0
 var snakeTiles    : Array[SnakeTile] # The array of the snake's tiles
 var appleCoords   : Vector2i         # The coordinate of the apple tile
 var direction     : Vector2          # The direction of the snake's head
@@ -18,6 +19,9 @@ func _ready():
 	snakeTiles  = []
 	appleCoords = Vector2i(-1, -1)
 	set_layer_modulate(SnakeTile.Layer.FG, Color.GRAY)
+	
+	worm_mode(true)
+	
 
 # TODO: descriptor
 func spawn_new_snake():
@@ -51,6 +55,28 @@ func kill_snake():
 	# TODO: Maybe set the alt_id for the head in this func?
 	set_layer_modulate(SnakeTile.Layer.SNAKE, Color.GRAY)
 
+# TODO: Descriptor
+func worm_mode(enable:bool):
+	
+	# Set the TileMap source ID
+	if enable:
+		source_id = 1
+	else:
+		source_id = 0
+	
+	# Refresh all the cells on all layers
+	for layer in range(get_layers_count()):
+		var layer_cell_coords = get_used_cells(layer)
+		for cell_coords in layer_cell_coords:
+			set_cell(
+				layer, 
+				cell_coords, 
+				source_id, 
+				get_cell_atlas_coords(layer, cell_coords), 
+				get_cell_alternative_tile(layer, cell_coords)
+				)
+			
+	
 
 ## ----------- Child Node Behaviour Functions ---------- ##
 
@@ -170,7 +196,7 @@ func clear_snake_and_apple():
 
 # TODO: Descriptor
 func set_snake_cell(snake_tile : SnakeTile):
-	set_cell(snake_tile.get_layer(), snake_tile.get_coords(), 0, snake_tile.get_atlas_coords(), snake_tile.get_alt_id())
+	set_cell(snake_tile.get_layer(), snake_tile.get_coords(), source_id, snake_tile.get_atlas_coords(), snake_tile.get_alt_id())
 
 # TODO: Descriptor
 func set_apple_cell():
@@ -185,7 +211,7 @@ func set_apple_cell():
 		if get_cell_tile_data(SnakeTile.Layer.SNAKE, appleCoords) == null:
 			break
 	
-	set_cell(SnakeTile.Layer.LEVEL, appleCoords, 0, SnakeTile.APPLE_ATLAS)
+	set_cell(SnakeTile.Layer.LEVEL, appleCoords, source_id, SnakeTile.APPLE_ATLAS)
 
 
 ## --------------- Cell Checker Functions --------------- ##
