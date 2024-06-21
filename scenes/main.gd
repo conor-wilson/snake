@@ -1,9 +1,9 @@
 extends Node
 
 enum GameState {START_SCREEN, MAIN_MENU, PLAY, PAUSE, GAME_OVER}
-var game_state     : GameState
-var score          : int
-var save_data      : SaveData
+var game_state : GameState
+var score      : int
+var save_data  : SaveData
 
 ## ------------- State-Chaging Functions -------------- ##
 

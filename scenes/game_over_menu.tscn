@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://mc7his0230o4"]
+[gd_scene load_steps=9 format=3 uid="uid://mc7his0230o4"]
 
 [ext_resource type="Script" path="res://scenes/game_over_menu.gd" id="1_kaubm"]
 [ext_resource type="Texture2D" uid="uid://bqjkmi0odbocm" path="res://art/popupMenu.png" id="1_xapo3"]
@@ -19,6 +19,11 @@ font_color = Color(0, 0, 0, 1)
 font = ExtResource("2_k8etd")
 font_size = 32
 font_color = Color(0.984314, 0.94902, 0.211765, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_0x6fp"]
+font = ExtResource("2_k8etd")
+font_size = 32
+font_color = Color(0.843137, 0.482353, 0.729412, 1)
 
 [node name="GameOverMenu" type="Control"]
 layout_mode = 3
@@ -98,13 +103,29 @@ pressed_sound = 4
 visibility_layer = 524288
 layout_mode = 0
 offset_left = 144.0
-offset_top = 88.0
+offset_top = 128.0
 offset_right = 432.0
-offset_bottom = 152.0
+offset_bottom = 192.0
 text = "New High Score!"
 label_settings = SubResource("LabelSettings_ba1w8")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="WormModeUnlocked" type="Label" parent="."]
+layout_mode = 0
+offset_left = 144.0
+offset_top = 416.0
+offset_right = 432.0
+offset_bottom = 480.0
+text = "WORM MODE Unlocked! "
+label_settings = SubResource("LabelSettings_0x6fp")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="WormModeUnlocked"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
 
 [connection signal="pressed" from="VBoxContainer/TryAgainContainer/TryAgainButton" to="." method="_on_try_again_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/MainMenuContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]

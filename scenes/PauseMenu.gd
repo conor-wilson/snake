@@ -15,7 +15,7 @@ func _on_resume_button_pressed():
 	resume.emit()
 
 func _on_options_button_pressed():
-	$OptionsMenu.show_and_focus(false) # TODO: Worm Mode
+	$OptionsMenu.show_and_focus()
 
 func _on_main_menu_button_pressed():
 	main_menu.emit()

@@ -7,16 +7,20 @@ signal close
 var unchecked_icon = preload("res://art/checkBoxUnchecked.png")
 var checked_icon = preload("res://art/checkBoxChecked.png")
 
-func show_and_focus(worm_mode_unlocked:bool):
+func show_and_focus():
 	$VBoxContainer/MuteContainer/MuteButton.update_icon(Global.mute)
 	$VBoxContainer/WormModeContainer/WormModeButton.update_icon(Global.worm_mode)
 	show()
-	if worm_mode_unlocked:
+	
+	if SaveData.load().worm_mode_unlocked:
+		$VBoxContainer/WormModeContainer/WormModeButton.disabled = false
 		$HelpMessage.hide()
 	else:
+		$VBoxContainer/WormModeContainer/WormModeButton.disabled = true
 		$HelpMessage.show()
 	
 	$VBoxContainer/MuteContainer/MuteButton.focus(true)
+
 
 func _on_mute_button_pressed():
 	mute.emit()

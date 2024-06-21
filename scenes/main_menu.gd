@@ -16,7 +16,7 @@ func _on_start_button_pressed():
 	start_game.emit()
 
 func _on_options_button_pressed():
-	$OptionsMenu.show_and_focus(false) # TODO: Worm Mode
+	$OptionsMenu.show_and_focus()
 
 func _on_quit_button_pressed():
 	quit.emit()
