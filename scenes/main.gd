@@ -4,7 +4,6 @@ enum GameState {START_SCREEN, MAIN_MENU, PLAY, PAUSE, GAME_OVER}
 var game_state     : GameState
 var score          : int
 var save_data      : SaveData
-var worm_mode      : bool # TODO: Add functionality to this
 
 ## ------------- State-Chaging Functions -------------- ##
 
@@ -67,7 +66,6 @@ func game_over():
 ## ------------- Event-Triggered Functions ------------- ##
 
 func _ready():
-	worm_mode = false # TODO: Add functionality to this
 	save_data = SaveData.load()
 	start_screen()
 
@@ -110,17 +108,8 @@ func _on_menus_mute():
 	$AudioPlayer.stop_music_if_muted()
 
 func _on_menus_worm_mode():
-	worm_mode = !worm_mode
-	$Menus.set_worm_mode_icons(worm_mode)
-	$Snake.worm_mode(worm_mode)
-	#if !worm_mode: 
-		#$Menus.set_worm_mode_icons(true)
-		#worm_mode = true
-		#print("TODO: WORM MODE NOW!")
-	#else: 
-		#$Menus.set_worm_mode_icons(false)
-		#worm_mode = false
-		#print("TODO: SNAKE MODE NOW!")
+	Global.toggle_worm_mode()
+	$Snake.update_mode()
 
 
 ## ---------- Player-Input-Triggered Functions --------- ##

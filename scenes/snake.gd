@@ -54,10 +54,10 @@ func kill_snake():
 	set_layer_modulate(SnakeTile.Layer.SNAKE, Color.GRAY)
 
 # TODO: Descriptor
-func worm_mode(enable:bool):
+func update_mode():
 	
 	# Set the TileMap source ID
-	if enable:
+	if Global.worm_mode:
 		source_id = 1
 	else:
 		source_id = 0

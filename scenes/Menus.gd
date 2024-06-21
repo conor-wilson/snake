@@ -40,12 +40,6 @@ func show_game_over_screen(score:int, new_high_score:bool):
 	hide_all()
 	$GameOverMenu.show_and_focus(score, new_high_score)
 
-func set_worm_mode_icons(checked:bool):
-	$MainMenu/OptionsMenu.set_worm_mode_icon(checked) # TODO: Actually handle this with a global var
-	$PauseMenu/OptionsMenu.set_worm_mode_icon(checked) # TODO: Actually handle this with a global var
-
-
-# TODO: Rename all these to "_on_xxx_button_pressed()"
 
 func _on_start_button_pressed():
 	play.emit()
