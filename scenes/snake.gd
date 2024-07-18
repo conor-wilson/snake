@@ -73,8 +73,7 @@ func update_mode():
 				get_cell_atlas_coords(layer, cell_coords), 
 				get_cell_alternative_tile(layer, cell_coords)
 				)
-			
-	
+
 
 ## ----------- Child Node Behaviour Functions ---------- ##
 

@@ -55,6 +55,7 @@ func _on_mute_button_pressed():
 
 func _on_worm_mode_button_pressed():
 	worm_mode.emit()
+	$StartScreen.update_mode()
 
 func _on_main_menu_button_pressed():
 	main_menu.emit()
