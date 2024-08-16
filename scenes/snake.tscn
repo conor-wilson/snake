@@ -1,14 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://4af2ve2g5bho"]
+[gd_scene load_steps=8 format=3 uid="uid://4af2ve2g5bho"]
 
 [ext_resource type="TileSet" uid="uid://kmmw4pd0nka5" path="res://scenes/snake_tiles.tres" id="1_ktb0o"]
 [ext_resource type="Script" path="res://scenes/snake.gd" id="2_f2shc"]
 [ext_resource type="FontFile" uid="uid://ddmsbwqyya44t" path="res://art/m6x11.ttf" id="3_rn780"]
 [ext_resource type="Script" path="res://scenes/HUD.gd" id="3_tkdut"]
+[ext_resource type="Script" path="res://scenes/BlinkingLabel.gd" id="5_ritul"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_c66pe"]
 font = ExtResource("3_rn780")
 font_size = 32
 font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_hf2as"]
+font = ExtResource("3_rn780")
+font_size = 32
+font_color = Color(0.984314, 0.94902, 0.211765, 1)
 
 [node name="Snake" type="TileMap"]
 tile_set = ExtResource("1_ktb0o")
@@ -59,4 +65,29 @@ label_settings = SubResource("LabelSettings_c66pe")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="NewHighScore" type="Label" parent="."]
+visible = false
+z_index = 10
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 239.0
+offset_top = 149.0
+offset_right = 339.0
+offset_bottom = 172.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "HIGH SCORE!"
+label_settings = SubResource("LabelSettings_hf2as")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("5_ritul")
+
+[node name="Timer" type="Timer" parent="NewHighScore"]
+wait_time = 0.1
+
 [connection signal="timeout" from="Ticker" to="." method="_on_ticker_timeout"]
+[connection signal="timeout" from="NewHighScore/Timer" to="NewHighScore" method="_on_timer_timeout"]

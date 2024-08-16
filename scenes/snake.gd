@@ -90,6 +90,10 @@ func update_score(score:int):
 func update_high_score(high_score:int):
 	$HUD.update_high_score(high_score)
 
+func new_high_score():
+	$NewHighScore.activate()
+	await get_tree().create_timer(1.0).timeout
+	$NewHighScore.disable()
 
 ## ------------- Snake Rendering Functions ------------- ##
 

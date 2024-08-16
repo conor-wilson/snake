@@ -8,6 +8,9 @@ var save_data  : SaveData
 ## ------------- State-Chaging Functions -------------- ##
 
 func start_screen():
+	
+	#save_data.save_new_high_score(0)
+	
 	$AudioPlayer.stop_music()
 	game_state = GameState.START_SCREEN
 	$Menus.show_start_screen()
@@ -84,6 +87,8 @@ func _on_snake_apple_eaten():
 	$Snake.update_score(score)
 	
 	# Update high score if it's been beaten
+	if score == save_data.high_score+1: 
+		$Snake.new_high_score()
 	if score > save_data.high_score:
 		$Snake.update_high_score(score)
 
