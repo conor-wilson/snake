@@ -9,7 +9,7 @@ var save_data  : SaveData
 
 func start_screen():
 	
-	save_data.save_new_high_score(0)
+	#save_data.save_new_high_score(48)
 	
 	$AudioPlayer.stop_music()
 	game_state = GameState.START_SCREEN
@@ -87,9 +87,14 @@ func _on_snake_apple_eaten():
 	$Snake.update_score(score)
 	
 	# Update high score if it's been beaten
-	if score == save_data.high_score+1: 
-		$Snake.new_high_score()
 	if score > save_data.high_score:
+		
+		if score == save_data.WORM_MODE_THRESHOLD && !save_data.worm_mode_unlocked:
+			$Snake.worm_mode_unlocked()
+		elif score == save_data.high_score+1: 
+			$Snake.new_high_score()
+		
+		
 		$Snake.update_high_score(score)
 
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://4af2ve2g5bho"]
+[gd_scene load_steps=9 format=3 uid="uid://4af2ve2g5bho"]
 
 [ext_resource type="TileSet" uid="uid://kmmw4pd0nka5" path="res://scenes/snake_tiles.tres" id="1_ktb0o"]
 [ext_resource type="Script" path="res://scenes/snake.gd" id="2_f2shc"]
@@ -14,6 +14,16 @@ font_color = Color(0, 0, 0, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_yvxmt"]
 font = ExtResource("3_rn780")
 font_color = Color(0.984314, 0.94902, 0.211765, 1)
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 0.501961)
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_rvx5g"]
+font = ExtResource("3_rn780")
+font_color = Color(0.843137, 0.482353, 0.729412, 1)
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 0.501961)
+shadow_offset = Vector2(2, 2)
 
 [node name="Snake" type="TileMap"]
 tile_set = ExtResource("1_ktb0o")
@@ -81,8 +91,20 @@ SCORE!"
 label_settings = SubResource("LabelSettings_yvxmt")
 horizontal_alignment = 1
 vertical_alignment = 1
-number_of_blinks = 3
-time_between_blinks = 0.1
+number_of_blinks = 4
+time_between_blinks = 0.25
+vertical_speed = -20.0
+
+[node name="WormModeUnlocked" parent="." instance=ExtResource("5_wujtn")]
+visible = false
+z_index = 10
+text = "WORM MODE
+UNLOCKED!"
+label_settings = SubResource("LabelSettings_rvx5g")
+horizontal_alignment = 1
+vertical_alignment = 1
+number_of_blinks = 4
+time_between_blinks = 0.25
 vertical_speed = -20.0
 
 [connection signal="timeout" from="Ticker" to="." method="_on_ticker_timeout"]

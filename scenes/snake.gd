@@ -72,7 +72,7 @@ func update_mode():
 				source_id, 
 				get_cell_atlas_coords(layer, cell_coords), 
 				get_cell_alternative_tile(layer, cell_coords)
-				)
+			)
 
 
 ## ----------- Child Node Behaviour Functions ---------- ##
@@ -91,8 +91,10 @@ func update_high_score(high_score:int):
 	$HUD.update_high_score(high_score)
 
 func new_high_score():
-	var high_score_coords:Vector2 = snakeTiles[0].get_coords()*rendering_quadrant_size
-	$NewHighScore.temporarily_activate(high_score_coords + Vector2(0.5,0.5)*rendering_quadrant_size)
+	$NewHighScore.temporarily_activate(get_head_tile_screen_pos())
+
+func worm_mode_unlocked():
+	$WormModeUnlocked.temporarily_activate(get_head_tile_screen_pos())
 
 ## ------------- Snake Rendering Functions ------------- ##
 
@@ -226,3 +228,8 @@ func cell_is_empty(coords : Vector2i) -> bool:
 
 func cell_is_tail(coords : Vector2i) -> bool:
 	return get_cell_atlas_coords(SnakeTile.Layer.SNAKE, coords) == SnakeTile.TAIL_ATLAS
+
+# get_head_tile_screen_pos returns the screen position coordinates of the center
+# of the snake's head tile.
+func get_head_tile_screen_pos() -> Vector2 :
+	return Vector2(snakeTiles[0].get_coords()*rendering_quadrant_size) + Vector2(0.5,0.5)*rendering_quadrant_size
