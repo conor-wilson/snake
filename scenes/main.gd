@@ -9,7 +9,7 @@ var save_data  : SaveData
 
 func start_screen():
 	
-	#save_data.save_new_high_score(0)
+	save_data.save_new_high_score(0)
 	
 	$AudioPlayer.stop_music()
 	game_state = GameState.START_SCREEN

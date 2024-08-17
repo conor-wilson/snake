@@ -91,9 +91,8 @@ func update_high_score(high_score:int):
 	$HUD.update_high_score(high_score)
 
 func new_high_score():
-	$NewHighScore.activate()
-	await get_tree().create_timer(1.0).timeout
-	$NewHighScore.disable()
+	var high_score_coords:Vector2 = snakeTiles[0].get_coords()*rendering_quadrant_size
+	$NewHighScore.temporarily_activate(high_score_coords + Vector2(0.5,0.5)*rendering_quadrant_size)
 
 ## ------------- Snake Rendering Functions ------------- ##
 
