@@ -91,9 +91,10 @@ SCORE!"
 label_settings = SubResource("LabelSettings_yvxmt")
 horizontal_alignment = 1
 vertical_alignment = 1
-number_of_blinks = 4
-time_between_blinks = 0.25
-vertical_speed = -20.0
+number_of_blinks = 6
+blink_duration = 0.15
+time_between_blinks = 0.1
+vertical_speed = -10.0
 
 [node name="WormModeUnlocked" parent="." instance=ExtResource("5_wujtn")]
 visible = false
@@ -103,8 +104,9 @@ UNLOCKED!"
 label_settings = SubResource("LabelSettings_rvx5g")
 horizontal_alignment = 1
 vertical_alignment = 1
-number_of_blinks = 4
-time_between_blinks = 0.25
-vertical_speed = -20.0
+number_of_blinks = 8
+blink_duration = 0.15
+time_between_blinks = 0.1
+vertical_speed = -10.0
 
 [connection signal="timeout" from="Ticker" to="." method="_on_ticker_timeout"]

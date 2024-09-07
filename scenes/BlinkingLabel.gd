@@ -2,41 +2,49 @@ extends Label
 
 @export var active:bool
 @export var number_of_blinks:int
+@export var blink_duration:float
 @export var time_between_blinks:float
 @export var vertical_speed:float
+@export var horizontal_speed:float
 
 var lifetime:float = 0
 
 func _ready():
-	$Timer.set_wait_time(time_between_blinks)
-	lifetime = number_of_blinks*time_between_blinks*2
+	lifetime = number_of_blinks*(blink_duration+time_between_blinks)
 	if active:
-		$Timer.start()
+		activate()
 	else:
-		$Timer.stop()
+		disable()
 
 func _process(delta):
 	if active:
-		position += Vector2(0,1)*vertical_speed*delta
+		position += Vector2(horizontal_speed,vertical_speed)*delta
 
+func activate(coords:Vector2 = Vector2.ZERO):
+	position = coords - size/2
+	active = true
+	start_blinking()
+
+func disable():
+	active = false
+	$ShowTimer.stop()
+	$HideTimer.stop()
+	hide()
+	
 func temporarily_activate(coords:Vector2):
 	activate(coords)
 	await get_tree().create_timer(lifetime).timeout
 	disable()
 
-func activate(coords:Vector2 = Vector2.ZERO):
-	position = coords - size/2
-	active = true
+func start_blinking():
 	show()
-	$Timer.start()
-
-func disable():
-	active = false
-	$Timer.stop()
+	$ShowTimer.start(blink_duration+time_between_blinks)
+	await get_tree().create_timer(blink_duration).timeout
 	hide()
+	$HideTimer.start(blink_duration+time_between_blinks)
 
-func _on_timer_timeout():
-	if is_visible():
-		hide()
-	else:
-		show()
+func _on_show_timer_timeout():
+	show()
+
+func _on_hide_timer_timeout():
+	hide()
