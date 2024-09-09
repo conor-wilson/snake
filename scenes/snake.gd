@@ -1,4 +1,4 @@
-extends TileMap
+extends Node2D
 
 signal turn
 signal hit # TODO: rename this to "dead"?
@@ -10,6 +10,8 @@ var appleCoords   : Vector2i         # The coordinate of the apple tile
 var direction     : Vector2          # The direction of the snake's head
 var new_direction : Vector2          # The new direction for the snake's head
 
+var layers : Array[TileMapLayer]
+
 
 ## ---------- High-Level Behaviour Functions ----------- ##
 
@@ -18,7 +20,17 @@ func _ready():
 	stop_ticker()
 	snakeTiles  = []
 	appleCoords = Vector2i(-1, -1)
-	set_layer_modulate(SnakeTile.Layer.FG, Color.GRAY)
+	
+	# TODO: This was implemented this way to allow the smoothest transition from 4.2's TileMap to
+	# 4.3's TileMapLayer system. It may need to be changed to work a little differently.
+	layers = [
+		get_node("Background"),
+		get_node("Game Level"),
+		get_node("Snake"),
+		get_node("Foreground")
+	]
+	
+	layers[SnakeTile.Layer.FG].modulate = Color.GRAY
 
 
 # TODO: descriptor
@@ -26,7 +38,8 @@ func spawn_new_snake():
 	
 	# Clear any old snake tiles that exist
 	clear_snake_and_apple()
-	set_layer_modulate(SnakeTile.Layer.SNAKE, Color.WHITE)
+	var snake_layer:TileMapLayer = get_node("Snake")
+	snake_layer.modulate = Color.WHITE
 	
 	# Set the snake and apple to their starting positions
 	direction     = Vector2.RIGHT
@@ -51,7 +64,7 @@ func start_ticker():
 # TODO: Descriptor
 func kill_snake():
 	# TODO: Maybe set the alt_id for the head in this func?
-	set_layer_modulate(SnakeTile.Layer.SNAKE, Color.GRAY)
+	layers[SnakeTile.Layer.SNAKE].modulate = Color.GRAY
 
 # TODO: Descriptor
 func update_mode():
@@ -63,15 +76,14 @@ func update_mode():
 		source_id = 0
 	
 	# Refresh all the cells on all layers
-	for layer in range(get_layers_count()):
-		var layer_cell_coords = get_used_cells(layer)
+	for layer in layers:
+		var layer_cell_coords = layer.get_used_cells()
 		for cell_coords in layer_cell_coords:
-			set_cell(
-				layer, 
+			layer.set_cell(
 				cell_coords, 
 				source_id, 
-				get_cell_atlas_coords(layer, cell_coords), 
-				get_cell_alternative_tile(layer, cell_coords)
+				layer.get_cell_atlas_coords(cell_coords), 
+				layer.get_cell_alternative_tile(cell_coords)
 			)
 
 
@@ -179,18 +191,18 @@ func move_tail():
 	
 	# Render the updated cells
 	set_snake_cell(snakeTiles[-1])
-	erase_cell(SnakeTile.Layer.SNAKE, oldTailCoords)
+	layers[SnakeTile.Layer.SNAKE].erase_cell(oldTailCoords)
 
 # TODO: Descriptor
 func clear_snake_and_apple():
 	
 	# Clear the snake tiles
 	for s in snakeTiles:
-		erase_cell(s.get_layer(), s.get_coords())
+		layers[s.get_layer()].erase_cell(s.get_coords())
 	snakeTiles = []
 	
 	# Clear the apple tile
-	erase_cell(SnakeTile.Layer.LEVEL, appleCoords)
+	layers[SnakeTile.Layer.LEVEL].erase_cell(appleCoords)
 	appleCoords = Vector2i(-1,-1)
 
 
@@ -198,22 +210,22 @@ func clear_snake_and_apple():
 
 # TODO: Descriptor
 func set_snake_cell(snake_tile : SnakeTile):
-	set_cell(snake_tile.get_layer(), snake_tile.get_coords(), source_id, snake_tile.get_atlas_coords(), snake_tile.get_alt_id())
+	layers[snake_tile.get_layer()].set_cell(snake_tile.get_coords(), source_id, snake_tile.get_atlas_coords(), snake_tile.get_alt_id())
 
 # TODO: Descriptor
 func set_apple_cell():
 	
 	# Remove The old apple
-	erase_cell(SnakeTile.Layer.LEVEL, appleCoords)
+	layers[SnakeTile.Layer.LEVEL].erase_cell(appleCoords)
 	
 	# TODO: This will potentially slow the game down in later stages of the game. Maybe think
 	# of a more CPU-friendly implementation? 
 	while true:
 		appleCoords = Vector2i(randi_range(1,16), randi_range(2,17))
-		if get_cell_tile_data(SnakeTile.Layer.SNAKE, appleCoords) == null:
+		if layers[SnakeTile.Layer.SNAKE].get_cell_tile_data(appleCoords) == null:
 			break
 	
-	set_cell(SnakeTile.Layer.LEVEL, appleCoords, source_id, SnakeTile.APPLE_ATLAS)
+	layers[SnakeTile.Layer.LEVEL].set_cell(appleCoords, source_id, SnakeTile.APPLE_ATLAS)
 
 
 ## --------------- Cell Checker Functions --------------- ##
@@ -222,14 +234,14 @@ func cell_is_apple(coords : Vector2i) -> bool:
 	return coords == appleCoords
 
 func cell_is_empty(coords : Vector2i) -> bool:
-	var level_layer_data = get_cell_tile_data(SnakeTile.Layer.LEVEL, coords)
-	var snake_layer_data = get_cell_tile_data(SnakeTile.Layer.SNAKE, coords)
+	var level_layer_data = layers[SnakeTile.Layer.LEVEL].get_cell_tile_data(coords)
+	var snake_layer_data = layers[SnakeTile.Layer.SNAKE].get_cell_tile_data(coords)
 	return level_layer_data == null && snake_layer_data == null
 
 func cell_is_tail(coords : Vector2i) -> bool:
-	return get_cell_atlas_coords(SnakeTile.Layer.SNAKE, coords) == SnakeTile.TAIL_ATLAS
+	return layers[SnakeTile.Layer.SNAKE].get_cell_atlas_coords(coords) == SnakeTile.TAIL_ATLAS
 
 # get_head_tile_screen_pos returns the screen position coordinates of the center
 # of the snake's head tile.
 func get_head_tile_screen_pos() -> Vector2 :
-	return Vector2(snakeTiles[0].get_coords()*rendering_quadrant_size) + Vector2(0.5,0.5)*rendering_quadrant_size
+	return Vector2(snakeTiles[0].get_coords()*layers[SnakeTile.Layer.BG].rendering_quadrant_size) + Vector2(0.5,0.5)*layers[SnakeTile.Layer.BG].rendering_quadrant_size
