@@ -18,10 +18,13 @@ func _ready():
 
 func _process(delta):
 	if active:
-		position += Vector2(horizontal_speed,vertical_speed)*delta
+		position += Vector2(horizontal_speed, vertical_speed) * delta
 
-func activate(coords:Vector2 = Vector2.ZERO):
-	position = coords - size/2
+func activate(coords:Vector2 = Vector2(-1,-1)):
+	
+	if coords.x >= 0 && coords.y >= 0:
+		position = coords - size/2
+	
 	active = true
 	start_blinking()
 

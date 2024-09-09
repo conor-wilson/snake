@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://mc7his0230o4"]
+[gd_scene load_steps=10 format=3 uid="uid://mc7his0230o4"]
 
 [ext_resource type="Script" path="res://scenes/game_over_menu.gd" id="1_kaubm"]
 [ext_resource type="Texture2D" uid="uid://bqjkmi0odbocm" path="res://art/popupMenu.png" id="1_xapo3"]
 [ext_resource type="FontFile" uid="uid://ddmsbwqyya44t" path="res://art/m6x11.ttf" id="2_k8etd"]
 [ext_resource type="PackedScene" uid="uid://753dvq3mxgal" path="res://scenes/menu_button.tscn" id="4_ielhk"]
+[ext_resource type="PackedScene" uid="uid://bvuk06a3femn6" path="res://scenes/blinking_label.tscn" id="5_udu31"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_f4frt"]
 font = ExtResource("2_k8etd")
@@ -15,10 +16,14 @@ font = ExtResource("2_k8etd")
 font_size = 32
 font_color = Color(0, 0, 0, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_ba1w8"]
+[sub_resource type="LabelSettings" id="LabelSettings_5udt8"]
 font = ExtResource("2_k8etd")
 font_size = 32
 font_color = Color(0.984314, 0.94902, 0.211765, 1)
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
+shadow_color = Color(0, 0, 0, 0.501961)
+shadow_offset = Vector2(2, 2)
 
 [sub_resource type="LabelSettings" id="LabelSettings_0x6fp"]
 font = ExtResource("2_k8etd")
@@ -99,19 +104,21 @@ focus_neighbor_bottom = NodePath("../../TryAgainContainer/TryAgainButton")
 text = "MAIN MENU"
 pressed_sound = 4
 
-[node name="NewHighScore" type="Label" parent="."]
-visibility_layer = 524288
-layout_mode = 0
+[node name="NewHighScore" parent="." instance=ExtResource("5_udu31")]
+layout_mode = 1
 offset_left = 144.0
-offset_top = 128.0
-offset_right = 432.0
-offset_bottom = 192.0
+offset_top = 416.0
+offset_right = -144.0
+offset_bottom = -128.0
 text = "New High Score!"
-label_settings = SubResource("LabelSettings_ba1w8")
+label_settings = SubResource("LabelSettings_5udt8")
 horizontal_alignment = 1
 vertical_alignment = 1
+blink_duration = 0.5
+time_between_blinks = 0.2
 
 [node name="WormModeUnlocked" type="Label" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 144.0
 offset_top = 416.0
@@ -121,11 +128,6 @@ text = "WORM MODE Unlocked! "
 label_settings = SubResource("LabelSettings_0x6fp")
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="Label" type="Label" parent="WormModeUnlocked"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
 
 [connection signal="pressed" from="VBoxContainer/TryAgainContainer/TryAgainButton" to="." method="_on_try_again_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/MainMenuContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]

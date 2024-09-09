@@ -11,9 +11,9 @@ func show_and_focus(score:int, new_high_score:bool):
 	
 	# TODO: Try $NewHighScore.visible = new_high_score
 	if new_high_score:
-		$NewHighScore.show()
+		$NewHighScore.activate()
 	else:
-		$NewHighScore.hide()
+		$NewHighScore.disable()
 
 
 func _on_try_again_button_pressed():

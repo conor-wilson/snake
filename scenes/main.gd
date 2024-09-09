@@ -24,7 +24,8 @@ func start_game():
 	$AudioPlayer.increase_music_volume()
 	
 	# Reset game state
-	score = 0
+	save_data.high_score = 48
+	score = save_data.high_score
 	game_state = GameState.PLAY
 	
 	# Start the game
