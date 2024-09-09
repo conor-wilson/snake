@@ -8,9 +8,6 @@ var save_data  : SaveData
 ## ------------- State-Chaging Functions -------------- ##
 
 func start_screen():
-	
-	save_data.save_new_high_score(48)
-	
 	$AudioPlayer.stop_music()
 	game_state = GameState.START_SCREEN
 	$Menus.show_start_screen()
@@ -27,7 +24,7 @@ func start_game():
 	$AudioPlayer.increase_music_volume()
 	
 	# Reset game state
-	score = save_data.high_score
+	score = 0
 	game_state = GameState.PLAY
 	
 	# Start the game
