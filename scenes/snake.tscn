@@ -78,7 +78,6 @@ tile_set = ExtResource("1_ktb0o")
 wait_time = 0.2
 
 [node name="NewHighScore" parent="." instance=ExtResource("5_wujtn")]
-visible = false
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
@@ -99,7 +98,6 @@ time_between_blinks = 0.1
 vertical_speed = -10.0
 
 [node name="WormModeUnlocked" parent="." instance=ExtResource("5_wujtn")]
-visible = false
 offset_left = 255.0
 offset_top = 177.0
 offset_right = 322.0

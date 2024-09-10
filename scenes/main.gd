@@ -24,6 +24,7 @@ func start_game():
 	$AudioPlayer.increase_music_volume()
 	
 	# Reset game state
+	score = 0
 	game_state = GameState.PLAY
 	
 	# Start the game
@@ -52,13 +53,16 @@ func game_over():
 	# Update game state
 	game_state = GameState.GAME_OVER
 	
+	# Determine if WORM MODE has just been unlocked
+	var worm_mode_unlocked : bool = score >= save_data.WORM_MODE_THRESHOLD && !save_data.worm_mode_unlocked
+	
 	# If there's a new high-score, save it!
 	var new_high_score : bool = score > save_data.high_score
 	if new_high_score:
 		save_data.save_new_high_score(score)
 	
 	# Update HUD
-	$Menus.show_game_over_screen(score, new_high_score)
+	$Menus.show_game_over_screen(score, new_high_score, worm_mode_unlocked)
 	$Snake.stop_ticker()
 
 
@@ -89,7 +93,6 @@ func _on_snake_apple_eaten():
 			$Snake.worm_mode_unlocked()
 		elif score == save_data.high_score+1: 
 			$Snake.new_high_score()
-		
 		
 		$Snake.update_high_score(score)
 

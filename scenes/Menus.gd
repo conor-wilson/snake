@@ -33,12 +33,12 @@ func show_pause_menu():
 	hide_all()
 	$PauseMenu.show_and_focus()
 
-func show_game_over_screen(score:int, new_high_score:bool):
+func show_game_over_screen(score:int, new_high_score:bool, worm_mode_unlocked:bool):
 	
 	await get_tree().create_timer(game_over_timeout).timeout
 	
 	hide_all()
-	$GameOverMenu.show_and_focus(score, new_high_score)
+	$GameOverMenu.show_and_focus(score, new_high_score, worm_mode_unlocked)
 
 
 func _on_start_button_pressed():
