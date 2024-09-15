@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://biemk61i56fmc"
-path="res://.godot/imported/checkBoxChecked.png-7bb77cf600b4cdd8dc1d2261200d8e0f.ctex"
+uid="uid://ieijwkdv6khp"
+path="res://.godot/imported/AnimatedTiles-Sheet.png-ce9994026cd901ee1753db3290ac04f0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/checkBoxChecked.png"
-dest_files=["res://.godot/imported/checkBoxChecked.png-7bb77cf600b4cdd8dc1d2261200d8e0f.ctex"]
+source_file="res://scenes/menus/AnimatedTiles-Sheet.png"
+dest_files=["res://.godot/imported/AnimatedTiles-Sheet.png-ce9994026cd901ee1753db3290ac04f0.ctex"]
 
 [params]
 

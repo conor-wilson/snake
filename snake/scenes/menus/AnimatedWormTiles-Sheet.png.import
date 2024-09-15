@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c62l24rolj552"
-path="res://.godot/imported/WormTitle.png-1e2940c5d49c5992d812eca88dee9206.ctex"
+uid="uid://dghnu3d6gq8t6"
+path="res://.godot/imported/AnimatedWormTiles-Sheet.png-fe7c35b13e4df8f7ca44e592577fb18a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/WormTitle.png"
-dest_files=["res://.godot/imported/WormTitle.png-1e2940c5d49c5992d812eca88dee9206.ctex"]
+source_file="res://scenes/menus/AnimatedWormTiles-Sheet.png"
+dest_files=["res://.godot/imported/AnimatedWormTiles-Sheet.png-fe7c35b13e4df8f7ca44e592577fb18a.ctex"]
 
 [params]
 

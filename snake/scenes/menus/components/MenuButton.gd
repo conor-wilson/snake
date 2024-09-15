@@ -1,8 +1,8 @@
 extends Button
 
 # Checked and Unchecked box icon artwork
-var unchecked_icon = preload("res://art/checkBoxUnchecked.png")
-var checked_icon = preload("res://art/checkBoxChecked.png")
+var unchecked_icon = preload("res://scenes/menus/components/checkBoxUnchecked.png")
+var checked_icon = preload("res://scenes/menus/components/checkBoxChecked.png")
 
 # TODO: Descriptor
 @export var checkable : bool

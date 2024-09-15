@@ -1,7 +1,7 @@
 extends Control
 
-var worm_title:Texture  = load("res://art/WormTitle.png")
-var snake_title:Texture = load("res://art/Title.png") 
+var worm_title:Texture  = load("res://scenes/menus/WormTitle.png")
+var snake_title:Texture = load("res://scenes/menus/Title.png") 
 
 func show_and_focus():
 	show()

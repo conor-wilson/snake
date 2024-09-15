@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://ebgv2em0agr3"]
 
 [ext_resource type="Script" path="res://scenes/menus/options_menu.gd" id="1_8pohp"]
-[ext_resource type="Texture2D" uid="uid://bqjkmi0odbocm" path="res://art/popupMenu.png" id="2_vup7s"]
+[ext_resource type="Texture2D" uid="uid://bqjkmi0odbocm" path="res://scenes/menus/popupMenu.png" id="2_vup7s"]
 [ext_resource type="FontFile" uid="uid://ddmsbwqyya44t" path="res://fonts/m6x11.ttf" id="3_5jrau"]
 [ext_resource type="PackedScene" uid="uid://753dvq3mxgal" path="res://scenes/menus/components/menu_button.tscn" id="4_7l5dp"]
-[ext_resource type="Texture2D" uid="uid://bglvqkrwxjxiv" path="res://art/checkBoxUnchecked.png" id="5_s41d8"]
+[ext_resource type="Texture2D" uid="uid://bglvqkrwxjxiv" path="res://scenes/menus/components/checkBoxUnchecked.png" id="5_s41d8"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_k47dm"]
 font = ExtResource("3_5jrau")

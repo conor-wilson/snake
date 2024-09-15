@@ -4,8 +4,8 @@ signal mute
 signal worm_mode
 signal close
 
-var unchecked_icon = preload("res://art/checkBoxUnchecked.png")
-var checked_icon = preload("res://art/checkBoxChecked.png")
+var unchecked_icon = preload("res://scenes/menus/components/checkBoxUnchecked.png")
+var checked_icon = preload("res://scenes/menus/components/checkBoxChecked.png")
 
 func show_and_focus():
 	$VBoxContainer/MuteContainer/MuteButton.update_icon(Global.mute)

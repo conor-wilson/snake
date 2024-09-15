@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://csamenjtt425b"
-path="res://.godot/imported/snakeTiles32_stripes.png-cd0f0ec09117aaf59877341553cd0c9a.ctex"
+uid="uid://bglvqkrwxjxiv"
+path="res://.godot/imported/checkBoxUnchecked.png-7dfc92da283ab6ce23e35bf56f0a9137.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/snakeTiles32_stripes.png"
-dest_files=["res://.godot/imported/snakeTiles32_stripes.png-cd0f0ec09117aaf59877341553cd0c9a.ctex"]
+source_file="res://scenes/menus/components/checkBoxUnchecked.png"
+dest_files=["res://.godot/imported/checkBoxUnchecked.png-7dfc92da283ab6ce23e35bf56f0a9137.ctex"]
 
 [params]
 

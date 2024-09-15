@@ -1,7 +1,7 @@
 [gd_resource type="TileSet" load_steps=7 format=3 uid="uid://8if62x1rsio0"]
 
-[ext_resource type="Texture2D" uid="uid://ieijwkdv6khp" path="res://art/AnimatedTiles-Sheet.png" id="1_dmoio"]
-[ext_resource type="Texture2D" uid="uid://dghnu3d6gq8t6" path="res://art/AnimatedWormTiles-Sheet.png" id="2_oiamy"]
+[ext_resource type="Texture2D" uid="uid://ieijwkdv6khp" path="res://scenes/menus/AnimatedTiles-Sheet.png" id="1_dmoio"]
+[ext_resource type="Texture2D" uid="uid://dghnu3d6gq8t6" path="res://scenes/menus/AnimatedWormTiles-Sheet.png" id="2_oiamy"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_xylqp"]
 tile_data = PackedInt32Array(0, 0, 1, 65536, 0, 0, 1, 0, 0, 65537, 0, 1)

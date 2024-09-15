@@ -1,7 +1,7 @@
 [gd_resource type="TileSet" load_steps=7 format=3 uid="uid://kmmw4pd0nka5"]
 
-[ext_resource type="Texture2D" uid="uid://di3c1jwyafo16" path="res://art/snakeTiles32.png" id="1_u365x"]
-[ext_resource type="Texture2D" uid="uid://c62ia7yhxmr52" path="res://art/wormTiles32.png" id="2_iaau5"]
+[ext_resource type="Texture2D" uid="uid://di3c1jwyafo16" path="res://scenes/gameplay/snakeTiles32.png" id="1_u365x"]
+[ext_resource type="Texture2D" uid="uid://c62ia7yhxmr52" path="res://scenes/gameplay/wormTiles32.png" id="2_iaau5"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_u6t0o"]
 tile_data = PackedInt32Array(0, 0, 0, 65536, 65536, 0, 1, 65536, 0, 65537, 0, 0)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bglvqkrwxjxiv"
-path="res://.godot/imported/checkBoxUnchecked.png-2a8a80dfccbe1939e2133efc5a273f15.ctex"
+uid="uid://c62ia7yhxmr52"
+path="res://.godot/imported/wormTiles32.png-045b9876ec6e9fd8797534473c9ee9c2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/checkBoxUnchecked.png"
-dest_files=["res://.godot/imported/checkBoxUnchecked.png-2a8a80dfccbe1939e2133efc5a273f15.ctex"]
+source_file="res://scenes/gameplay/wormTiles32.png"
+dest_files=["res://.godot/imported/wormTiles32.png-045b9876ec6e9fd8797534473c9ee9c2.ctex"]
 
 [params]
 

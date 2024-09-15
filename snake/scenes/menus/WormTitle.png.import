@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://di3c1jwyafo16"
-path="res://.godot/imported/snakeTiles32.png-f95583f4484171f0c2a7530218c7300c.ctex"
+uid="uid://c62l24rolj552"
+path="res://.godot/imported/WormTitle.png-744b1d18e1802cbf726043c114aeec28.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/snakeTiles32.png"
-dest_files=["res://.godot/imported/snakeTiles32.png-f95583f4484171f0c2a7530218c7300c.ctex"]
+source_file="res://scenes/menus/WormTitle.png"
+dest_files=["res://.godot/imported/WormTitle.png-744b1d18e1802cbf726043c114aeec28.ctex"]
 
 [params]
 
