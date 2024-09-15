@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/start_screen.gd" id="1_5wu0h"]
 [ext_resource type="TileSet" uid="uid://8if62x1rsio0" path="res://scenes/animated_tiles.tres" id="1_hmmoe"]
 [ext_resource type="Texture2D" uid="uid://cjg18o74pwjya" path="res://art/Title.png" id="2_ir057"]
-[ext_resource type="FontFile" uid="uid://ddmsbwqyya44t" path="res://art/m6x11.ttf" id="3_0hqo4"]
+[ext_resource type="FontFile" uid="uid://ddmsbwqyya44t" path="res://fonts/m6x11.ttf" id="3_0hqo4"]
 [ext_resource type="Script" path="res://scenes/PressAnyKey.gd" id="4_anlr2"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_n5et4"]
