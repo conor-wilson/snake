@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cbccndv50vjww"]
-
-[ext_resource type="Script" path="res://scenes/snake_tile.gd" id="2_cnjhm"]
-
-[node name="SnakeTile" type="Node"]
-script = ExtResource("2_cnjhm")
