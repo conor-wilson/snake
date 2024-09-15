@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=4 uid="uid://4af2ve2g5bho"]
 
-[ext_resource type="TileSet" uid="uid://kmmw4pd0nka5" path="res://scenes/snake_tiles.tres" id="1_ktb0o"]
-[ext_resource type="Script" path="res://scenes/snake.gd" id="2_f2shc"]
+[ext_resource type="TileSet" uid="uid://kmmw4pd0nka5" path="res://scenes/gameplay/snake_tiles.tres" id="1_ktb0o"]
+[ext_resource type="Script" path="res://scenes/gameplay/snake.gd" id="2_f2shc"]
 [ext_resource type="FontFile" uid="uid://ddmsbwqyya44t" path="res://fonts/m6x11.ttf" id="3_rn780"]
-[ext_resource type="Script" path="res://scenes/HUD.gd" id="3_tkdut"]
-[ext_resource type="PackedScene" uid="uid://bvuk06a3femn6" path="res://scenes/blinking_label.tscn" id="5_wujtn"]
+[ext_resource type="Script" path="res://scenes/gameplay/HUD.gd" id="3_tkdut"]
+[ext_resource type="PackedScene" uid="uid://bvuk06a3femn6" path="res://scenes/menus/components/blinking_label.tscn" id="5_wujtn"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_c66pe"]
 font = ExtResource("3_rn780")
