@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvuk06a3femn6"]
+
+[ext_resource type="Script" path="res://scenes/BlinkingLabel.gd" id="1_udjme"]
+
+[node name="BlinkingLabel" type="Label"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -423.0
+offset_bottom = -556.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_udjme")
+blink_duration = 1.0
+time_between_blinks = 1.0
+
+[node name="ShowTimer" type="Timer" parent="."]
+
+[node name="HideTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="ShowTimer" to="." method="_on_show_timer_timeout"]
+[connection signal="timeout" from="HideTimer" to="." method="_on_hide_timer_timeout"]

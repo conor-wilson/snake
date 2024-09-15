@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://bp3mkt6r82voo"]
+
+[ext_resource type="Script" path="res://scenes/Menus.gd" id="1_o5mua"]
+[ext_resource type="PackedScene" uid="uid://c67mu3qkdsf8a" path="res://scenes/start_screen.tscn" id="2_uc8ni"]
+[ext_resource type="PackedScene" uid="uid://bjvj1gux5vqm5" path="res://scenes/main_menu.tscn" id="3_jm744"]
+[ext_resource type="PackedScene" uid="uid://mc7his0230o4" path="res://scenes/game_over_menu.tscn" id="5_ebva7"]
+[ext_resource type="PackedScene" uid="uid://dffcqo1e57tl" path="res://scenes/pause_menu.tscn" id="8_n3snx"]
+
+[node name="Menus" type="Control"]
+visibility_layer = 524288
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_o5mua")
+
+[node name="StartScreen" parent="." instance=ExtResource("2_uc8ni")]
+layout_mode = 1
+
+[node name="MainMenu" parent="." instance=ExtResource("3_jm744")]
+layout_mode = 1
+
+[node name="PauseMenu" parent="." instance=ExtResource("8_n3snx")]
+visible = false
+layout_mode = 1
+
+[node name="GameOverMenu" parent="." instance=ExtResource("5_ebva7")]
+visible = false
+layout_mode = 1
+
+[connection signal="mute" from="MainMenu" to="." method="_on_mute_button_pressed"]
+[connection signal="quit" from="MainMenu" to="." method="_on_quit_button_pressed"]
+[connection signal="start_game" from="MainMenu" to="." method="_on_start_button_pressed"]
+[connection signal="worm_mode" from="MainMenu" to="." method="_on_worm_mode_button_pressed"]
+[connection signal="main_menu" from="PauseMenu" to="." method="_on_main_menu_button_pressed"]
+[connection signal="mute" from="PauseMenu" to="." method="_on_mute_button_pressed"]
+[connection signal="resume" from="PauseMenu" to="." method="_on_resume_button_pressed"]
+[connection signal="worm_mode" from="PauseMenu" to="." method="_on_worm_mode_button_pressed"]
+[connection signal="main_menu" from="GameOverMenu" to="." method="_on_main_menu_button_pressed"]
+[connection signal="try_again" from="GameOverMenu" to="." method="_on_try_again_button_pressed"]

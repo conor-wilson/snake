@@ -1,0 +1,154 @@
+[gd_scene load_steps=11 format=3 uid="uid://mc7his0230o4"]
+
+[ext_resource type="Script" path="res://scenes/game_over_menu.gd" id="1_kaubm"]
+[ext_resource type="Texture2D" uid="uid://bqjkmi0odbocm" path="res://art/popupMenu.png" id="1_xapo3"]
+[ext_resource type="FontFile" uid="uid://ddmsbwqyya44t" path="res://art/m6x11.ttf" id="2_k8etd"]
+[ext_resource type="PackedScene" uid="uid://753dvq3mxgal" path="res://scenes/menu_button.tscn" id="4_ielhk"]
+[ext_resource type="PackedScene" uid="uid://bvuk06a3femn6" path="res://scenes/blinking_label.tscn" id="5_udu31"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_f4frt"]
+font = ExtResource("2_k8etd")
+font_size = 48
+font_color = Color(0.67451, 0.196078, 0.196078, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_umx1i"]
+font = ExtResource("2_k8etd")
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_5udt8"]
+font = ExtResource("2_k8etd")
+font_size = 32
+font_color = Color(0.984314, 0.94902, 0.211765, 1)
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
+shadow_color = Color(0, 0, 0, 0.501961)
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_0jo3c"]
+font = ExtResource("2_k8etd")
+font_size = 32
+font_color = Color(0.843137, 0.482353, 0.729412, 1)
+shadow_size = 0
+shadow_color = Color(0, 0, 0, 0.501961)
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_0x6fp"]
+font = ExtResource("2_k8etd")
+font_color = Color(0, 0, 0, 1)
+shadow_size = 0
+shadow_color = Color(0, 0, 0, 0.501961)
+
+[node name="GameOverMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kaubm")
+
+[node name="Frame" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -144.0
+offset_top = -112.0
+offset_right = 144.0
+offset_bottom = 112.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_xapo3")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+visibility_layer = 524288
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -94.5
+offset_top = -69.0
+offset_right = 94.5
+offset_bottom = 69.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+
+[node name="GameOver" type="Label" parent="VBoxContainer"]
+visibility_layer = 524288
+layout_mode = 2
+text = "Game Over"
+label_settings = SubResource("LabelSettings_f4frt")
+horizontal_alignment = 1
+
+[node name="Score" type="Label" parent="VBoxContainer"]
+visibility_layer = 524288
+layout_mode = 2
+text = "Score: 123"
+label_settings = SubResource("LabelSettings_umx1i")
+horizontal_alignment = 1
+
+[node name="TryAgainContainer" type="CenterContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="TryAgainButton" parent="VBoxContainer/TryAgainContainer" instance=ExtResource("4_ielhk")]
+layout_mode = 2
+focus_neighbor_top = NodePath("../../MainMenuContainer/MainMenuButton")
+focus_neighbor_bottom = NodePath("../../MainMenuContainer/MainMenuButton")
+text = "TRY AGAIN"
+pressed_sound = 1
+
+[node name="MainMenuContainer" type="CenterContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="MainMenuButton" parent="VBoxContainer/MainMenuContainer" instance=ExtResource("4_ielhk")]
+layout_mode = 2
+focus_neighbor_top = NodePath("../../TryAgainContainer/TryAgainButton")
+focus_neighbor_bottom = NodePath("../../TryAgainContainer/TryAgainButton")
+text = "MAIN MENU"
+pressed_sound = 4
+
+[node name="NewHighScore" parent="." instance=ExtResource("5_udu31")]
+layout_mode = 1
+offset_left = 144.0
+offset_top = 416.0
+offset_right = -144.0
+offset_bottom = -128.0
+text = "New High Score!"
+label_settings = SubResource("LabelSettings_5udt8")
+horizontal_alignment = 1
+vertical_alignment = 1
+blink_duration = 0.5
+time_between_blinks = 0.2
+
+[node name="WormModeUnlocked" parent="." instance=ExtResource("5_udu31")]
+layout_mode = 1
+offset_left = 144.0
+offset_top = 112.0
+offset_right = -144.0
+offset_bottom = -432.0
+text = "WORM MODE Unlocked!"
+label_settings = SubResource("LabelSettings_0jo3c")
+horizontal_alignment = 1
+vertical_alignment = 1
+blink_duration = 0.5
+time_between_blinks = 0.2
+
+[node name="WormModeInstructions" type="Label" parent="WormModeUnlocked"]
+layout_mode = 0
+offset_left = -32.0
+offset_top = 48.0
+offset_right = 320.0
+offset_bottom = 80.0
+text = "(you can now activate WORM MODE via the options menu)"
+label_settings = SubResource("LabelSettings_0x6fp")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="VBoxContainer/TryAgainContainer/TryAgainButton" to="." method="_on_try_again_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/MainMenuContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]

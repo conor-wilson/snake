@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://b0gks4806w8al"]
+
+[ext_resource type="FontFile" uid="uid://ddmsbwqyya44t" path="res://art/m6x11.ttf" id="1_11oog"]
+
+[resource]
+default_font = ExtResource("1_11oog")
+default_font_size = 32
