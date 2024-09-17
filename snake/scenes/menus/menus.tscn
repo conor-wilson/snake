@@ -18,8 +18,10 @@ script = ExtResource("1_o5mua")
 
 [node name="StartScreen" parent="." instance=ExtResource("2_uc8ni")]
 layout_mode = 1
+offset_bottom = -608.0
 
 [node name="MainMenu" parent="." instance=ExtResource("3_jm744")]
+visible = false
 layout_mode = 1
 
 [node name="PauseMenu" parent="." instance=ExtResource("8_n3snx")]

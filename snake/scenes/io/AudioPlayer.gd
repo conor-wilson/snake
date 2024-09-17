@@ -22,7 +22,8 @@ func increase_music_volume():
 	$Music.volume_db = INGAME_MUSIC_VOLUME
 
 func play_turn():
-	if !Global.mute:
+	# TODO: Double check that this is the way to go
+	if !$Turn.playing && !Global.mute:
 		$Turn.play()
 
 func play_apple_collect():

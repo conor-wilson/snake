@@ -139,24 +139,28 @@ func _on_player_input_pause():
 
 func _on_player_input_up():
 	if game_state == GameState.PLAY:
+		$AudioPlayer.play_turn()
 		$AudioPlayer.play_music()
 		$Snake.start_ticker()
 		$Snake.turn_head(Vector2.UP)
 
 func _on_player_input_right():
 	if game_state == GameState.PLAY:
+		$AudioPlayer.play_turn()
 		$AudioPlayer.play_music()
 		$Snake.start_ticker()
 		$Snake.turn_head(Vector2.RIGHT)
 
 func _on_player_input_down():
 	if game_state == GameState.PLAY:
+		$AudioPlayer.play_turn()
 		$AudioPlayer.play_music()
 		$Snake.start_ticker()
 		$Snake.turn_head(Vector2.DOWN)
 
 func _on_player_input_left():
 	if game_state == GameState.PLAY:
+		$AudioPlayer.play_turn()
 		$AudioPlayer.play_music()
 		$Snake.start_ticker()
 		$Snake.turn_head(Vector2.LEFT)
