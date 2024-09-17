@@ -21,12 +21,11 @@ func update_mode():
 		$Title.texture = snake_title
 	
 	# Refresh all the cells on all layers
-	var layer_cell_coords = $TileMap.get_used_cells(0)
+	var layer_cell_coords = $TileMapLayer.get_used_cells()
 	for cell_coords in layer_cell_coords:
-		$TileMap.set_cell(
-			0, 
+		$TileMapLayer.set_cell(
 			cell_coords, 
 			source_id, 
-			$TileMap.get_cell_atlas_coords(0, cell_coords), 
-			$TileMap.get_cell_alternative_tile(0, cell_coords)
+			$TileMapLayer.get_cell_atlas_coords(cell_coords), 
+			$TileMapLayer.get_cell_alternative_tile(cell_coords)
 			)
