@@ -28,4 +28,16 @@ func process_player_input():
 		down.emit()
 	if Input.is_action_pressed("move_left"):
 		left.emit()
-		
+
+
+func _on_swipe_detector_up() -> void:
+	up.emit()
+
+func _on_swipe_detector_left() -> void:
+	left.emit()
+
+func _on_swipe_detector_down() -> void:
+	down.emit()
+
+func _on_swipe_detector_right() -> void:
+	right.emit()

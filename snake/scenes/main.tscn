@@ -21,6 +21,7 @@ game_over_timeout = 0.5
 [node name="AudioPlayer" parent="." instance=ExtResource("5_8fdji")]
 
 [node name="MobileKeys" parent="." instance=ExtResource("6_nf6rl")]
+visible = false
 
 [connection signal="apple_eaten" from="Snake" to="." method="_on_snake_apple_eaten"]
 [connection signal="hit" from="Snake" to="." method="_on_snake_hit"]
