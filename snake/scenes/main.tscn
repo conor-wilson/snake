@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://gqxfblqe82to"]
+[gd_scene load_steps=6 format=3 uid="uid://gqxfblqe82to"]
 
 [ext_resource type="PackedScene" uid="uid://4af2ve2g5bho" path="res://scenes/gameplay/snake.tscn" id="1_au0ln"]
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_wj633"]
 [ext_resource type="PackedScene" uid="uid://bp3mkt6r82voo" path="res://scenes/menus/menus.tscn" id="4_di6yd"]
 [ext_resource type="PackedScene" uid="uid://5h34575bwelc" path="res://scenes/io/player_input.tscn" id="4_k3txy"]
 [ext_resource type="PackedScene" uid="uid://bcbcnq632a1kc" path="res://scenes/io/audio_player.tscn" id="5_8fdji"]
-[ext_resource type="PackedScene" uid="uid://b4dygc847n1f" path="res://scenes/io/mobile_keys.tscn" id="6_nf6rl"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_wj633")
@@ -19,9 +18,6 @@ game_over_timeout = 0.5
 [node name="PlayerInput" parent="." instance=ExtResource("4_k3txy")]
 
 [node name="AudioPlayer" parent="." instance=ExtResource("5_8fdji")]
-
-[node name="MobileKeys" parent="." instance=ExtResource("6_nf6rl")]
-visible = false
 
 [connection signal="apple_eaten" from="Snake" to="." method="_on_snake_apple_eaten"]
 [connection signal="hit" from="Snake" to="." method="_on_snake_hit"]
@@ -37,7 +33,3 @@ visible = false
 [connection signal="pause" from="PlayerInput" to="." method="_on_player_input_pause"]
 [connection signal="right" from="PlayerInput" to="." method="_on_player_input_right"]
 [connection signal="up" from="PlayerInput" to="." method="_on_player_input_up"]
-[connection signal="down" from="MobileKeys" to="." method="_on_player_input_down"]
-[connection signal="left" from="MobileKeys" to="." method="_on_player_input_left"]
-[connection signal="right" from="MobileKeys" to="." method="_on_player_input_right"]
-[connection signal="up" from="MobileKeys" to="." method="_on_player_input_up"]
