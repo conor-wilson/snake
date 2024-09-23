@@ -9,7 +9,8 @@ script = ExtResource("1_gxcme")
 [node name="SwipeDetector" type="Camera2D" parent="."]
 position = Vector2(288, 304)
 script = ExtResource("2_focw5")
-directional_threshold = 50
+swipe_length = 40
+directional_threshold = 20
 
 [connection signal="down" from="SwipeDetector" to="." method="_on_swipe_detector_down"]
 [connection signal="left" from="SwipeDetector" to="." method="_on_swipe_detector_left"]

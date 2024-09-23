@@ -6,7 +6,7 @@ signal down
 signal left
 
 @export var swipe_length:int = 100
-@export var directional_threshold:int = 10
+@export var directional_threshold:int = 50
 
 var swiping:bool = false
 var start_pos:Vector2
