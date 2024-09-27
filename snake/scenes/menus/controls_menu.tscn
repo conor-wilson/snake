@@ -1,0 +1,124 @@
+[gd_scene load_steps=8 format=3 uid="uid://bsoeb6qqgagff"]
+
+[ext_resource type="Script" path="res://controls_menu.gd" id="1_gr8a5"]
+[ext_resource type="Texture2D" uid="uid://bqjkmi0odbocm" path="res://scenes/menus/popupMenu.png" id="2_dqcgh"]
+[ext_resource type="FontFile" uid="uid://ddmsbwqyya44t" path="res://fonts/m6x11.ttf" id="3_llgv4"]
+[ext_resource type="PackedScene" uid="uid://753dvq3mxgal" path="res://scenes/menus/components/menu_button.tscn" id="4_u3e3v"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_dleec"]
+font = ExtResource("3_llgv4")
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_884ij"]
+font = ExtResource("3_llgv4")
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_yb0wp"]
+font = ExtResource("3_llgv4")
+font_color = Color(0, 0, 0, 1)
+
+[node name="ControlsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gr8a5")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -104.0
+offset_top = -72.0
+offset_right = 104.0
+offset_bottom = 72.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_dqcgh")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -144.0
+offset_top = -69.0
+offset_right = 144.0
+offset_bottom = 110.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MovementContainer" type="CenterContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Movement" type="Label" parent="VBoxContainer/MovementContainer"]
+layout_mode = 2
+text = "MOVEMENT"
+label_settings = SubResource("LabelSettings_dleec")
+
+[node name="ArrowsContainer" type="CenterContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Arrows" type="Label" parent="VBoxContainer/ArrowsContainer"]
+layout_mode = 2
+text = "←↑↓→ / A W S D / SWIPE"
+label_settings = SubResource("LabelSettings_884ij")
+
+[node name="Spacer" type="CenterContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="WormModeContainer" type="CenterContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Pause" type="Label" parent="VBoxContainer/WormModeContainer"]
+layout_mode = 2
+text = "PAUSE"
+label_settings = SubResource("LabelSettings_dleec")
+
+[node name="EscContainer" type="CenterContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Esc" type="Label" parent="VBoxContainer/EscContainer"]
+layout_mode = 2
+text = "esc / touch top of screen"
+label_settings = SubResource("LabelSettings_884ij")
+
+[node name="Spacer2" type="CenterContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="CloseContainer" type="CenterContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="CloseButton" parent="VBoxContainer/CloseContainer" instance=ExtResource("4_u3e3v")]
+layout_mode = 2
+focus_neighbor_left = NodePath(".")
+focus_neighbor_right = NodePath(".")
+text = "BACK"
+pressed_sound = 4
+
+[node name="HelpMessage" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -144.0
+offset_top = 40.0
+offset_right = 144.0
+offset_bottom = 54.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Reach a high-score of 50 to unlock WORM MODE"
+label_settings = SubResource("LabelSettings_yb0wp")
+horizontal_alignment = 1
+
+[connection signal="pressed" from="VBoxContainer/CloseContainer/CloseButton" to="." method="_on_close_button_pressed"]
