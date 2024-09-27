@@ -65,7 +65,7 @@ layout_mode = 2
 
 [node name="Arrows" type="Label" parent="VBoxContainer/ArrowsContainer"]
 layout_mode = 2
-text = "←↑↓→ / A W S D / SWIPE"
+text = "←↑↓→ / A W S D / directional swipe"
 label_settings = SubResource("LabelSettings_884ij")
 
 [node name="Spacer" type="CenterContainer" parent="VBoxContainer"]
@@ -84,7 +84,7 @@ layout_mode = 2
 
 [node name="Esc" type="Label" parent="VBoxContainer/EscContainer"]
 layout_mode = 2
-text = "esc / touch top of screen"
+text = "ESC / touch top of screen"
 label_settings = SubResource("LabelSettings_884ij")
 
 [node name="Spacer2" type="CenterContainer" parent="VBoxContainer"]
