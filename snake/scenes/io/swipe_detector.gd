@@ -28,7 +28,6 @@ func check_swipe():
 	# Detect when the pause area has been clicked
 	if Input.is_action_just_released("click"):
 		if start_pos.distance_to(get_global_mouse_position()) < swipe_length && start_pos.y < 64:
-			print("PAUSE!")
 			pause.emit()
 	
 	# Detect if the user is mid-swipe

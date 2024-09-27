@@ -46,11 +46,12 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -144.0
-offset_top = -69.0
+offset_top = -112.0
 offset_right = 144.0
 offset_bottom = 110.0
 grow_horizontal = 2
 grow_vertical = 2
+alignment = 1
 
 [node name="MovementContainer" type="CenterContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -65,7 +66,7 @@ layout_mode = 2
 
 [node name="Arrows" type="Label" parent="VBoxContainer/ArrowsContainer"]
 layout_mode = 2
-text = "←↑↓→ / A W S D / directional swipe"
+text = "Arrows / A W S D / directional swipe"
 label_settings = SubResource("LabelSettings_884ij")
 
 [node name="Spacer" type="CenterContainer" parent="VBoxContainer"]
