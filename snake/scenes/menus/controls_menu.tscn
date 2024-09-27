@@ -8,7 +8,7 @@
 [sub_resource type="LabelSettings" id="LabelSettings_dleec"]
 font = ExtResource("3_llgv4")
 font_size = 32
-font_color = Color(0, 0, 0, 1)
+font_color = Color(0.215686, 0.580392, 0.431373, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_884ij"]
 font = ExtResource("3_llgv4")
