@@ -5,6 +5,8 @@ signal right
 signal down
 signal left
 
+signal pause
+
 @export var swipe_length:int = 100
 @export var directional_threshold:int = 50
 
@@ -22,6 +24,12 @@ func check_swipe():
 	if Input.is_action_just_pressed("click") && !swiping:
 		swiping = true
 		start_pos = get_global_mouse_position()
+	
+	# Detect when the pause area has been clicked
+	if Input.is_action_just_released("click"):
+		if start_pos.distance_to(get_global_mouse_position()) < swipe_length && start_pos.y < 64:
+			print("PAUSE!")
+			pause.emit()
 	
 	# Detect if the user is mid-swipe
 	if Input.is_action_pressed("click") && swiping:

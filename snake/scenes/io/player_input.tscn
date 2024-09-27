@@ -14,5 +14,6 @@ directional_threshold = 20
 
 [connection signal="down" from="SwipeDetector" to="." method="_on_swipe_detector_down"]
 [connection signal="left" from="SwipeDetector" to="." method="_on_swipe_detector_left"]
+[connection signal="pause" from="SwipeDetector" to="." method="_on_swipe_detector_pause"]
 [connection signal="right" from="SwipeDetector" to="." method="_on_swipe_detector_right"]
 [connection signal="up" from="SwipeDetector" to="." method="_on_swipe_detector_up"]

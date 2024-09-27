@@ -41,3 +41,6 @@ func _on_swipe_detector_down() -> void:
 
 func _on_swipe_detector_right() -> void:
 	right.emit()
+
+func _on_swipe_detector_pause() -> void:
+	pause.emit()
