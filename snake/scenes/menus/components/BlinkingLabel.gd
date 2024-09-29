@@ -12,7 +12,7 @@ var lifetime:float = 0
 func _ready():
 	lifetime = number_of_blinks*(blink_duration+time_between_blinks)
 	if active:
-		activate()
+		activate(Vector2(-1,-1))
 	else:
 		disable()
 

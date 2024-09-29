@@ -4,9 +4,9 @@
 [ext_resource type="TileSet" uid="uid://8if62x1rsio0" path="res://scenes/menus/animated_tiles.tres" id="1_hmmoe"]
 [ext_resource type="Texture2D" uid="uid://cjg18o74pwjya" path="res://scenes/menus/Title.png" id="2_ir057"]
 [ext_resource type="FontFile" uid="uid://ddmsbwqyya44t" path="res://fonts/m6x11.ttf" id="3_0hqo4"]
-[ext_resource type="Script" path="res://scenes/PressAnyKey.gd" id="4_anlr2"]
+[ext_resource type="PackedScene" uid="uid://bvuk06a3femn6" path="res://scenes/menus/components/blinking_label.tscn" id="6_bhd0u"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_n5et4"]
+[sub_resource type="LabelSettings" id="LabelSettings_nbdbh"]
 font = ExtResource("3_0hqo4")
 font_size = 32
 font_color = Color(0, 0, 0, 1)
@@ -33,19 +33,21 @@ offset_right = 488.0
 offset_bottom = 224.0
 texture = ExtResource("2_ir057")
 
-[node name="PressAnyKey" type="Label" parent="."]
-layout_mode = 0
+[node name="PressAnyKey" parent="." instance=ExtResource("6_bhd0u")]
+layout_mode = 1
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
 offset_left = 144.0
 offset_top = 368.0
 offset_right = 432.0
 offset_bottom = 400.0
+grow_horizontal = 1
+grow_vertical = 1
 text = "PRESS ANY KEY"
-label_settings = SubResource("LabelSettings_n5et4")
+label_settings = SubResource("LabelSettings_nbdbh")
 horizontal_alignment = 1
 vertical_alignment = 1
-script = ExtResource("4_anlr2")
-
-[node name="Timer" type="Timer" parent="PressAnyKey"]
-wait_time = 0.75
-
-[connection signal="timeout" from="PressAnyKey/Timer" to="PressAnyKey" method="_on_timer_timeout"]
+active = true
+blink_duration = 0.75
+time_between_blinks = 0.75
