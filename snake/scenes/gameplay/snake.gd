@@ -122,9 +122,13 @@ func turn_head(input_direction : Vector2):
 # TODO: Maybe this should be moved to the main scene...
 func _on_ticker_timeout():
 	
+	# Don't do anything if we're not in the PLAY GameState
+	if Global.game_state != Global.GameState.PLAY:
+		return
+		
+	print("GAME STATE:", Global.game_state)
+	
 	if new_direction != direction:
-		# TODO: Given the existance of this signal, it REALLY feels like this func should be in Main...
-		#turn.emit()
 		direction = new_direction
 	
 	moveSnake()

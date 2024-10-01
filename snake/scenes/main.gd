@@ -39,11 +39,9 @@ func start_game():
 
 # pause opens the game's pause menu, pauses Snake, and sets the game's state accordingly.
 func pause():
-	# TODO: There's a bug here when the player pauses the game before the snake starts moving!
 	Global.set_game_state(Global.GameState.PAUSE)
 	$AudioPlayer.lower_music_volume()
 	$Menus.show_pause_menu()
-	$Snake.stop_ticker()
 
 # resume resumes Snake without reseting it to its openning state, and updates the game's
 # state accordingly.
@@ -51,7 +49,6 @@ func resume():
 	Global.set_game_state(Global.GameState.PLAY)
 	$AudioPlayer.increase_music_volume()
 	$Menus.hide_all()
-	$Snake.start_ticker()
 
 # game_over ends Snake, opens the game's game-over menu, saves any new high-score and
 # updates the game's state accordingly.
