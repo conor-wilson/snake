@@ -5,7 +5,6 @@ var snake_title:Texture = load("res://scenes/menus/Title.png")
 
 func show_and_focus():
 	show()
-	$PressAnyKey/Timer.start()
 
 # update_mode (TODO)
 # TODO: This is almost an exact copy of Snake.update_mode(). Fix this.
