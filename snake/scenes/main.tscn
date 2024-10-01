@@ -20,6 +20,7 @@ game_over_timeout = 0.5
 [node name="AudioPlayer" parent="." instance=ExtResource("5_8fdji")]
 
 [connection signal="apple_eaten" from="Snake" to="." method="_on_snake_apple_eaten"]
+[connection signal="game_tick" from="Snake" to="." method="_on_snake_game_tick"]
 [connection signal="hit" from="Snake" to="." method="_on_snake_hit"]
 [connection signal="main_menu" from="Menus" to="." method="_on_menus_main_menu"]
 [connection signal="mute" from="Menus" to="." method="_on_menus_mute"]

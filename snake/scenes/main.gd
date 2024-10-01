@@ -173,3 +173,8 @@ func turn_input(direction:Vector2):
 		$AudioPlayer.play_music()
 		if $Snake.is_turning():
 			$AudioPlayer.play_turn()
+
+
+func _on_snake_game_tick():
+	if Global.game_state == Global.GameState.PLAY:
+		$Snake.moveSnake()

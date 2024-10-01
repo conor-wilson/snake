@@ -2,6 +2,7 @@ extends Node2D
 
 signal hit # TODO: rename this to "dead"?
 signal apple_eaten
+signal game_tick
 
 var source_id     : int = 0
 var snakeTiles    : Array[SnakeTile] # The array of the snake's tiles
@@ -119,22 +120,16 @@ func turn_head(input_direction : Vector2):
 		new_direction = input_direction
 
 # TODO: Descriptor
-# TODO: Maybe this should be moved to the main scene...
 func _on_ticker_timeout():
+	game_tick.emit()
 	
-	# Don't do anything if we're not in the PLAY GameState
-	if Global.game_state != Global.GameState.PLAY:
-		return
-		
-	print("GAME STATE:", Global.game_state)
-	
-	if new_direction != direction:
-		direction = new_direction
-	
-	moveSnake()
 
 # TODO: Descriptor
 func moveSnake(): 
+	
+	# Change the snake's direction if required
+	if new_direction != direction:
+		direction = new_direction
 	
 	# Build the new coordinates for the head tile
 	var newHeadCoord = snakeTiles[0].get_coords() + Vector2i(direction)
