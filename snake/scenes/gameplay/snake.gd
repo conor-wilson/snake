@@ -122,6 +122,10 @@ func renderNewSnake():
 func turn_head(input_direction : Vector2): 
 	if direction.dot(input_direction) == 0:
 		new_direction = input_direction
+		turn.emit()
+
+func turning() -> bool: 
+	return direction != new_direction
 
 # TODO: Descriptor
 # TODO: Maybe this should be moved to the main scene...
@@ -129,7 +133,7 @@ func _on_ticker_timeout():
 	
 	if new_direction != direction:
 		# TODO: Given the existance of this signal, it REALLY feels like this func should be in Main...
-		turn.emit()
+		#turn.emit()
 		direction = new_direction
 	
 	moveSnake()

@@ -8,7 +8,7 @@ func play_music():
 	if !$Music.playing && !Global.mute :
 		$Music.play()
 
-func stop_music_if_muted():
+func stop_music_if_muted():	
 	if Global.mute:
 		stop_music()
 
@@ -22,7 +22,6 @@ func increase_music_volume():
 	$Music.volume_db = INGAME_MUSIC_VOLUME
 
 func play_turn():
-	# TODO: Double check that this is the way to go
 	if !$Turn.playing && !Global.mute:
 		$Turn.play()
 

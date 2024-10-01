@@ -84,7 +84,8 @@ func game_over():
 
 # _on_snake_turn is triggered when the snake turns in-game.
 func _on_snake_turn():
-	$AudioPlayer.play_turn()
+	#$AudioPlayer.play_turn()
+	pass
 
 # _on_snake_hit is triggered when the snake crashes into the wall or itself.
 func _on_snake_hit():
@@ -160,32 +161,24 @@ func _on_player_input_pause():
 
 # _on_player_input_up is triggered when the player presses UP or W
 func _on_player_input_up():
-	if game_state == GameState.PLAY:
-		$Snake.start_ticker()
-		$Snake.turn_head(Vector2.UP)
-		$AudioPlayer.play_turn()
-		$AudioPlayer.play_music()
+	turn_input(Vector2.UP)
 
 # _on_player_input_right is triggered when the player presses RIGHT or D
 func _on_player_input_right():
-	if game_state == GameState.PLAY:
-		$Snake.start_ticker()
-		$Snake.turn_head(Vector2.RIGHT)
-		$AudioPlayer.play_turn()
-		$AudioPlayer.play_music()
+	turn_input(Vector2.RIGHT)
 
 # _on_player_input_down is triggered when the player presses DOWN or S
 func _on_player_input_down():
-	if game_state == GameState.PLAY:
-		$Snake.start_ticker()
-		$Snake.turn_head(Vector2.DOWN)
-		$AudioPlayer.play_turn()
-		$AudioPlayer.play_music()
+	turn_input(Vector2.DOWN)
 
 # _on_player_input_left is triggered when the player presses LEFT or A
 func _on_player_input_left():
+	turn_input(Vector2.LEFT)
+
+func turn_input(direction:Vector2): 
 	if game_state == GameState.PLAY:
 		$Snake.start_ticker()
-		$Snake.turn_head(Vector2.LEFT)
-		$AudioPlayer.play_turn()
+		$Snake.turn_head(direction)
 		$AudioPlayer.play_music()
+		if $Snake.turning():
+			$AudioPlayer.play_turn()
