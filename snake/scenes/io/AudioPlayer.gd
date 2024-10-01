@@ -25,9 +25,12 @@ func play_turn():
 	if !$Turn.playing && !Global.mute:
 		$Turn.play()
 
-func play_apple_collect():
+func play_apple_collect(special_sound:bool):
 	if !Global.mute:
-		$AppleCollect.play()
+		if !special_sound:
+			$AppleCollect.play()
+		else:
+			$StartGame.play()
 
 func play_game_over():
 	if !Global.mute:

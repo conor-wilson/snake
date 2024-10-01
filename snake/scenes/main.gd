@@ -92,17 +92,23 @@ func _on_snake_apple_eaten():
 	# Update score
 	score += 1
 	$Snake.update_score(score)
-	$AudioPlayer.play_apple_collect()
 	
 	# Update high score if it's been beaten
+	var special_sound:bool = false
 	if score > save_data.high_score:
 		
 		if score == save_data.WORM_MODE_THRESHOLD && !save_data.worm_mode_unlocked:
 			$Snake.worm_mode_unlocked()
+			special_sound = true
 		elif score == save_data.high_score+1: 
 			$Snake.new_high_score()
+			special_sound = true
 		
 		$Snake.update_high_score(score)
+	
+	# Play the audio with a special sound if the high-score was beaten, or if WORM MODE
+	# has just been unlocked.
+	$AudioPlayer.play_apple_collect(special_sound)
 
 
 ## ----------- Menu-Triggered Functions ---------- ##
@@ -148,7 +154,6 @@ func _on_player_input_pause():
 	match Global.game_state: 
 		Global.GameState.PLAY:
 			pause()
-		# TODO: Review this during tidy-up. It's a little hacky.
 		Global.GameState.PAUSE:
 			$AudioPlayer.play_cancel()
 			resume()
