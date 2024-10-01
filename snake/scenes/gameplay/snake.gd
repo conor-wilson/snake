@@ -54,9 +54,6 @@ func spawn_new_snake():
 
 # TODO: descriptor
 func start_ticker():
-	# TODO: This feels extremely inefficient. Find a way to wait for the first
-	# player input that doesn't involve a conditional checked with every single
-	# player input
 	$Ticker.start()
 
 # TODO: Descriptor
