@@ -77,6 +77,11 @@ func game_over():
 
 ## ------------- Event-Triggered Functions ------------- ##
 
+# _on_snake_game_tick is triggered when a game tick occurs in-game.
+func _on_snake_game_tick():
+	if Global.game_state == Global.GameState.PLAY:
+		$Snake.moveSnake()
+
 # _on_snake_hit is triggered when the snake crashes into the wall or itself.
 func _on_snake_hit():
 	game_over()
@@ -147,8 +152,6 @@ func _on_player_input_pause():
 		Global.GameState.PAUSE:
 			resume()
 
-# TODO: Fix the way that these funcs handle the first player input. It's janky.
-
 # _on_player_input_up is triggered when the player presses UP or W
 func _on_player_input_up():
 	turn_input(Vector2.UP)
@@ -165,16 +168,16 @@ func _on_player_input_down():
 func _on_player_input_left():
 	turn_input(Vector2.LEFT)
 
+# turn_input handles the events that should occur when the player has input the provided
+# direction.
 func turn_input(direction:Vector2): 
 	if Global.game_state == Global.GameState.PLAY:
+		
+		# Check if this is the first input direction
 		if $Snake.is_waiting():
 			$Snake.start_ticker()
-		$Snake.turn_head(direction)
 		$AudioPlayer.play_music()
-		if $Snake.is_turning():
+		
+		# Turn the snake
+		if $Snake.turn(direction):
 			$AudioPlayer.play_turn()
-
-
-func _on_snake_game_tick():
-	if Global.game_state == Global.GameState.PLAY:
-		$Snake.moveSnake()

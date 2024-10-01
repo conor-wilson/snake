@@ -115,9 +115,11 @@ func renderNewSnake():
 ## ------------- Snake Movement Functions -------------- ##
 
 # TODO: Descriptor
-func turn_head(input_direction : Vector2): 
-	if direction.dot(input_direction) == 0:
+func turn(input_direction : Vector2) -> bool: 
+	var turning:bool = direction.dot(input_direction) == 0
+	if turning:
 		new_direction = input_direction
+	return turning
 
 # TODO: Descriptor
 func _on_ticker_timeout():
@@ -239,10 +241,6 @@ func cell_is_tail(coords : Vector2i) -> bool:
 # of the snake's head tile.
 func get_head_tile_screen_pos() -> Vector2 :
 	return Vector2(snakeTiles[0].get_coords()*layers[SnakeTile.Layer.BG].rendering_quadrant_size) + Vector2(0.5,0.5)*layers[SnakeTile.Layer.BG].rendering_quadrant_size
-
-# is_turning returns true if the snake is about to turn.
-func is_turning() -> bool: 
-	return direction != new_direction
 
 func is_waiting() -> bool:
 	return $Ticker.is_stopped()
