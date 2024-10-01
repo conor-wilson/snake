@@ -1,6 +1,5 @@
 extends Node2D
 
-signal turn
 signal hit # TODO: rename this to "dead"?
 signal apple_eaten
 
@@ -58,8 +57,7 @@ func start_ticker():
 	# TODO: This feels extremely inefficient. Find a way to wait for the first
 	# player input that doesn't involve a conditional checked with every single
 	# player input
-	if $Ticker.is_stopped():
-		$Ticker.start()
+	$Ticker.start()
 
 # TODO: Descriptor
 func kill_snake():
@@ -122,10 +120,6 @@ func renderNewSnake():
 func turn_head(input_direction : Vector2): 
 	if direction.dot(input_direction) == 0:
 		new_direction = input_direction
-		turn.emit()
-
-func turning() -> bool: 
-	return direction != new_direction
 
 # TODO: Descriptor
 # TODO: Maybe this should be moved to the main scene...
@@ -232,7 +226,7 @@ func set_apple_cell():
 	layers[SnakeTile.Layer.LEVEL].set_cell(appleCoords, source_id, SnakeTile.APPLE_ATLAS)
 
 
-## --------------- Cell Checker Functions --------------- ##
+## ----------------- Getters Functions ----------------- ##
 
 func cell_is_apple(coords : Vector2i) -> bool:
 	return coords == appleCoords
@@ -249,3 +243,10 @@ func cell_is_tail(coords : Vector2i) -> bool:
 # of the snake's head tile.
 func get_head_tile_screen_pos() -> Vector2 :
 	return Vector2(snakeTiles[0].get_coords()*layers[SnakeTile.Layer.BG].rendering_quadrant_size) + Vector2(0.5,0.5)*layers[SnakeTile.Layer.BG].rendering_quadrant_size
+
+# is_turning returns true if the snake is about to turn.
+func is_turning() -> bool: 
+	return direction != new_direction
+
+func is_waiting() -> bool:
+	return $Ticker.is_stopped()

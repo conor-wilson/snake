@@ -82,11 +82,6 @@ func game_over():
 
 ## ------------- Event-Triggered Functions ------------- ##
 
-# _on_snake_turn is triggered when the snake turns in-game.
-func _on_snake_turn():
-	#$AudioPlayer.play_turn()
-	pass
-
 # _on_snake_hit is triggered when the snake crashes into the wall or itself.
 func _on_snake_hit():
 	game_over()
@@ -177,8 +172,9 @@ func _on_player_input_left():
 
 func turn_input(direction:Vector2): 
 	if game_state == GameState.PLAY:
-		$Snake.start_ticker()
+		if $Snake.is_waiting():
+			$Snake.start_ticker()
 		$Snake.turn_head(direction)
 		$AudioPlayer.play_music()
-		if $Snake.turning():
+		if $Snake.is_turning():
 			$AudioPlayer.play_turn()
