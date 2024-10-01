@@ -20,7 +20,7 @@ func main_menu():
 	Global.set_game_state(Global.GameState.MAIN_MENU)
 	$AudioPlayer.stop_music()
 	$Menus.show_main_menu(save_data.high_score)
-	$Snake.stop_ticker()
+	$Game.stop_ticker()
 
 # start_game opens the game level in it's openning state, and starts Snake.
 func start_game():
@@ -31,10 +31,10 @@ func start_game():
 	$AudioPlayer.increase_music_volume()
 	
 	# Start the game
-	$Snake.update_score(score)
-	$Snake.update_high_score(save_data.high_score)
+	$Game.update_score(score)
+	$Game.update_high_score(save_data.high_score)
 	$Menus.hide_all()
-	$Snake.new_game()
+	$Game.new_game()
 
 # pause opens the game's pause menu, pauses Snake, and sets the game's state accordingly.
 func pause():
@@ -57,7 +57,7 @@ func game_over():
 	Global.set_game_state(Global.GameState.GAME_OVER)
 	$AudioPlayer.stop_music()
 	$AudioPlayer.play_game_over()
-	$Snake.stop_ticker()
+	$Game.stop_ticker()
 	
 	# Determine if WORM MODE has just been unlocked
 	var worm_mode_unlocked : bool = score >= save_data.WORM_MODE_THRESHOLD && !save_data.worm_mode_unlocked
@@ -76,7 +76,7 @@ func game_over():
 # _on_snake_game_tick is triggered when a game tick occurs in-game.
 func _on_snake_game_tick():
 	if Global.game_state == Global.GameState.PLAY:
-		$Snake.move_snake()
+		$Game.move_snake()
 
 # _on_snake_dead is triggered when the snake crashes into the wall or itself.
 func _on_snake_dead():
@@ -87,20 +87,20 @@ func _on_snake_apple_eaten():
 	
 	# Update score
 	score += 1
-	$Snake.update_score(score)
+	$Game.update_score(score)
 	
 	# Update high score if it's been beaten
 	var special_sound:bool = false
 	if score > save_data.high_score:
 		
 		if score == save_data.WORM_MODE_THRESHOLD && !save_data.worm_mode_unlocked:
-			$Snake.worm_mode_unlocked()
+			$Game.worm_mode_unlocked()
 			special_sound = true
 		elif score == save_data.high_score+1: 
-			$Snake.new_high_score()
+			$Game.new_high_score()
 			special_sound = true
 		
-		$Snake.update_high_score(score)
+		$Game.update_high_score(score)
 	
 	# Play the audio with a special sound if the high-score was beaten, or if WORM MODE
 	# has just been unlocked.
@@ -135,7 +135,7 @@ func _on_menus_mute():
 # _on_menus_worm_mode is triggered when the WORM MODE is clicked within the options menu.
 func _on_menus_worm_mode():
 	Global.toggle_worm_mode()
-	$Snake.refresh_mode()
+	$Game.refresh_mode()
 
 
 ## ---------- Player-Input-Triggered Functions --------- ##
@@ -176,10 +176,10 @@ func turn_input(direction:Vector2):
 	if Global.game_state == Global.GameState.PLAY:
 		
 		# Check if this is the first input direction
-		if $Snake.ticker_is_stopped():
-			$Snake.start_ticker()
+		if $Game.ticker_is_stopped():
+			$Game.start_ticker()
 			$AudioPlayer.play_music()
 		
 		# Turn the snake
-		if $Snake.turn(direction):
+		if $Game.turn(direction):
 			$AudioPlayer.play_turn()
