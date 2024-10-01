@@ -32,3 +32,11 @@ func play_apple_collect():
 func play_game_over():
 	if !Global.mute:
 		$GameOver.play()
+
+func play_start_game():
+	if !Global.mute:
+		$StartGame.play()
+
+func play_cancel():
+	if !Global.mute:
+		$Cancel.play()

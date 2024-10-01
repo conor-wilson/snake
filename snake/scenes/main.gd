@@ -150,6 +150,7 @@ func _on_player_input_pause():
 			pause()
 		# TODO: Review this during tidy-up. It's a little hacky.
 		Global.GameState.PAUSE:
+			$AudioPlayer.play_cancel()
 			resume()
 
 # _on_player_input_up is triggered when the player presses UP or W
