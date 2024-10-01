@@ -70,14 +70,7 @@ label_settings = SubResource("LabelSettings_c66pe")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Foreground" type="TileMapLayer" parent="."]
-use_parent_material = true
-tile_set = ExtResource("1_ktb0o")
-
-[node name="Ticker" type="Timer" parent="."]
-wait_time = 0.2
-
-[node name="NewHighScore" parent="." instance=ExtResource("5_wujtn")]
+[node name="NewHighScore" parent="HUD" instance=ExtResource("5_wujtn")]
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
@@ -97,11 +90,12 @@ blink_duration = 0.15
 time_between_blinks = 0.1
 vertical_speed = -10.0
 
-[node name="WormModeUnlocked" parent="." instance=ExtResource("5_wujtn")]
-offset_left = 255.0
-offset_top = 177.0
-offset_right = 322.0
-offset_bottom = 208.0
+[node name="WormModeUnlocked" parent="HUD" instance=ExtResource("5_wujtn")]
+layout_mode = 1
+offset_left = -32.0
+offset_top = 147.0
+offset_right = 35.0
+offset_bottom = 178.0
 text = "WORM MODE
 UNLOCKED!"
 label_settings = SubResource("LabelSettings_rvx5g")
@@ -111,5 +105,12 @@ number_of_blinks = 8
 blink_duration = 0.15
 time_between_blinks = 0.1
 vertical_speed = -10.0
+
+[node name="Foreground" type="TileMapLayer" parent="."]
+use_parent_material = true
+tile_set = ExtResource("1_ktb0o")
+
+[node name="Ticker" type="Timer" parent="."]
+wait_time = 0.2
 
 [connection signal="timeout" from="Ticker" to="." method="_on_ticker_timeout"]

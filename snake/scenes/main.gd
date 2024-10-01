@@ -20,7 +20,6 @@ func main_menu():
 	Global.set_game_state(Global.GameState.MAIN_MENU)
 	$AudioPlayer.stop_music()
 	$Menus.show_main_menu(save_data.high_score)
-	$Snake.kill_snake()
 	$Snake.stop_ticker()
 
 # start_game opens the game level in it's openning state, and starts Snake.
@@ -35,7 +34,7 @@ func start_game():
 	$Snake.update_score(score)
 	$Snake.update_high_score(save_data.high_score)
 	$Menus.hide_all()
-	$Snake.spawn_new_snake()
+	$Snake.new_game()
 
 # pause opens the game's pause menu, pauses Snake, and sets the game's state accordingly.
 func pause():
@@ -53,9 +52,6 @@ func resume():
 # game_over ends Snake, opens the game's game-over menu, saves any new high-score and
 # updates the game's state accordingly.
 func game_over():
-	
-	# Kill the snake
-	$Snake.kill_snake()
 	
 	# Update game state
 	Global.set_game_state(Global.GameState.GAME_OVER)
@@ -80,10 +76,10 @@ func game_over():
 # _on_snake_game_tick is triggered when a game tick occurs in-game.
 func _on_snake_game_tick():
 	if Global.game_state == Global.GameState.PLAY:
-		$Snake.moveSnake()
+		$Snake.move_snake()
 
-# _on_snake_hit is triggered when the snake crashes into the wall or itself.
-func _on_snake_hit():
+# _on_snake_dead is triggered when the snake crashes into the wall or itself.
+func _on_snake_dead():
 	game_over()
 
 # _on_snake_apple_eaten is triggered when the snake eats an apple in-game.
@@ -139,7 +135,7 @@ func _on_menus_mute():
 # _on_menus_worm_mode is triggered when the WORM MODE is clicked within the options menu.
 func _on_menus_worm_mode():
 	Global.toggle_worm_mode()
-	$Snake.update_mode()
+	$Snake.refresh_mode()
 
 
 ## ---------- Player-Input-Triggered Functions --------- ##
@@ -180,9 +176,9 @@ func turn_input(direction:Vector2):
 	if Global.game_state == Global.GameState.PLAY:
 		
 		# Check if this is the first input direction
-		if $Snake.is_waiting():
+		if $Snake.ticker_is_stopped():
 			$Snake.start_ticker()
-		$AudioPlayer.play_music()
+			$AudioPlayer.play_music()
 		
 		# Turn the snake
 		if $Snake.turn(direction):
