@@ -36,4 +36,6 @@ I used plenty of tutorials on specific components of the project, but I did mana
 
 Finally, I made all of the art for this by myself. It's nothing fancy at all, but I really quite enjoyed the process, so I'll hope to continue to develop this skill in future projects. 
 
-To conclude, the game is playable and seems to work well enough, and I learned a whole lot. 🐍 *Ssssuccccessssss!* 🐍
+To conclude, the game is playable and seems to work well enough, and I learned a whole lot. 
+
+🐍 *Ssssuccccessssss!* 🐍
