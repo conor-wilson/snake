@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bvuk06a3femn6"]
 
-[ext_resource type="Script" path="res://scenes/menus/components/BlinkingLabel.gd" id="1_udjme"]
+[ext_resource type="Script" path="res://scenes/menus/components/blinking_label.gd" id="1_udjme"]
 
 [node name="BlinkingLabel" type="Label"]
 anchors_preset = 15

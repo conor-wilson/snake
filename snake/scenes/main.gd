@@ -1,7 +1,7 @@
 extends Node
 
-var score      : int
-var save_data  : SaveData
+var score     : int
+var save_data : SaveData
 
 # GameState represents the state that the game is in (ie: in-game, in a menu, etc...)
 enum GameState {START_SCREEN, MAIN_MENU, PLAY, PAUSE, GAME_OVER}
