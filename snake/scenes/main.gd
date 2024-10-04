@@ -64,7 +64,7 @@ func game_over():
 	$Game.stop_ticker()
 	
 	# Determine if WORM MODE has just been unlocked
-	var worm_mode_unlocked : bool = score >= save_data.WORM_MODE_THRESHOLD && !save_data.worm_mode_unlocked
+	var worm_mode_unlocked : bool = score >= Global.WORM_MODE_THRESHOLD && !save_data.worm_mode_unlocked
 	
 	# If there's a new high-score, save it!
 	var new_high_score : bool = score > save_data.high_score
@@ -97,7 +97,7 @@ func _on_snake_apple_eaten():
 	var special_sound:bool = false
 	if score > save_data.high_score:
 		
-		if score == save_data.WORM_MODE_THRESHOLD && !save_data.worm_mode_unlocked:
+		if score == Global.WORM_MODE_THRESHOLD && !save_data.worm_mode_unlocked:
 			$Game.worm_mode_unlocked()
 			special_sound = true
 		elif score == save_data.high_score+1: 
