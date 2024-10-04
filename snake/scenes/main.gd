@@ -3,6 +3,10 @@ extends Node
 var score      : int
 var save_data  : SaveData
 
+# GameState represents the state that the game is in (ie: in-game, in a menu, etc...)
+enum GameState {START_SCREEN, MAIN_MENU, PLAY, PAUSE, GAME_OVER}
+var game_state : GameState
+
 func _ready():
 	save_data = SaveData.load()
 	start_screen()
@@ -11,13 +15,13 @@ func _ready():
 
 # start_screen opens the game's start screen, and sets the game state accordingly.
 func start_screen():
-	Global.set_game_state(Global.GameState.START_SCREEN)
+	game_state = GameState.START_SCREEN
 	$AudioPlayer.stop_music()
 	$Menus.show_start_screen()
 
 # start_screen opens the game's main menu, and sets the game state accordingly.
 func main_menu():
-	Global.set_game_state(Global.GameState.MAIN_MENU)
+	game_state = GameState.MAIN_MENU
 	$AudioPlayer.stop_music()
 	$Menus.show_main_menu(save_data.high_score)
 	$Game.stop_ticker()
@@ -27,7 +31,7 @@ func start_game():
 	
 	# Reset game state
 	score = 0
-	Global.set_game_state(Global.GameState.PLAY)
+	game_state = GameState.PLAY
 	$AudioPlayer.increase_music_volume()
 	
 	# Start the game
@@ -38,14 +42,14 @@ func start_game():
 
 # pause opens the game's pause menu, pauses Snake, and sets the game's state accordingly.
 func pause():
-	Global.set_game_state(Global.GameState.PAUSE)
+	game_state = GameState.PAUSE
 	$AudioPlayer.lower_music_volume()
 	$Menus.show_pause_menu()
 
 # resume resumes Snake without reseting it to its openning state, and updates the game's
 # state accordingly.
 func resume():
-	Global.set_game_state(Global.GameState.PLAY)
+	game_state = GameState.PLAY
 	$AudioPlayer.increase_music_volume()
 	$Menus.hide_all()
 
@@ -54,7 +58,7 @@ func resume():
 func game_over():
 	
 	# Update game state
-	Global.set_game_state(Global.GameState.GAME_OVER)
+	game_state = GameState.GAME_OVER
 	$AudioPlayer.stop_music()
 	$AudioPlayer.play_game_over()
 	$Game.stop_ticker()
@@ -75,7 +79,7 @@ func game_over():
 
 # _on_snake_game_tick is triggered when a game tick occurs in-game.
 func _on_snake_game_tick():
-	if Global.game_state == Global.GameState.PLAY:
+	if game_state == GameState.PLAY:
 		$Game.move_snake()
 
 # _on_snake_dead is triggered when the snake crashes into the wall or itself.
@@ -112,10 +116,10 @@ func _on_snake_apple_eaten():
 # _on_menu_play is triggered when the START, RESUME or TRY AGAIN buttons are clicked
 # within any of the menus.
 func _on_menus_play():
-	match Global.game_state:
-		Global.GameState.MAIN_MENU, Global.GameState.GAME_OVER:
+	match game_state:
+		GameState.MAIN_MENU, GameState.GAME_OVER:
 			start_game()
-		Global.GameState.PAUSE:
+		GameState.PAUSE:
 			resume()
 
 # _on_menus_quit is triggered when the QUIT menu is clicked within the main menu.
@@ -142,15 +146,15 @@ func _on_menus_worm_mode():
 
 # _on_player_input_any is triggered when the player provides any input.
 func _on_player_input_any():
-	if Global.game_state == Global.GameState.START_SCREEN:
+	if game_state == GameState.START_SCREEN:
 		main_menu()
 
 # _on_player_input_pause is triggered when the player presses ESC.
 func _on_player_input_pause():
-	match Global.game_state: 
-		Global.GameState.PLAY:
+	match game_state: 
+		GameState.PLAY:
 			pause()
-		Global.GameState.PAUSE:
+		GameState.PAUSE:
 			$AudioPlayer.play_cancel()
 			resume()
 
@@ -173,7 +177,7 @@ func _on_player_input_left():
 # turn_input handles the events that should occur when the player has input the provided
 # direction.
 func turn_input(direction:Vector2): 
-	if Global.game_state == Global.GameState.PLAY:
+	if game_state == GameState.PLAY:
 		
 		# Check if this is the first input direction
 		if $Game.ticker_is_stopped():
