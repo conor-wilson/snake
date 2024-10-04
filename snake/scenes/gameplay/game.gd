@@ -81,10 +81,10 @@ func new_game():
 	direction     = Vector2.RIGHT
 	new_direction = Vector2.RIGHT
 	snake_tiles = [
-		SnakeTile.new("head", Vector2i(10,10), Vector2.RIGHT, Vector2.LEFT),
-		SnakeTile.new("body", Vector2i(9,10),  Vector2.RIGHT, Vector2.LEFT),
-		SnakeTile.new("body", Vector2i(8,10),  Vector2.RIGHT, Vector2.LEFT),
-		SnakeTile.new("tail", Vector2i(7,10),  Vector2.RIGHT, Vector2.LEFT),
+		SnakeTile.new(SnakeTile.Type.HEAD, Vector2i(10,10), Vector2.RIGHT, Vector2.LEFT),
+		SnakeTile.new(SnakeTile.Type.BODY, Vector2i(9,10),  Vector2.RIGHT, Vector2.LEFT),
+		SnakeTile.new(SnakeTile.Type.BODY, Vector2i(8,10),  Vector2.RIGHT, Vector2.LEFT),
+		SnakeTile.new(SnakeTile.Type.TAIL, Vector2i(7,10),  Vector2.RIGHT, Vector2.LEFT),
 	]
 	
 	# Render the game pieces
@@ -173,15 +173,20 @@ func move_snake():
 func move_head(newHeadCoord:Vector2i, dead_head:bool = false):
 	
 	# Change the old head tile to be a body tile facing the new direction
-	snake_tiles[0].set_atlas_coords("body")
-	snake_tiles[0].set_direction(direction, snake_tiles[0].get_back_dir())
+	var old_head:SnakeTile = snake_tiles[0]
+	snake_tiles[0] = SnakeTile.new(
+		SnakeTile.Type.BODY,
+		old_head.get_coords(),
+		direction, # The new head should face the new direction
+		old_head.get_back_dir()
+	)
 	
 	# Add the new head tile
 	var newHeadTile : SnakeTile
 	if !dead_head: 
-		newHeadTile = SnakeTile.new("head", newHeadCoord, direction, direction.rotated(PI))
+		newHeadTile = SnakeTile.new(SnakeTile.Type.HEAD, newHeadCoord, direction, direction.rotated(PI))
 	else: 
-		newHeadTile = SnakeTile.new("dead_head", newHeadCoord, direction, direction.rotated(PI))
+		newHeadTile = SnakeTile.new(SnakeTile.Type.DEAD_HEAD, newHeadCoord, direction, direction.rotated(PI))
 	snake_tiles.push_front(newHeadTile)
 	
 	# Render the updated cells
@@ -192,8 +197,13 @@ func move_head(newHeadCoord:Vector2i, dead_head:bool = false):
 func move_tail():
 	
 	# Change the new tail tile to be a tail tile facing the same direction
-	snake_tiles[-2].set_atlas_coords("tail")
-	snake_tiles[-2].set_direction(snake_tiles[-2].get_front_dir(), snake_tiles[-2].get_front_dir().rotated(PI))
+	var old_tail:SnakeTile = snake_tiles[-2] 
+	snake_tiles[-2] = SnakeTile.new(
+		SnakeTile.Type.TAIL, 
+		old_tail.get_coords(), 
+		old_tail.get_front_dir(), 
+		old_tail.get_front_dir().rotated(PI) # The tail is always oriented in a straight line
+	)
 	
 	# Remove the old tail tile
 	var oldTailCoords = snake_tiles.pop_back().get_coords()

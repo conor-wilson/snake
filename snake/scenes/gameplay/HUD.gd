@@ -1,19 +1,21 @@
 extends Control
 
+# max_num_digits defines the maximum number of digits that are displayable in both the
+# score and the high-score HUD.
 @export var max_num_digits:int = 3
 
-
-# TODO: Descriptor
+# update_score updates the displayed current score in the HUD to the provided value.
 func update_score(score: int):
 	$Score.text = get_zeros(score) + str(score)
 
-# TODO: Descriptor
+# update_high_score updates the displayed high-score in the HUD to the provided value.
 func update_high_score(high_score: int):
 	$HighScore.text = get_zeros(high_score) + str(high_score)
 
-
-# TODO: Descriptor
+# get_zeros returns string of zeros that should be prepended to the provided score to
+# ensure that the total number of digits displayed still equals max_num_digits.
 func get_zeros(score:int) -> String:
+	
 	# Find the number of digits in the provided score
 	var num_zeros:int = max_num_digits-num_digits(score)
 	
@@ -23,7 +25,7 @@ func get_zeros(score:int) -> String:
 		output += "0"
 	return output
 
-# TODO: Descriptor
+# num_digits calculates and returns the number of digits in the provided integer n.
 func num_digits(n:int) -> int :
 	
 	# If the provided number is 0, it's one digit long
