@@ -1,17 +1,18 @@
 extends Camera2D
 
+# NOTE: The code in this file enables mobile inputs for the game.
+
 signal up
 signal right
 signal down
 signal left
-
 signal pause
 
-@export var swipe_length:int = 100
-@export var directional_threshold:int = 50
+@export var swipe_length:int = 100         # The minimum length that a swipe must be to be registered as a swipe input.
+@export var directional_threshold:int = 50 # The the threshold of swipe length in a given direction for that direction to be registered by the swipe-detector.
 
-var swiping:bool = false
-var start_pos:Vector2
+var swiping   : bool = false # If true, we are mid-swipe
+var start_pos : Vector2      # The starting coordinates of the swipe
 
 func _process(delta: float) -> void:
 	check_swipe()

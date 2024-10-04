@@ -7,6 +7,7 @@ signal close
 var unchecked_icon = preload("res://scenes/menus/components/checkBoxUnchecked.png")
 var checked_icon = preload("res://scenes/menus/components/checkBoxChecked.png")
 
+# show_and_focus shows the menu, and grabs the focus to the appropriate button.
 func show_and_focus():
 	$VBoxContainer/MuteContainer/MuteButton.update_icon(Global.mute)
 	$VBoxContainer/WormModeContainer/WormModeButton.update_icon(Global.worm_mode)
@@ -21,6 +22,8 @@ func show_and_focus():
 	
 	$VBoxContainer/MuteContainer/MuteButton.focus(true)
 
+
+## ---------------- Button-Signal Funcs ---------------- ##
 
 func _on_mute_button_pressed():
 	mute.emit()

@@ -7,19 +7,17 @@ signal right
 signal down
 signal left
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	process_player_input()
 
-# TODO: Descriptor
+# process_player_input detects which inputs have just been pressed by the player, and
+# emits signals accordingly.
 func process_player_input():
 	
 	if Input.is_anything_pressed():
 		any.emit()
 	if Input.is_action_just_pressed("esc"): 
 		pause.emit()
-	#if Input.is_action_just_pressed("select"):
-		#pause.emit() (TODO)
 	if Input.is_action_pressed("move_up"):
 		up.emit()
 	if Input.is_action_pressed("move_right"):
@@ -29,6 +27,7 @@ func process_player_input():
 	if Input.is_action_pressed("move_left"):
 		left.emit()
 
+## --------------- Swipe-Detection Funcs --------------- ##
 
 func _on_swipe_detector_up() -> void:
 	up.emit()

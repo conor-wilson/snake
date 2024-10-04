@@ -5,12 +5,15 @@ signal mute
 signal worm_mode
 signal quit
 
+# show_and_focus shows the menu, and grabs the focus to the appropriate button.
 func show_and_focus(high_score:int):
 	$HighScore.text = "High Score: " + str(high_score)
 	show()
 	$OptionsMenu.hide()
 	$VBoxContainer/StartContainer/StartButton.focus()
 
+
+## ---------------- Button-Signal Funcs ---------------- ##
 
 func _on_start_button_pressed():
 	start_game.emit()
@@ -24,7 +27,6 @@ func _on_controls_button_pressed() -> void:
 func _on_quit_button_pressed():
 	quit.emit()
 
-
 func _on_options_menu_mute():
 	mute.emit()
 
@@ -34,7 +36,6 @@ func _on_options_menu_worm_mode():
 func _on_options_menu_close():
 	$OptionsMenu.hide()
 	$VBoxContainer/OptionsContainer/OptionsButton.focus(true)
-
 
 func _on_controls_menu_close() -> void:
 	$ControlsMenu.hide()

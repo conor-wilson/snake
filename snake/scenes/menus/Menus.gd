@@ -1,8 +1,6 @@
 extends Control
 
-@export var game_over_timeout:float 
-
-#TODO: Restructure this file, and think about splitting this scene up.
+@export var game_over_timeout:float # The delay that should occur between when the player dies and when the game-over menu appears
 
 signal play
 signal mute
@@ -10,15 +8,18 @@ signal worm_mode
 signal quit
 signal main_menu
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	hide_all()
 
+# hide_all hides all the menus.
 func hide_all():
 	$StartScreen.hide()
 	$MainMenu.hide()
 	$PauseMenu.hide()
 	$GameOverMenu.hide()
+
+
+## ---------------- Menu-Showing Funcs ----------------- ##
 
 func show_start_screen():
 	hide_all()
@@ -35,11 +36,14 @@ func show_pause_menu():
 
 func show_game_over_screen(score:int, new_high_score:bool, worm_mode_unlocked:bool):
 	
+	# Wait briefly so the player can see how they died
 	await get_tree().create_timer(game_over_timeout).timeout
 	
 	hide_all()
 	$GameOverMenu.show_and_focus(score, new_high_score, worm_mode_unlocked)
 
+
+## ---------------- Button-Signal Funcs ---------------- ##
 
 func _on_start_button_pressed():
 	play.emit()

@@ -3,11 +3,11 @@ extends Control
 var worm_title:Texture  = load("res://scenes/menus/WormTitle.png")
 var snake_title:Texture = load("res://scenes/menus/Title.png") 
 
+# show_and_focus shows the menu, and grabs the focus to the appropriate button.
 func show_and_focus():
 	show()
 
-# update_mode (TODO)
-# TODO: This is almost an exact copy of Snake.update_mode(). Fix this.
+# update_mode updates the title-screen's mode according to the global worm_mode variable.
 func update_mode():
 	
 	# Set the TileMap source ID
