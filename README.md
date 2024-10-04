@@ -34,6 +34,8 @@ I've tried to tidy up the code in this finalised version and document it in-code
 
 I used plenty of tutorials on specific components of the project, but I did manage to complete this without using any "How to make Snake in Godot" tutorials. This meant that the project took longer, but I like to think that I have developed a deeper understanding of how the engine works by figuring a lot of it out by myself. 
 
+I used GitHub's Project feature to plan and track my progress in this project. Currently those tickets are all private, but I may end up making them public for the sake of documentation (although it's likely that I won't since they're tickets on another repo. Whoops!).
+
 Finally, I made all of the art for this by myself. It's nothing fancy at all, but I really quite enjoyed the process, so I'll hope to continue to develop this skill in future projects. 
 
 To conclude, the game is playable and seems to work well enough, and I learned a whole lot. 
