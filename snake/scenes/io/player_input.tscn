@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://5h34575bwelc"]
 
-[ext_resource type="Script" path="res://scenes/io/player_input.gd" id="1_gxcme"]
-[ext_resource type="Script" path="res://scenes/io/swipe_detector.gd" id="2_focw5"]
+[ext_resource type="Script" uid="uid://cxa1muc0p7rr8" path="res://scenes/io/player_input.gd" id="1_gxcme"]
+[ext_resource type="Script" uid="uid://b0y1ty0lh7cq5" path="res://scenes/io/swipe_detector.gd" id="2_focw5"]
 
 [node name="PlayerInput" type="Node"]
 script = ExtResource("1_gxcme")
